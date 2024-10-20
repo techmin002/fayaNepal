@@ -33,6 +33,8 @@
                                             <th>S.N</th>
                                             <th>Title</th>
                                             <th class="text-center">Image</th>
+                                            <th class="text-center">Link</th>
+                                            <th class="text-center">Description</th>
                                             <th class="text-center">Status</th>
                                             <th class="text-center">Action</th>
                                         </tr>
@@ -82,6 +84,8 @@
                                             <th>S.N</th>
                                             <th>Title</th>
                                             <th class="text-center">Image</th>
+                                            <th class="text-center">Link</th>
+                                            <th class="text-center">Description</th>
                                             <th class="text-center">Status</th>
                                             <th class="text-center">Action</th>
                                         </tr>
