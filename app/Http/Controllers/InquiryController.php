@@ -29,7 +29,13 @@ class InquiryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contact = Contact::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'contact' => $request->contact,
+            'message' => $request->message,
+        ]);
+        return back()->with('success','Your Query Added Successfully');
     }
 
     /**

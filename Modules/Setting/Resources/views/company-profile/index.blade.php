@@ -180,7 +180,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="vision">Vision</label>
+                                                <label for="vision">History</label>
                                                 <textarea type="text" name="vision" class="summernote" placeholder="Enter Vision">{{ $profile->vision }}</textarea>
                                                 @error('vision')
                                                     <p style="color: red">{{ $message }}</p>

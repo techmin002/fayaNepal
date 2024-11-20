@@ -1,6 +1,6 @@
 @extends('setting::layouts.master')
 
-@section('title', 'Edit Services')
+@section('title', 'Edit Programs')
 
 @section('content')
     <div class="content-wrapper">
@@ -9,11 +9,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Service</h1>
+                        <h1>Programs</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('services.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('programs.index') }}">Home</a></li>
                             <li class="breadcrumb-item active">Create</li>
                         </ol>
                     </div>
@@ -33,7 +33,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="product-form" action="{{ route('services.update',$service->id) }}" method="POST"
+                            <form id="product-form" action="{{ route('programs.update',$service->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -51,26 +51,18 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="icon">icon </label>
+                                                <label for="icon">Program Location </label>
 
-                                                <input type="file" id="file-ip-1" accept="image/*"
-                                                    class="form-control-file border" value="{{ old('icon') }}"
-                                                    onchange="showPreview2(event);" name="icon">
+                                                <input type="text" id="file-ip-1" placeholder="Enter Program Full Address" name="icon"  value="{{ $service->icon }}" class="form-control">
                                                 @error('icon')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
-                                                <div class="preview mt-2">
-                                                    <img src="" id="file-ip-2-preview" width="200px">
-                                                </div>
-                                                <div class="preview mt-2">
-                                                    <img src="{{ asset('upload/images/services/'.$service->icon) }}" width="200px">
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="shortDescription">Short Description</label>
-                                                <textarea type="text" name="shortDescription" class="summernote" placeholder="Enter Short Description" required>{{ $service->shortDescription }}</textarea>
+                                                <textarea type="text" name="shortDescription" class="summernote" placeholder="Enter Short Description" required>{{ $service->shortdescription }}</textarea>
                                                 @error('shortDescription')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
@@ -85,6 +77,29 @@
                                                 @error('description')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="program_type">Program Type</label>
+                                                <select name="program_type" class="form-control" id="">
+                                                    <option value="" disabled>Select Program Type</option>
+                                                    <option value="current" {{ old('program_type', $service->program_type ?? '') == 'current' ? 'selected' : '' }}>Current</option>
+                                                    <option value="past" {{ old('program_type', $service->program_type ?? '') == 'past' ? 'selected' : '' }}>Past</option>
+                                                </select>
+                                        
+                                                @error('program_type')
+                                                    <p style="color: red">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <!-- Bootstrap Switch -->
+                                            <div class="card card-secondary">
+                                                <label for="date">Program Date</label>
+                                                <input type="date" name="date" value="{{ $service->date }}" class="form-control"
+                                                    id="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">

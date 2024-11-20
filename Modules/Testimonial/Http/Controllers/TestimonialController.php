@@ -53,6 +53,7 @@ class TestimonialController extends Controller
         Testimonial::create([
             'name' => $request['name'],
             'message' => $request['message'],
+            'designation' => $request['designation'],
             'status' => $request['status'],
             'image' => $imageName
         ]);
@@ -104,6 +105,7 @@ class TestimonialController extends Controller
         $testimonial->update([
             'name' => $request['name'],
             'message' => $request['message'],
+            'designation' => $request['designation'],
             'status' => $request['status'],
             'image' => $imageName
         ]);

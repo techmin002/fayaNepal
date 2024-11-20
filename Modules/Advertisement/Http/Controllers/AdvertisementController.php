@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Gate;
 use Modules\Advertisement\DataTables\AdvertisementDataTable;
 use Modules\Advertisement\Entities\Advertisemment;
+use Modules\Advertisement\Entities\Story;
 use Modules\Advertisement\Http\Requests\StoreAdvertisementRequest;
 use Modules\Advertisement\Http\Requests\UpdateAdvertisementRequest;
 
@@ -19,8 +20,8 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        abort_if(Gate::denies('show_advertisements'), 403);
-        $ads = Advertisemment::latest()->get();
+        // abort_if(Gate::denies('show_advertisements'), 403);
+        $ads = Story::latest()->get();
         return view('advertisement::advertisements.index',compact("ads"));
     }
 
@@ -30,7 +31,7 @@ class AdvertisementController extends Controller
      */
     public function create()
     { 
-        abort_if(Gate::denies('create_advertisements'), 403);
+        // abort_if(Gate::denies('create_advertisements'), 403);
         return view('advertisement::advertisements.create');
     }
 
@@ -41,7 +42,7 @@ class AdvertisementController extends Controller
      */
     public function store(StoreAdvertisementRequest $request)
     {
-        abort_if(Gate::denies('create_advertisements'), 403);
+        // abort_if(Gate::denies('create_advertisements'), 403);
         $imageName = '';
         if ($request->image)
         {
@@ -50,16 +51,15 @@ class AdvertisementController extends Controller
             $request->image->move(public_path('upload/images/advertisements'), $imageName);
 
         }
-        Advertisemment::create([
+        Story::create([
             'title' => $request['title'],
-            'link' => $request['link'],
-            'page'=> $request['page'],
-            'position'=> $request['position'],
+            'date' => $request['date'],
+            'shortdescription'=> $request['shortdescription'],
+            'description' => $request['description'],
             'status' => $request['status'],
             'image' => $imageName,
-            'expire_date' => $request['expire_date']
         ]);
-        return redirect()->route('advertisements.index')->with('success','Created Successfully');
+        return redirect()->route('stories.index')->with('success','Story Created Successfully');
     }
 
     /**
@@ -80,7 +80,7 @@ class AdvertisementController extends Controller
     public function edit($id)
     {
         abort_if(Gate::denies('edit_advertisements'), 403);
-        $advertisement = Advertisemment::findOrfail($id);
+        $advertisement = Story::findOrfail($id);
         return view('advertisement::advertisements.edit',compact('advertisement'));
     }
 
@@ -93,7 +93,7 @@ class AdvertisementController extends Controller
     public function update(UpdateAdvertisementRequest $request, $id)
     {
         abort_if(Gate::denies('edit_advertisements'), 403);
-        $advertisement = Advertisemment::findOrfail($id);
+        $advertisement = Story::findOrfail($id);
         $imageName = $advertisement->image;
         if ($request->image)
         {
@@ -104,14 +104,14 @@ class AdvertisementController extends Controller
         }
         $advertisement->update([
             'title' => $request['title'],
-            'link' => $request['link'],
-            'position'=> $request['position'],
+            'date' => $request['date'],
+            'shortdescription'=> $request['shortdescription'],
+            'description' => $request['description'],
             'status' => $request['status'],
             'image' => $imageName,
-            'expire_date' => $request['expire_date']
         ]);
        
-        return redirect()->route('advertisements.index')->with('success','Updated Successfully');
+        return redirect()->route('stories.index')->with('success','Story Updated Successfully');
     }
 
     /**
@@ -122,16 +122,16 @@ class AdvertisementController extends Controller
     public function destroy($id)
     {
         abort_if(Gate::denies('delete_advertisements'), 403);
-        $advertisement = Advertisemment::findOrfail($id);
+        $advertisement = Story::findOrfail($id);
         $advertisement->delete();
         
-        return redirect()->route('advertisements.index')->with('success','Removed Successfully');
+        return redirect()->route('stories.index')->with('success','Removed Successfully');
     }
 
     public function status($id)
     {
         abort_if(Gate::denies('access_advertisements'), 403);
-        $advertisement = Advertisemment::findOrfail($id);
+        $advertisement = Story::findOrfail($id);
         if($advertisement->status == 'on')
         {
             $status = 'off';
@@ -141,6 +141,6 @@ class AdvertisementController extends Controller
         $advertisement->update([
            'status' => $status 
         ]);
-        return redirect()->route('advertisements.index')->with('success', 'Status Updated Successfully');
+        return redirect()->route('stories.index')->with('success', 'Status Updated Successfully');
     }
 }

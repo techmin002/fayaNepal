@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('services_category.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('programs_category.index') }}">Home</a></li>
                             <li class="breadcrumb-item active">Create</li>
                         </ol>
                     </div>
@@ -33,7 +33,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="product-form" action="{{ route('services_category.store') }}" method="POST"
+                            <form id="product-form" action="{{ route('programs_category.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">

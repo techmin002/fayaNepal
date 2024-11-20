@@ -1,77 +1,38 @@
 @extends('frontend.layouts.master')
 @section('content')
-
-
-   
-
     <section class="slider-section">
         <div class="slider-wrapper">
             <div id="main-slider" class="nivoSlider">
-                <img src="{{ asset('frontend/img/slider-1.jpg') }}" alt="" title="#slider-caption-1" />
-                <img src="{{ asset('frontend/img/slider-2.jpg') }}" alt="" title="#slider-caption-2" />
-                <img src="{{ asset('frontend/img/slider-3.jpg') }}" alt="" title="#slider-caption-3" />
-            </div><!-- /#main-slider -->
+                @foreach ($data['sliders'] as $key => $slider)
+                    <img src="{{ asset('upload/images/sliders/' . $slider->image) }}" alt=""
+                        title="#slider-caption-{{ $key }}" />
+                @endforeach
+            </div>
 
-            <div id="slider-caption-1" class="nivo-html-caption slider-caption">
-                <div class="display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="slider-text">
-                                <h5 class="wow cssanimation fadeInBottom">Join Us Today</h5>
-                                <h1 class="wow cssanimation leFadeInRight sequence">Better Life for People</h1>
-                                <p class="wow cssanimation fadeInTop" data-wow-delay="1s">Help today because tomorrow
-                                    you may be the one who needs helping! <br>Forget what you can get and see what you
-                                    can give.</p>
-                                <a href="#" class="default-btn wow cssanimation fadeInBottom"
-                                    data-wow-delay="0.8s">Join With Us</a>
-                                <a href="#" class="default-btn wow cssanimation fadeInBottom"
-                                    data-wow-delay="0.8s">Donet Now</a>
+            @foreach ($data['sliders'] as $key => $slider)
+                <div id="slider-caption-{{ $key }}" class="nivo-html-caption slider-caption">
+                    <div class="display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="slider-text">
+                                    <h5 class="wow cssanimation fadeInBottom">Join Us Today</h5>
+                                    <h1 class="wow cssanimation leFadeInRight sequence">{{ $slider->title }}</h1>
+                                    <p class="wow cssanimation fadeInTop" data-wow-delay="1s">
+                                        {!! $slider->short_description !!}
+                                    </p>
+                                    <a href="#" class="default-btn wow cssanimation fadeInBottom"
+                                        data-wow-delay="0.8s">Join With Us</a>
+                                    <a href="#" class="default-btn wow cssanimation fadeInBottom"
+                                        data-wow-delay="0.8s">Donate Now</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> <!-- /#slider-caption-1 -->
-            <div id="slider-caption-2" class="nivo-html-caption slider-caption">
-                <div class="display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="slider-text">
-                                <h1 class="wow cssanimation fadeInTop" data-wow-delay="1s" data-wow-duration="800ms">
-                                    Together we <br>can make a Difference</h1>
-                                <p class="wow cssanimation fadeInBottom" data-wow-delay="1s">Help today because
-                                    tomorrow you may be the one who needs helping! <br>Forget what you can get and see
-                                    what you can give.</p>
-                                <a href="#" class="default-btn wow cssanimation fadeInBottom"
-                                    data-wow-delay="0.8s">Join With Us</a>
-                                <a href="#" class="default-btn wow cssanimation fadeInBottom"
-                                    data-wow-delay="0.8s">Donet Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- /#slider-caption-2 -->
-            <div id="slider-caption-3" class="nivo-html-caption slider-caption">
-                <div class="display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="slider-text">
-                                <h5 class="wow cssanimation fadeInBottom">Join Us Today</h5>
-                                <h1 class="wow cssanimation lePushReleaseFrom sequence" data-wow-delay="1s">Give a
-                                    little. Change a lot.</h1>
-                                <p class="wow cssanimation fadeInTop" data-wow-delay="1s">Help today because tomorrow
-                                    you may be the one who needs helping! <br>Forget what you can get and see what you
-                                    can give.</p>
-                                <a href="#" class="default-btn wow cssanimation fadeInBottom"
-                                    data-wow-delay="0.8s">Join With Us</a>
-                                <a href="#" class="default-btn wow cssanimation fadeInBottom"
-                                    data-wow-delay="0.8s">Donet Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- /#slider-caption-3 -->
+            @endforeach
         </div>
-    </section><!-- /#slider-Section -->
+
+    </section>
 
     <section class="promo-section bd-bottom">
         <div class="promo-wrap">
@@ -121,65 +82,30 @@
                     inclusive and sustainable development."</p>
             </div><!-- /Section Heading -->
             <div class="causes-wrap row">
+                @foreach ($data['currentProgram'] as $program)
+                    
+                
                 <div class="col-md-4 xs-padding">
                     <div class="causes-content">
                         <div class="causes-thumb">
-                            <img src="{{ asset('frontend/image/event/LeadingCapacity.png') }}" alt="causes">
+                            <img src="{{ asset('upload/images/services/'.$program->image) }}" alt="causes">
                             <a href="#" class="donate-btn">Donate Now<i class="ti-plus"></i></a>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100"><span
-                                        class="wow cssanimation fadeInLeft">25%</span></div>
+                                <div class="progress-bar" role="progressbar" style="width: 77%;" aria-valuenow="77"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <span
+                                        class="wow cssanimation fadeInLeft">77%</span></div>
                             </div>
                         </div>
                         <div class="causes-details">
-                            <h3>Leading Capacity Strengthening Support Programs</h3>
-                            <p>The Sudurpashchim province operates under a federal system, aiming to distribute power
-                                between central and provincial governments for localized governance.</p>
-                            <a href="#" class="read-more">Read More</a>
+                            <h3>{{ $program->title }}</h3>
+                            <p>{!! $program->shortdescription !!}</p>
+                            <a href="{{ route('program.detail',$program->slug) }}" class="read-more">Read More</a>
                         </div>
                     </div>
                 </div><!-- /Program-1 -->
-                <div class="col-md-4 xs-padding">
-                    <div class="causes-content">
-                        <div class="causes-thumb">
-                            <img src="{{ asset('frontend/image/event/imgg.png') }}" alt="causes">
-                            <a href="#" class="donate-btn">Donate Now<i class="ti-plus"></i></a>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100"><span
-                                        class="wow cssanimation fadeInLeft">45%</span></div>
-                            </div>
-                        </div>
-                        <div class="causes-details">
-                            <h3>Enhancing Cholera Control In Nepal</h3>
-                            <p>Nepal is characterized by endemic cholera and the potential for significant outbreaks.
-                                Although 93 percent of households in Nepal utilize improved sources of drinking water,
-                            </p>
-                            <a href="#" class="read-more">Read More</a>
-                        </div>
-                    </div>
-                </div><!-- /Program-2 -->
-                <div class="col-md-4 xs-padding">
-                    <div class="causes-content">
-                        <div class="causes-thumb">
-                            <img src="{{ asset('frontend/image/event/mother.png') }}" alt="causes">
-                            <a href="#" class="donate-btn">Donate Now<i class="ti-plus"></i></a>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100"><span
-                                        class="wow cssanimation fadeInLeft">75%</span></div>
-                            </div>
-                        </div>
-                        <div class="causes-details">
-                            <h3>Improving Health Seeking Behavior of Mothers and Children</h3>
-                            <p>Enhancing the health behavior of mothers and children represents a crucial initiative
-                                aimed at addressing disparities in maternal and child health, ultimately securing the
-                                wellbeing. </p>
-                            <a href="#" class="read-more">Read More</a>
-                        </div>
-                    </div>
-                </div><!-- /Program-3 -->
+                @endforeach
+               
             </div>
         </div>
     </section><!-- /Program Section -->
@@ -259,48 +185,22 @@
                 <p>Help today because tomorrow you may be the one who <br> needs more helping!</p>
             </div><!-- /Section Heading -->
             <div id="event-carousel" class="events-wrap owl-Carousel">
+                @foreach ($data['pastProgram'] as $pprogram)
                 <div class="events-item">
                     <div class="event-thumb">
-                        <img src="{{ asset('frontend/image/pastevent/covidimg.png') }}" alt="events">
+                        <img src="{{ asset('upload/images/services/'.$pprogram->image) }}" alt="events">
                     </div>
                     <div class="event-details">
-                        <h3>Support to local planning and response against COVID 19</h3>
+                        <h3>{{ $pprogram->title }}</h3>
                         <div class="event-info">
-                            <p><i class="ti-calendar"></i>Oct 28, 2023</p>
-                            <p><i class="ti-location-pin"></i>Dhangadhi Sub-Metropolis-01</p>
+                            <p><i class="ti-calendar"></i>{{ $pprogram->date }}</p>
+                            <p><i class="ti-location-pin"></i>{{ $pprogram->icon }}</p>
                         </div>
-                        <p>Help today because tomorrow you may be the one who</p>
-                        <a href="#" class="default-btn">Read More</a>
+                        <p>{!! $pprogram->shortdescription !!}</p>
+                        <a href="{{ route('program.detail',$program->slug) }}" class="default-btn">Read More</a>
                     </div>
                 </div><!-- Event-1 -->
-                <div class="events-item">
-                    <div class="event-thumb">
-                        <img src="{{ asset('frontend/image/pastevent/secondary.png') }}" alt="events">
-                    </div>
-                    <div class="event-details">
-                        <h3>Strengthening Safe Abortion Ecosystem Nepal</h3>
-                        <div class="event-info">
-                            <p><i class="ti-calendar"></i>Oct 28, 2023</p>
-                            <p><i class="ti-location-pin"></i>Dhangadhi Sub-Metropolis-01</p>
-                        </div>
-                        <p>Help today because tomorrow you may be the one </p>
-                        <a href="#" class="default-btn">Read More</a>
-                    </div>
-                </div><!-- Event-2 -->
-                <div class="events-item">
-                    <div class="event-thumb">
-                        <img src="{{ asset('frontend/image/pastevent/climateJustice.png') }}" alt="events">
-                    </div>
-                    <div class="event-details">
-                        <h3>Climate justice, Gender And SRHR </h3>
-                        <div class="event-info">
-                            <p><i class="ti-calendar"></i>Oct 28, 2023</p>
-                            <p><i class="ti-location-pin"></i>Dhangadhi Sub-Metropolis-01</p>
-                        </div>
-                        <p>Help today because tomorrow you may be the one who needs more helping!</p>
-                        <a href="#" class="default-btn">Read More</a>
-                    </div>
-                </div><!-- Event-3 -->
+                @endforeach
             </div>
         </div>
     </section><!-- Events Section -->
@@ -313,38 +213,15 @@
                 <p>Help today because tomorrow you may be the one who <br> needs more helping!</p>
             </div><!-- /Section Heading -->
             <div id="testimonial-carousel" class="testimonial-carousel owl-carousel">
+                @foreach ($data['testimonials'] as $testimonial)
                 <div class="testimonial-item">
-                    <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in
-                        Sudurpashchim Province Nepal, the abused and the helpless.</p>
+                    <p>{!! $testimonial->message !!}</p>
                     <div class="testi-footer">
-                        <img src="{{ asset('frontend/img/team-1.jpg') }}" alt="profile">
-                        <h4>faya nepal <span>Marketer</span></h4>
+                        <img src="{{ asset('upload/images/testimonials/'.$testimonial->image) }}" alt="profile">
+                        <h4>{{ $testimonial->name }} <span>{{ $testimonial->designation }}</span></h4>
                     </div>
                 </div>
-                <div class="testimonial-item">
-                    <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in
-                        Sudurpashchim Province Nepal, the abused and the helpless.</p>
-                    <div class="testi-footer">
-                        <img src="Jonathan Smith" alt="profile">
-                        <h4>Angelina Rose <span>Designer</span></h4>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in
-                        Sudurpashchim Province Nepal, the abused and the helpless.</p>
-                    <div class="testi-footer">
-                        <img src="Jonathan Smith" alt="profile">
-                        <h4>Taylor Swift <span>Developer</span></h4>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in
-                        Sudurpashchim Province Nepal, the abused and the helpless.</p>
-                    <div class="testi-footer">
-                        <img src="Jonathan Smith" alt="profile">
-                        <h4>Michel Brown <span>Programer</span></h4>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section><!-- Testimonial Section -->
@@ -359,95 +236,23 @@
             <div class="row">
                 <div class="col-lg-12 xs-padding">
                     <div class="blog-items grid-list row">
+                        @foreach ($data['stories'] as $story)
                         <div class="col-md-4 padding-15">
                             <div class="blog-post">
-                                <img src="{{ asset('frontend/img/home-blog-1.jpg') }}" alt="blog post">
+                                <img src="{{ asset('upload/images/advertisements/'.$story->image) }}" alt="blog post">
                                 <div class="blog-content">
-                                    <span class="date"><i class="fa fa-clock-o"></i> January 01.2024</span>
-                                    <h3><a href="#">The History of Donation Told</a></h3>
-                                    <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization
-                                        based in Sudurpashchim Province Nepal, the abused and the helpless.</p>
-                                    <a href="#" class="post-meta">Read More</a>
+                                    <span class="date"><i class="fa fa-clock-o"></i> {{ $story->date }}</span>
+                                    <h3><a href="{{ route('story.detail',$story->id) }}">{{ $story->title }}</a></h3>
+                                    <p>{!! $story->shortdescription !!}</p>
+                                    <a href="{{ route('story.detail',$story->id) }}" class="post-meta">Read More</a>
                                 </div>
                             </div>
                         </div><!-- Post 1 -->
-                        <div class="col-md-4 padding-15">
-                            <div class="blog-post">
-                                <img src="{{ asset('frontend/img/home-blog-2.jpg') }}" alt="blog post">
-                                <div class="blog-content">
-                                    <span class="date"><i class="fa fa-clock-o"></i> January 01.2024</span>
-                                    <h3><a href="#">Help the Comunity</a></h3>
-                                    <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization
-                                        based in Sudurpashchim Province Nepal, the abused and the helpless.</p>
-                                    <a href="#" class="post-meta">Read More</a>
-                                </div>
-                            </div>
-                        </div><!-- Post 2 -->
-                        <div class="col-md-4 padding-15">
-                            <div class="blog-post">
-                                <img src="{{ asset('frontend/img/home-blog-3.jpg') }}" alt="blog post">
-                                <div class="blog-content">
-                                    <span class="date"><i class="fa fa-clock-o"></i> January 01.2024</span>
-                                    <h3><a href="#">ngo Ever Rule the World?</a></h3>
-                                    <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization
-                                        based in Sudurpashchim Province Nepal, the abused and the helpless.</p>
-                                    <a href="#" class="post-meta">Read More</a>
-                                </div>
-                            </div>
-                        </div><!-- Post 3 -->
+                        @endforeach
                     </div>
                 </div><!-- Blog Posts -->
             </div>
         </div>
     </section><!-- Blog Section -->
-
-    <section class="widget-section padding">
-        <div class="container">
-            <div class="widget-wrap row">
-                <div class="col-md-4 xs-padding">
-                    <div class="widget-content">
-                        <img src="{{ asset('frontend/image/fayalogo.png') }}" alt="logo"
-                            class="img-fluid faya-logo-main-footer">
-                        <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in
-                            Sudurpashchim Province Nepal</p>
-                        <ul class="social-icon">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 xs-padding">
-                    <div class="widget-content">
-                        <h3>Recent Campaigns</h3>
-                        <ul class="widget-link">
-                            <li><a href="#">Leading Capacity Strengthening Support Programs. <span></span></a>
-                            </li>
-                            <li><a href="#">Enhancing Cholera Control In Nepal.<span></span></a></li>
-                            <li><a href="#">Improving Health Seeking Behavior of Mothers and
-                                    Children<span></span></a></li>
-                            <li><a href="#"><span></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 xs-padding">
-                    <div class="widget-content">
-                        <h3>Faya Nepal Location</h3>
-                        <ul class="address">
-                            <li><i class="ti-email"></i> fayanepal@hotmail.com</li>
-                            <li><i class="ti-mobile"></i> 091- 524329 / 522874</li>
-                            <li><i class="ti-world"></i> www.fayanepal.org</li>
-                            <li><i class="ti-location-pin"></i> Dhangadhi Sub-Metropolis-01, FAYA Marg, Kailali
-                                Sudurpashchim Province, Nepal</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- ./Widget Section -->
-
-
-
+   
 @endsection

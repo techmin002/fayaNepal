@@ -15,7 +15,6 @@ class StoreServiceRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'icon' => 'required',
             'shortDescription' => 'required',
         ];
     }

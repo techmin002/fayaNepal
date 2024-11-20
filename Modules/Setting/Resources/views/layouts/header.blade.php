@@ -10,6 +10,8 @@
         $profile = \Modules\Setting\Entities\CompanyProfile::first();
     @endphp
     <title>@yield('title') || {{ $profile->company_name }}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/image/navicone.jpg') }}">
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

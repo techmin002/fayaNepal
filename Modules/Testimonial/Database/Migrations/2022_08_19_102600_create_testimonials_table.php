@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('message');
+            $table->string('designation')->nullable();
             $table->string('status')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();

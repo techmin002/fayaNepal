@@ -1,6 +1,6 @@
 @extends('setting::layouts.master')
 
-@section('title', 'Advertisement')
+@section('title', 'Stories')
 
 @section('third_party_stylesheets')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">Advertisement</li>
+        <li class="breadcrumb-item active">Story</li>
     </ol>
 @endsection
 
@@ -20,12 +20,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Blogs</h1>
+                        <h1>Stories</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Advertisements</li>
+                            <li class="breadcrumb-item active">Stories</li>
                         </ol>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title float-right"><a class="btn btn-info text-white"
-                                        href="{{ route('advertisements.create') }}"><i class="fa fa-plus"></i> Create</a> </h3>
+                                        href="{{ route('stories.create') }}"><i class="fa fa-plus"></i> Create</a> </h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -53,9 +53,8 @@
                                             <th>S.N</th>
                                             <th>Title</th>
                                             <th class="text-center">Image</th>
-                                            <th>Link</th>
-                                            <th>Page</th>
-                                            <th>Position</th>
+                                            <th>Short Description</th>
+                                            <th>Date</th>
                                             <th class="text-center">Status</th>
                                             <th class="text-center">Action</th>
                                         </tr>
@@ -68,20 +67,19 @@
                                                 <td class="text-center"><img
                                                         src="{{ asset('upload/images/advertisements/' . $value->image) }}"
                                                         width="120px" alt="{{ $value->name }}"> </td>
-                                                <td>{{ $value->link }}</td>
-                                                <td>{{ $value->page }}</td>
-                                                <td>{{ $value->position }}</td>
+                                                <td>{!! $value->shortdescription !!}</td>
+                                                <td>{{ $value->date }}</td>
                                                 <td class="text-center">
                                                     @if ($value->status == 'on')
-                                                        <a href="{{ route('advertisement.status', $value->id) }}"
+                                                        <a href="{{ route('story.status', $value->id) }}"
                                                             class="btn btn-success">On</a>
                                                     @else
-                                                        <a href="{{ route('advertisement.status', $value->id) }}"
+                                                        <a href="{{ route('story.status', $value->id) }}"
                                                             class="btn btn-danger">Off</a>
                                                     @endif
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="{{ route('advertisements.edit', $value->id) }}"
+                                                    <a href="{{ route('stories.edit', $value->id) }}"
                                                         class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                                     {{-- <a href="{{ route('blogs.show',$value->id) }}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a> --}}
                                                     <button id="delete" class="btn btn-danger btn-sm"
@@ -93,7 +91,7 @@
                               ">
                                                         <i class="fa fa-trash"></i>
                                                         <form id="destroy{{ $value->id }}" class="d-none"
-                                                            action="{{ route('advertisements.destroy', $value->id) }}"
+                                                            action="{{ route('stories.destroy', $value->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('delete')
@@ -108,9 +106,8 @@
                                             <th>S.N</th>
                                             <th>Title</th>
                                             <th class="text-center">Image</th>
-                                            <th>Link</th>
-                                            <th>Page</th>
-                                            <th>Position</th>
+                                            <th>Short Description</th>
+                                            <th>Date</th>
                                             <th class="text-center">Status</th>
                                             <th class="text-center">Action</th>
                                         </tr>

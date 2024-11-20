@@ -16,9 +16,8 @@ class StoreAdvertisementRequest extends FormRequest
     { 
         return [
             'title' => ['required'],
-            'page' => ['required'],
-            'position' => ['required'],
-            'expire_date' => ['required'],
+            'shortdescription' => ['required'],
+            'date' => ['required'],
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ];
     }

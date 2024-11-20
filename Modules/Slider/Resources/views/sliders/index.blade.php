@@ -47,6 +47,8 @@
                                                 <td class="text-center"><img
                                                         src="{{ asset('upload/images/sliders/' . $value->image) }}"
                                                         width="120px" alt="{{ $value->name }}"> </td>
+                                                        <td>{{ $value->link }}</td>
+                                                        <td>{!! $value->short_description !!}</td>
                                                 <td class="text-center">
                                                     @if ($value->status == 'on')
                                                         <a href="{{ route('slider.status', $value->id) }}"

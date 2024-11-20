@@ -13,9 +13,12 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Blog\Http\Controllers\BlogController;
+use Modules\Blog\Http\Controllers\EventController;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('blogs', 'BlogController');
+    Route::resource('events', 'EventController');
     Route::get('blog/status/{id}',[BlogController::class,'status'])->name('blog.status');
+    Route::get('event/status/{id}',[EventController::class,'status'])->name('event.status');
 });
 

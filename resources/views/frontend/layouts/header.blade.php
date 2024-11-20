@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="BG infotechs">
-
-    <title>FAYA Nepal || The Forum for Awareness and Youth Activity</title>
-
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/image/navicone.jpg') }}">
+    @php
+    $companyProfile = Modules\Setting\Entities\CompanyProfile::select('company_name','favicon')->first();
+ @endphp
+    {{-- <title>FAYA Nepal || The Forum for Awareness and Youth Activity</title> --}}
+    <title>{{ $companyProfile->company_name }}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('upload/images/settings/'.$companyProfile->favicon) }}">
 
     <!-- Font Awesome Icons CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">

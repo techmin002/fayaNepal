@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Gate;
 use Modules\Service\Entities\ServiceCategory;
 use Modules\Service\Http\Requests\ServiceCategoryStoreRequest;
 use Illuminate\Support\Str;
+use Modules\Service\Entities\ProgramCategory;
 use Modules\Service\Http\Requests\ServiceCategoryUpdateRequest;
 
 class ServiceCategoryController extends Controller
@@ -19,8 +20,7 @@ class ServiceCategoryController extends Controller
      */
     public function index()
     {
-        abort_if(Gate::denies('access_service_category'),403);
-        $categories = ServiceCategory::get();
+        $categories = ProgramCategory::get();
         return view('service::category.index',compact('categories'));
     }
 
@@ -52,7 +52,7 @@ class ServiceCategoryController extends Controller
             $request->image->move(public_path('upload/images/category'), $image);
         }
         $slug = Str::slug($request->title);
-        ServiceCategory::create([
+        ProgramCategory::create([
             'title' => $request->title,
             'slug' => $slug,
             'icon' => $imageName,
@@ -61,7 +61,7 @@ class ServiceCategoryController extends Controller
             'description' => $request->description,
             'status' => $request->status
         ]);
-        return redirect()->route('services_category.index')->with('success','Category Added Successfully');
+        return redirect()->route('programs_category.index')->with('success','Category Added Successfully');
     }
 
     /**

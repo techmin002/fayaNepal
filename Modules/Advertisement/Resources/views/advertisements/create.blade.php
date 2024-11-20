@@ -1,11 +1,11 @@
 @extends('setting::layouts.master')
 
-@section('title', 'Create Advertisement')
+@section('title', 'Create Stories')
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('advertisements.index') }}">Advertisement</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('stories.index') }}">Story</a></li>
         <li class="breadcrumb-item active">Add</li>
     </ol>
 @endsection
@@ -15,13 +15,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <form id="product-form" action="{{ route('advertisements.store') }}" method="POST"
+                <form id="product-form" action="{{ route('stories.store') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <button class="btn btn-info"><i class="fa fa-plus"></i> Create Advertisement <i
+                                <button class="btn btn-info"><i class="fa fa-plus"></i> Create Story <i
                                         class="bi bi-check"></i></button>
                             </div>
                         </div>
@@ -50,55 +50,34 @@
                                 </div> --}}
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="link">Link</label>
-                                                <input type="url" name="link" class="form-control"
-                                                    placeholder="Enter Contact " value="{{ old('link') }}">
-                                                @error('link')
+                                                <label for="date">Date</label>
+                                                <input type="date" name="date" class="form-control"
+                                                    placeholder="Enter Contact " value="{{ old('date') }}">
+                                                @error('date')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="page">Page</label>
-                                                <select name="page" class="form-control" required>
-                                                    <option value="Home Page" {{ (old('page')=='Home Page')?'selected':'' }}>Home Page</option>
-                                                    <option value="Detail Page" {{ (old('page')=='Detail Page')?'selected':'' }}>Detail Page</option>
-                                                    <option value="Contact Page" {{ (old('page')=='Contact Page')?'selected':'' }}>Contact Page</option>
-                                                </select>
-                                                @error('page')
+                                                <label for="shortdescription">Short Description</label>
+                                                <textarea name="shortdescription" class="summernote" id="" cols="30" rows="3"></textarea>
+                                                @error('shortdescription')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="position">Position</label>
-                                                <input type="number" name="position" class="form-control"
-                                                    placeholder="Enter position" value="{{ old('position') }}" required>
-                                                @error('position')
+                                                <label for="description">Description</label>
+                                                <textarea name="description" class="summernote" id="" cols="30" rows="3"></textarea>
+                                                @error('description')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
                                             </div>
                                         </div>
-                                        {{-- <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="description">Description</label>
-                                        <textarea type="text" name="description" class="summernote" placeholder="Enter Description" >{{old('description')}}</textarea>
-                                        @error('description')
-                                        <p style="color: red">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div> --}}
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="expire_date">Expire Date </label>
-                                                <input type="date" name="expire_date" class="form-control">
-                                                @error('expire_date')
-                                                    <p style="color: red">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                        </div>
+                                       
+                                        
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="image">Image </label>
@@ -162,7 +141,7 @@
     </script>
     <script>
         $('textarea.summernote').summernote({
-            placeholder: 'Enter  Company Description',
+            placeholder: '',
             tabsize: 2,
             height: 250,
             toolbar: [

@@ -16,10 +16,8 @@ class UpdateAdvertisementRequest extends FormRequest
     {
         return [
             'title' => ['required'],
-            'page' => ['required'],
-            'position' => ['required'],
-            'expire_date' => ['required'],
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'date' => ['required'],
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ];
     }
 

@@ -1,11 +1,11 @@
 @extends('setting::layouts.master')
 
-@section('title', 'Service')
+@section('title', 'Program')
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">Service</li>
+        <li class="breadcrumb-item active">Program</li>
     </ol>
 @endsection
 
@@ -16,12 +16,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Service</h1>
+              <h1>Program</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item active">Service</li>
+                <li class="breadcrumb-item active">Program</li>
               </ol>
             </div>
           </div>
@@ -38,7 +38,7 @@
   
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title float-right"><a class="btn btn-info text-white" href="{{ route('services.create') }}"><i class="fa fa-plus"></i> Create</a> </h3>
+                  <h3 class="card-title float-right"><a class="btn btn-info text-white" href="{{ route('programs.create') }}"><i class="fa fa-plus"></i> Create</a> </h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -47,7 +47,7 @@
                     <tr>
                       <th>S.N</th>
                       <th>Title</th>
-                      <th class="text-center">Icon</th>
+                      <th class="text-center">Date</th>
                       <th class="text-center">Image</th>
                       <th class="text-center">Status</th>
                       <th class="text-center">Action</th>
@@ -58,17 +58,17 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $value->title }}</td>
-                            <td class="text-center"><img src="{{ asset('upload/images/services/'.$value->icon) }}" width="120px" alt="{{ $value->name }}"> </td>
+                            <td class="text-center">{{ $value->icon }}</td>
                             <td class="text-center"><img src="{{ asset('upload/images/services/'.$value->image) }}" width="120px" alt="{{ $value->name }}"> </td>
                             <td class="text-center">
                                 @if($value->status == 'on')
-                                <a href="{{ route('services.status',$value->id) }}" class="btn btn-success">On</a>
+                                <a href="{{ route('programs.status',$value->id) }}" class="btn btn-success">On</a>
                                 @else
-                                <a href="{{ route('services.status',$value->id) }}" class="btn btn-danger">Off</a> 
+                                <a href="{{ route('programs.status',$value->id) }}" class="btn btn-danger">Off</a> 
                                 @endif
                             </td>
                             <td class="text-center">
-                                <a href="{{ route('services.edit',$value->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                <a href="{{ route('programs.edit',$value->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                 {{-- <a href="{{ route('Service.show',$value->id) }}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a> --}}
                                 <button id="delete" class="btn btn-danger btn-sm" onclick="
                                 event.preventDefault();
@@ -77,7 +77,7 @@
                                 }
                                 ">
                                 <i class="fa fa-trash"></i>
-                                <form id="destroy{{ $value->id }}" class="d-none" action="{{ route('services.destroy', $value->id) }}" method="POST">
+                                <form id="destroy{{ $value->id }}" class="d-none" action="{{ route('programs.destroy', $value->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
                                 </form>
@@ -90,7 +90,7 @@
                     <tr>
                         <th>S.N</th>
                         <th>Title</th>
-                        <th class="text-center">Icon</th>
+                        <th class="text-center">Date</th>
                         <th class="text-center">Image</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Action</th>

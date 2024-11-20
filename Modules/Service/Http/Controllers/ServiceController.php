@@ -10,6 +10,7 @@ use Modules\Service\Entities\Service;
 use Modules\Service\Http\Requests\StoreServiceRequest;
 use Modules\Service\Http\Requests\UpdateServiceRequest;
 use Illuminate\Support\Str;
+use Modules\Service\Entities\Program;
 
 class ServiceController extends Controller
 {
@@ -19,8 +20,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        abort_if(Gate::denies('show_services'), 403);
-        $services = Service::all();
+        $services = Program::all();
         return view('service::service.index',compact('services'));
     }
 
@@ -30,7 +30,6 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        abort_if(Gate::denies('create_services'), 403);
         return view('service::service.create');
     }
 
@@ -43,28 +42,30 @@ class ServiceController extends Controller
     {
         // dd($request->all());
         
-        if($request['icon'])
-        {
-            $imageName = time().'.'.$request->icon->extension();
+        // if($request['icon'])
+        // {
+        //     $imageName = time().'.'.$request->icon->extension();
 
-            $request->icon->move(public_path('upload/images/services'), $imageName);
-        }
+        //     $request->icon->move(public_path('upload/images/services'), $imageName);
+        // }
         if($request->image)
         {
             $image = time().'.'.$request->image->extension();
             $request->image->move(public_path('upload/images/services'), $image);
         }
         $slug = Str::slug($request->title);
-        Service::create([
+        Program::create([
             'title' => $request->title,
             'slug' => $slug,
-            'icon' => $imageName,
+            'icon' => $request->icon,
             'image' => $image,
-            'shortDescription' => $request->shortDescription,
+            'shortdescription' => $request->shortDescription,
             'description' => $request->description,
+            'program_type' => $request->program_type,
+            'date' => $request->date,
             'status' => $request->status
         ]);
-        return redirect()->route('services.index')->with('success','Services Added Successfully');
+        return redirect()->route('programs.index')->with('success','Program Added Successfully');
     }
 
     /**
@@ -84,8 +85,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        abort_if(Gate::denies('edit_services'), 403);
-        $service = Service::findOrfail($id);
+        $service = Program::findOrfail($id);
         return view('service::service.edit',compact('service'));
     }
 
@@ -97,15 +97,15 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, $id)
     {
-        $service= Service::findOrfail($id);
-        if($request['icon'])
-        {
-            $imageName = time().'.'.$request->icon->extension();
+        $service= Program::findOrfail($id);
+        // if($request['icon'])
+        // {
+        //     $imageName = time().'.'.$request->icon->extension();
 
-            $request->icon->move(public_path('upload/images/services'), $imageName);
-        }else{
-            $imageName = $service->icon;
-        }
+        //     $request->icon->move(public_path('upload/images/services'), $imageName);
+        // }else{
+        //     $imageName = $service->icon;
+        // }
         if($request->image)
         {
             $image = time().'.'.$request->image->extension();
@@ -128,13 +128,15 @@ class ServiceController extends Controller
         $service->update([
             'title' => $request->title,
             'slug' => $slug,
-            'icon' => $imageName,
+            'icon' => $$request->icon,
             'image' => $image,
-            'shortDescription' => $request->shortDescription,
+            'shortdescription' => $request->shortDescription,
             'description' => $request->description,
+            'program_type' => $request->program_type,
+            'date' => $request->date,
             'status' => $status
         ]);
-        return redirect()->route('services.index')->with('success','Services Updated Successfully');
+        return redirect()->route('programs.index')->with('success','Program Updated Successfully');
     }
 
     /**
@@ -144,13 +146,13 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service= Service::findOrfail($id);
+        $service= Program::findOrfail($id);
         $service->delete();
-        return redirect()->back()->with('success','Service Deleted!');
+        return redirect()->back()->with('success','Program Deleted!');
     }
     public function Status($id)
     {
-        $service= Service::findOrfail($id);
+        $service= Program::findOrfail($id);
         if($service->status == 'on')
         {
             $status ='off';
@@ -160,6 +162,6 @@ class ServiceController extends Controller
         $service->update([
             'status' => $status
         ]);
-        return redirect()->back()->with('success','Service Updated!');
+        return redirect()->back()->with('success','Program Updated!');
     }
 }

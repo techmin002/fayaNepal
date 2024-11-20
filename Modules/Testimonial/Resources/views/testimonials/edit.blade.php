@@ -63,7 +63,16 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="designation">Designation</label>
+                                                <input type="text" name="designation" class="form-control"
+                                                    placeholder="Enter Designation " value="{{ $testimonial->designation }}" required>
+                                                @error('designation')
+                                                    <p style="color: red">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <!-- Bootstrap Switch -->
                                             <div class="card card-secondary">

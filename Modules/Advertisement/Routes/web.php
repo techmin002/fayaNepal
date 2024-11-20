@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 use Modules\Advertisement\Http\Controllers\AdvertisementController;
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('advertisements', 'AdvertisementController');
-    Route::get('advertisement/status/{id}',[AdvertisementController::class,'status'])->name('advertisement.status');
+    Route::resource('stories', 'AdvertisementController');
+    Route::get('story/status/{id}',[AdvertisementController::class,'status'])->name('story.status');
 });

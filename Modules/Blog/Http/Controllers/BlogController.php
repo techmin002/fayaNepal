@@ -59,8 +59,6 @@ class BlogController extends Controller
             'status' => $request['status'],
             'image' => $imageName
         ]);
-        // toastr('Blog Added','success');
-        // return redirect()->route('blogs.index');
         return redirect()->route('blogs.index')->with('success', 'Added Successfully');
     }
 
@@ -144,16 +142,16 @@ class BlogController extends Controller
     public function status($id)
     {
         abort_if(Gate::denies('access_blogs'), 403);
-        $blog = Blog::findOrfail($id);
-        if($blog->status == 'on')
-        {
-            $status = 'off';
-        }else{
-            $status = 'on';
-        }
-        $blog->update([
-           'status' => $status 
-        ]);
+            $blog = Blog::findOrfail($id);
+            if($blog->status == 'on')
+            {
+                $status = 'off';
+            }else{
+                $status = 'on';
+            }
+            $blog->update([
+            'status' => $status 
+            ]);
         return redirect()->route('blogs.index')->with('success', 'Status Updated Successfully');
     } 
 }

@@ -10,15 +10,13 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="background-color: aliceblue;">
           @php
             $profile = \Modules\Setting\Entities\CompanyProfile::first();
           @endphp
-          <img src="{{ asset('upload/images/settings/'.$profile->logo) }}" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="{{ route('home') }}" class="d-block" style="text-decoration: none;">{{ $profile->company_name }}</a>
+        <div class="">
+          <img src="{{ asset('upload/images/settings/'.$profile->logo) }}" class="w-100" alt="User Image">
+
         </div>
       </div>
 
@@ -107,25 +105,25 @@
           </li>
           @endcan
           @can('access_sliders')
-          <li class="nav-item {{ request()->routeIs('services.*') ? 'menu-is-opening menu-open' : '' }}">
-            <a href="#" class="nav-link" {{ request()->routeIs('services.*') ? 'active' : '' }}>
+          <li class="nav-item {{ request()->routeIs('programs.*') ? 'menu-is-opening menu-open' : '' }}">
+            <a href="#" class="nav-link" {{ request()->routeIs('programs.*') ? 'active' : '' }}>
               <i class="nav-icon fas fa-image"></i>
               <p>
-                services
+                Program
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('services_category.index') }}" class="nav-link {{ request()->routeIs('services_category.index') ? 'active' : '' }}">
+                <a href="{{ route('programs_category.index') }}" class="nav-link {{ request()->routeIs('programs_category.index') ? 'active' : '' }}">
                   {{-- <i class="far fa-circle nav-icon"></i> --}}
                   <p>Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('services.index') }}" class="nav-link {{ request()->routeIs('services.index') ? 'active' : '' }}">
+                <a href="{{ route('programs.index') }}" class="nav-link {{ request()->routeIs('programs.index') ? 'active' : '' }}">
                   {{-- <i class="far fa-circle nav-icon"></i> --}}
-                  <p>services</p>
+                  <p>Programs</p>
                 </a>
               </li>
             </ul>
@@ -182,25 +180,25 @@
           </li>
           @endcan
           @can('access_advertisements')
-          <li class="nav-item {{ request()->routeIs('advertisements.*') ? 'menu-is-opening menu-open' : '' }}">
-            <a href="#" class="nav-link" {{ request()->routeIs('advertisements.*') ? 'active' : '' }}>
+          <li class="nav-item {{ request()->routeIs('stories.*') ? 'menu-is-opening menu-open' : '' }}">
+            <a href="#" class="nav-link" {{ request()->routeIs('stories.*') ? 'active' : '' }}>
               <i class="nav-icon fas fa-image"></i>
               <p>
-                Advertisements
+                Stories
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('advertisements.index') }}" class="nav-link {{ request()->routeIs('advertisements.index') ? 'active' : '' }}">
+                <a href="{{ route('stories.index') }}" class="nav-link {{ request()->routeIs('stories.index') ? 'active' : '' }}">
                   {{-- <i class="far fa-circle nav-icon"></i> --}}
-                  <p>Advertisements</p>
+                  <p>Stories</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('advertisements.create') }}" class="nav-link {{ request()->routeIs('advertisements.create') ? 'active' : '' }}">
+                <a href="{{ route('stories.create') }}" class="nav-link {{ request()->routeIs('stories.create') ? 'active' : '' }}">
                   {{-- <i class="far fa-circle nav-icon"></i> --}}
-                  <p>Create Advertisements</p>
+                  <p>Create Story</p>
                 </a>
               </li>
             </ul>
@@ -256,6 +254,10 @@
             </ul>
           </li>
           @endcan
+         
+              
+             
+            
           @can('access_testimonials')
           <li class="nav-item {{ request()->routeIs('testimonials.*') ? 'menu-is-opening menu-open' : '' }}">
             <a href="#" class="nav-link" {{ request()->routeIs('testimonials.*') ? 'active' : '' }}>
@@ -305,8 +307,42 @@
                 </a>
               </li>
             </ul>
+            <li class="nav-item {{ request()->routeIs('galleries.*') ? 'menu-is-opening menu-open' : '' }}">
+              <a href="#" class="nav-link" {{ request()->routeIs('galleries.*') ? 'active' : '' }}>
+                <i class="nav-icon fas fa-briefcase"></i>
+                <p>
+                  Gallery
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('galleries-category.index') }}" class="nav-link {{ request()->routeIs('galleries-category.index') ? 'active' : '' }}">
+                  {{-- <i class="far fa-circle nav-icon"></i> --}}
+                  <p>Categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('galleries.index') }}" class="nav-link {{ request()->routeIs('galleries.index') ? 'active' : '' }}">
+                  {{-- <i class="far fa-circle nav-icon"></i> --}}
+                  <p>Galleries</p>
+                </a>
+              </li>
+            </ul>
           </li>
           @endcan
+          <li class="nav-item">
+            <a href="{{ route('events.index') }}" class="nav-link {{ request()->routeIs('events.index') ? 'active' : '' }}">
+              <i class="fa fa-users nav-icon"></i>
+              <p>Events</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('partners.index') }}" class="nav-link {{ request()->routeIs('partners.index') ? 'active' : '' }}">
+              <i class="fa fa-users nav-icon"></i>
+              <p>Partners</p>
+            </a>
+          </li>
             <li class="nav-item">
               <a href="{{ route('galleries.index') }}" class="nav-link {{ request()->routeIs('galleries.index') ? 'active' : '' }}">
                 <i class="far fa-image nav-icon"></i>
@@ -336,13 +372,7 @@
                 </a>
               </li>
             </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('whyus.index') }}" class="nav-link {{ request()->routeIs('whyus.index') ? 'active' : '' }}">
-                  {{-- <i class="far fa-circle nav-icon"></i> --}}
-                  <p>Why Choose Us</p>
-                </a>
-              </li>
+              
             </ul>
           </li>
           @endcan

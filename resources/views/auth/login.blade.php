@@ -84,7 +84,7 @@ form{
 		<div class="row main-content bg-success text-center">
 			<div class="col-md-4 text-center company__info">
 				<span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
-				<h4 class="company_title">Rotech Innovation</h4>
+				<h4 class="company_title">Faya Nepal</h4>
 			</div>
 			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
 				<div class="container-fluid">
@@ -120,11 +120,11 @@ form{
 							<div class="row">
 								<input type="submit" value="Submit" class="btn">
 							</div>
-						</form>a
+						</form>
 					</div>
-					<div class="row">
+					{{-- <div class="row">
 						<p>Don't have an account? <a href="#">Register Here</a></p>
-					</div>
+					</div> --}}
 				</div>
 			</div>
 		</div>

@@ -10,5 +10,7 @@
     "Vacancy": true,
     "Api": true,
     "Service": true,
-    "Expenses": true
+    "Expenses": true,
+    "Partner": true,
+    "Gallery": true
 }
