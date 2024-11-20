@@ -121,35 +121,35 @@
                         <div class="counter-content">
                             <i class="ti-money"></i>
                             <h3 class="counter">85389</h3>
-                            <h4 class="text-white">Money Donated</h4>
+                            <h4 class="text-white">Portfolio</h4>
                         </div>
                     </li>
                     <li class="col-md-3 col-sm-6 sm-padding">
                         <div class="counter-content">
                             <i class="ti-face-smile"></i>
                             <h3 class="counter">10693</h3>
-                            <h4 class="text-white">Volunteer Around The World</h4>
+                            <h4 class="text-white">Beneficiary Direct</h4>
                         </div>
                     </li>
                     <li class="col-md-3 col-sm-6 sm-padding">
                         <div class="counter-content">
                             <i class="ti-user"></i>
                             <h3 class="counter">50177</h3>
-                            <h4 class="text-white">People Impacted</h4>
+                            <h4 class="text-white">Beneficiary InDirect</h4>
                         </div>
                     </li>
                     <li class="col-md-3 col-sm-6 sm-padding">
                         <div class="counter-content">
                             <i class="ti-comments"></i>
                             <h3 class="counter">669</h3>
-                            <h4 class="text-white">Positive Feedbacks</h4>
+                            <h4 class="text-white">Project Portfolio</h4>
                         </div>
                     </li>
                 </ul>
 		    </div>
 		</section><!-- Counter Section -->
               
-        <div class="sponsor-section bd-bottom">
+        {{-- <div class="sponsor-section bd-bottom">
             <div class="container">
                 <div class="section-heading text-center mb-40">
                     <h2>Our Partners</h2>
@@ -164,13 +164,14 @@
                     @endforeach
                 </ul>
             </div>
-        </div><!-- ./Sponsor Section -->
+        </div> --}}
+        <!-- ./Sponsor Section -->
              
         <!--past Sponsor Section -->
         <div class="sponsor-section bd-bottom">
             <div class="container">
                 <div class="section-heading text-center mb-40">
-                    <h2>Our Past Partners</h2>
+                    <h2>Our Partners</h2>
                     <span class="heading-border"></span>
                     <p>"We extend our heartfelt thanks to all our past partners for their invaluable support and collaboration. Their contributions have been instrumental in advancing FAYA Nepal's mission, leaving a lasting impact on social justice, human rights, and community empowerment across Nepal."</p> 
                        

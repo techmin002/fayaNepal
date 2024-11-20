@@ -29,14 +29,14 @@ class FrontendController extends Controller
     public function about()
     {
         $data['currentpartners'] = Partner::where('status','on')->where('type','current')->get();
-        $data['pastpartners'] = Partner::where('status','on')->where('type','past')->get();
+        $data['pastpartners'] = Partner::where('status','on')->get();
         $data['teams'] = Team::where('status','on')->get();
         $data['profile'] = CompanyProfile::select('mission','vision','introduction')->first();
         return view('frontend.pages.about', compact('data'));
     }
     public function programs()
     {
-        $data['programs'] = Program::where('status','on')->get();
+        $data['programs'] = Program::where('status','on')->orderby('created_at','DESC')->get();
         $data['testimonials'] = Testimonial::where('status','on')->orderby('created_at','DESC')->get();
         $data['stories'] = Story::where('status','on')->orderby('created_at','DESC')->get();
 
