@@ -1,11 +1,11 @@
 @extends('setting::layouts.master')
 
-@section('title', 'Program Category')
+@section('title', 'Program Sectors')
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">Program Category</li>
+        <li class="breadcrumb-item active">Program Sectors</li>
     </ol>
 @endsection
 
@@ -16,12 +16,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Program Category</h1>
+              <h1>Program Sectors</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item active">Program Category</li>
+                <li class="breadcrumb-item active">Program Sectors</li>
               </ol>
             </div>
           </div>

@@ -12,5 +12,6 @@
     "Service": true,
     "Expenses": true,
     "Partner": true,
-    "Gallery": true
+    "Gallery": true,
+    "Notice": true
 }

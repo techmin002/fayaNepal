@@ -40,3 +40,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('contact/store',[InquiryController::class,'store'])->name('frontend.contact.store');
 Route::get('inquiries',[InquiryController::class,'index'])->name('inquires.index');
 Route::delete('inquiries/delete/{id}',[InquiryController::class,'destroy'])->name('inquires.destroy');
+Route::get('/fetch-notice', [FrontendController::class, 'fetchNotice'])->name('fetch.notice');

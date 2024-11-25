@@ -117,7 +117,7 @@
               <li class="nav-item">
                 <a href="{{ route('programs_category.index') }}" class="nav-link {{ request()->routeIs('programs_category.index') ? 'active' : '' }}">
                   {{-- <i class="far fa-circle nav-icon"></i> --}}
-                  <p>Category</p>
+                  <p>Sectors</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -333,8 +333,15 @@
           @endcan
           <li class="nav-item">
             <a href="{{ route('events.index') }}" class="nav-link {{ request()->routeIs('events.index') ? 'active' : '' }}">
-              <i class="fa fa-users nav-icon"></i>
+              <i class="fa fa-address-book nav-icon"></i>
               <p>Events</p>
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="{{ route('notices.index') }}" class="nav-link {{ request()->routeIs('notices.index') ? 'active' : '' }}">
+              <i class="fa fa-receipt nav-icon"></i>
+              <p>Notice</p>
             </a>
           </li>
           <li class="nav-item">

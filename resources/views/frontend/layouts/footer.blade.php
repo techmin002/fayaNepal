@@ -50,7 +50,7 @@ $companyProfile = Modules\Setting\Entities\CompanyProfile::first();
     <div class="container">
         <div class="row">
             <div class="col-md-6 sm-padding">
-                <div class="copyright">&copy; 2024 Faya Nepal Powered by BG infotechs</div>
+                <div class="copyright">&copy; 2024 Faya Nepal Powered by <a href="https://bginfotechs.com/">BG infotechs</a></div>
             </div>
             <div class="col-md-6 sm-padding">
                 <ul class="footer-social">

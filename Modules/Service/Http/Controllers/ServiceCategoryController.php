@@ -81,8 +81,7 @@ class ServiceCategoryController extends Controller
      */
     public function edit($id)
     {
-        abort_if(Gate::denies('edit_service_category'), 403);
-        $serviceCategory = ServiceCategory::findOrfail($id);
+        $serviceCategory = ProgramCategory::findOrfail($id);
         return view('service::category.edit',compact('serviceCategory'));
     }
 
@@ -94,7 +93,7 @@ class ServiceCategoryController extends Controller
      */
     public function update(ServiceCategoryUpdateRequest $request, $id)
     {
-        $category = ServiceCategory::findOrFail($id);
+        $category = ProgramCategory::findOrFail($id);
         if($request['icon'])
         {
             $imageName = time().'.'.$request->icon->extension();
@@ -126,7 +125,7 @@ class ServiceCategoryController extends Controller
             'description' => $request->description,
             'status' => $request->status
         ]);
-        return redirect()->route('services_category.index')->with('success','Category Updated Successfully');
+        return redirect()->route('programs_category.index')->with('success','Category Updated Successfully');
     }
 
     /**
@@ -136,8 +135,8 @@ class ServiceCategoryController extends Controller
      */
     public function destroy($id)
     {
-        abort_if(Gate::denies('delete_service_category'),403);
-        $category = ServiceCategory::findOrfail($id);
+        // abort_if(Gate::denies('delete_service_category'),403);
+        $category = ProgramCategory::findOrfail($id);
         $category->delete();
         return back()->with('success','Service Catgory Deleted successfully');
     }
