@@ -87,12 +87,12 @@
                         </li>
                         <li><a href="#">Our Story</a>
                             <ul>
-                                    <li><a href="{{ route('frontend.gallery') }}">FAYA History</a></li>
+                                    <li><a href="{{ route('frontend.about') }}">FAYA History</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Coverage</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Executive Board</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Leadership</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Organogram</a></li>
-                                    <li><a href="{{ route('frontend.gallery') }}">Donors/ Partners</a></li>
+                                    <li><a href="{{ route('frontend.partners') }}">Donors/ Partners</a></li>
                                   
                             </ul>
                         </li>
@@ -118,13 +118,13 @@
                             <ul>
                                     <li><a href="{{ route('frontend.gallery') }}">Vacancy</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Procurement</a></li>
-                                    <li><a href="{{ route('frontend.gallery') }}">Volluntering</a></li>
+                                    <li><a href="{{ route('frontend.vollunter') }}">Volluntering</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Notice</a></li>
    
                             </ul>
                         </li>
                         <li><a href="{{ route('frontend.about') }}">About</a></li>
-                        <li><a href="{{ route('frontend.ourprograms') }}">Program</a></li>
+                        <li><a href="{{ route('frontend.fn-Programs') }}">Program</a></li>
                         <li><a href="{{ route('frontend.events') }}">Event</a></li>
                         <li><a href="#">Pages</a>
                             <ul>
@@ -143,19 +143,19 @@
                               </li>
                               <!-- Services Dropdown -->
                               <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="{{ route('frontend.about') }}" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                   Our Story
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
                                   <!-- Web Development Dropdown -->
                                   <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#">FAYA History</a>
+                                    <a class="dropdown-item dropdown-toggle" href="{{ route('frontend.about') }}">FAYA History</a>
                                     <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Coverage</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.coverage') }}">Coverage</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Executive Board</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Leadership</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Organogram</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Donors/ Partners</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.partnersdonors') }}">Donors/Partners</a></li>
                                     </ul>
                                   </li>
                                   
@@ -174,8 +174,8 @@
                                   <li class="dropdown">
                                     <a class="dropdown-item dropdown-toggle" href="#">Projects</a>
                                     <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Current</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Phased Out</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.ourprograms') }}">Current</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.events') }}">Phased Out</a></li>
                                     
                                     </ul>
                                   </li>
@@ -196,7 +196,7 @@
                                      </ul>
                                   </li>
                                   <li><a class="dropdown-item" href="#">Publications</a></li>
-                                  <li><a class="dropdown-item" href="#">Stories</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('frontend.storege') }}">Stories</a></li>
                                 </ul>
                               </li>
                               <li class="nav-item dropdown">
@@ -209,8 +209,8 @@
                                     <a class="dropdown-item dropdown-toggle" href="#">Vacancy</a>
                                     <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Procurement</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Volluntering</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Notice</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.vollunter') }}">Volluntering</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.noticeboard') }}">Notice</a></li>
                                     
                                     </ul>
                                   </li>

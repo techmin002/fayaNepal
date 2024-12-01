@@ -3,7 +3,7 @@
     <div class="pager-header">
         <div class="container">
             <div class="page-content">
-                <h2>Current Events</h2>
+                <h2>Phased Out</h2>
                 <p>Help today because tomorrow you may be the one who <br>needs more helping!</p>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
@@ -51,35 +51,6 @@
             </div>
         </section>
         <!-- Call To Action Section -->
-        <section class="blog-section bg-grey bd-bottom padding">
-            <div class="container">
-                <div class="section-heading text-center mb-40">
-                    <h2>Recent Stories</h2>
-                    <span class="heading-border"></span>
-                    <p>Help today because tomorrow you may be the one who <br> needs more helping!</p>
-                </div>
-                <!-- /Section Heading -->
-                <div class="row">
-                    <div class="col-lg-12 xs-padding">
-                        <div class="blog-items grid-list row">
-                            @foreach ($data['stories'] as $story)
-                            <div class="col-md-4 padding-15">
-                                <div class="blog-post">
-                                    <img src="{{ asset('upload/images/advertisements/'.$story->image) }}" alt="blog post">
-                                    <div class="blog-content">
-                                        <span class="date"><i class="fa fa-clock-o"></i> {{ \Carbon\Carbon::parse($story->date)->format('d-M-Y') }}</span>
-                                        <h3><a href="{{ route('event.detail',$story->id) }}">{{ $story->title }}</a></h3>
-                                        <p>{!! $story->shortdescription !!}</p>
-                                        <a href="{{ route('event.detail',$story->id) }}" class="post-meta">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <!-- Blog Posts -->
-                </div>
-            </div>
-        </section>
         
 @endsection
+x

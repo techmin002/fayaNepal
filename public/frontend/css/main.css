@@ -430,7 +430,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
 /*Dropdown */
 #mainmenu li ul{
     background-color: #fff;
-    width: 350px;
+    width: auto;
     height: auto;
     position: absolute;
     left: 0;
@@ -441,6 +441,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
     z-index: 999;
+    margin-top: -4px;
 }
 #mainmenu li:hover > ul{
     visibility: visible;
@@ -471,7 +472,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
 }
 #mainmenu li > ul ul{
     background-color: #fff;
-    left: 200px;
+    left: 161px;
 }
 #mainmenu li > ul li:hover > ul li a{
     color: #555;
