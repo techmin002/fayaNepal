@@ -89,9 +89,22 @@
                                 <img src="{{ asset('upload/images/services/' . $program->image) }}" alt="causes">
                                 <a href="#" class="donate-btn">Donate Now<i class="ti-plus"></i></a>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 77%;" aria-valuenow="77"
-                                        aria-valuemin="0" aria-valuemax="100">
-                                        <span class="wow cssanimation fadeInLeft">77%</span>
+                                    @if (is_int($program->icon) && $program->icon >= 15)
+                                        @php
+                                            $progress = 'style=width:' . $program->icon . '%';
+                                           $per =  $program->icon;
+                                        @endphp
+                                    @else
+                                        @php
+                                            $progress = 'style=width:100%';
+                                            $per =  100;
+                                        @endphp
+                                    @endif
+
+                                    <div class="progress-bar" role="progressbar" {{ $progress }}
+                                        aria-valuenow="{{ $per }}" aria-valuemin="0"
+                                        aria-valuemax="{{ $per }}">
+                                        <span class="wow cssanimation fadeInLeft">{{ $per }}%</span>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +223,7 @@
                     <h5 class="modal-title" id="noticeModalTitle"></h5>
                     <button type="button" class="close" data-dismiss="modal" title="Close Notice" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                      </button>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <!-- Title -->
@@ -221,7 +234,7 @@
                     </a>
 
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -264,7 +277,8 @@
                                         alt="blog post">
                                     <div class="blog-content">
                                         <span class="date"><i class="fa fa-clock-o"></i> {{ $story->date }}</span>
-                                        <h3><a href="{{ route('story.detail', $story->id) }}">{{ $story->title }}</a></h3>
+                                        <h3><a href="{{ route('story.detail', $story->id) }}">{{ $story->title }}</a>
+                                        </h3>
                                         <p>{!! $story->shortdescription !!}</p>
                                         <a href="{{ route('story.detail', $story->id) }}" class="post-meta">Read More</a>
                                     </div>
@@ -291,7 +305,7 @@
                             // Populate modal with title, content, and image
                             document.getElementById("noticeModalTitle").textContent = response.title;
                             document.getElementById("noticeModalContent").textContent = response
-                            .content;
+                                .content;
 
                             if (response.image_url) {
                                 // Set image link and display the image

@@ -47,7 +47,8 @@
                     <tr>
                       <th>S.N</th>
                       <th>Title</th>
-                      <th class="text-center">Date</th>
+                      <th class="text-center">Complete %</th>
+                      <th class="text-center">Sector</th>
                       <th class="text-center">Image</th>
                       <th class="text-center">Status</th>
                       <th class="text-center">Action</th>
@@ -58,7 +59,14 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $value->title }}</td>
-                            <td class="text-center">{{ $value->icon }}</td>
+                            <td class="text-center">{{ $value->icon }}%</td>
+                            <td>
+                              @php
+                              $category = Modules\Service\Entities\ProgramCategory::select('title','id')->where('id',$value->category_id)->first();
+                              @endphp
+                            
+                              {{ $category['title'] ?? 'N/A'}}
+                            </td>
                             <td class="text-center"><img src="{{ asset('upload/images/services/'.$value->image) }}" width="120px" alt="{{ $value->name }}"> </td>
                             <td class="text-center">
                                 @if($value->status == 'on')
@@ -90,7 +98,8 @@
                     <tr>
                         <th>S.N</th>
                         <th>Title</th>
-                        <th class="text-center">Date</th>
+                        <th class="text-center">Complete %</th>
+                        <th class="text-center">Sector</th>
                         <th class="text-center">Image</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Action</th>
