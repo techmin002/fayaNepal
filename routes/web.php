@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class,'index'])->name('frontend.index');
 Route::get('/about', [FrontendController::class,'about'])->name('frontend.about');
 Route::get('fn-Programs', [FrontendController::class,'programs'])->name('frontend.ourprograms');
-Route::get('fn-events', [FrontendController::class,'events'])->name('frontend.events');
+Route::get('past-events', [FrontendController::class,'events'])->name('frontend.events');
 Route::get('/fn-gallery', [FrontendController::class,'gallery'])->name('frontend.gallery');
 // Route::get('/volunteers', [FrontendController::class,'volunteers'])->name('frontend.volunteers');
 Route::get('/fn-blogs', [FrontendController::class,'blogs'])->name('frontend.blogs');
@@ -26,7 +26,12 @@ Route::get('blog/{slug}', [FrontendController::class,'blogDetail'])->name('blog.
 Route::get('program/{slug}', [FrontendController::class,'programDetail'])->name('program.detail');
 Route::get('event/{id}', [FrontendController::class,'eventDetail'])->name('event.detail');
 Route::get('story-detail/{id}', [FrontendController::class,'storyDetail'])->name('story.detail');
-
+Route::get('/partners-donors', [FrontendController::class,'partnersDonors'])->name('frontend.partnersdonors');
+Route::get('/coverage', [FrontendController::class,'coverage'])->name('frontend.coverage');
+Route::get('/noticeboard', [FrontendController::class,'noticeboard'])->name('frontend.noticeboard');
+Route::get('/vollunter', [FrontendController::class,'vollunter'])->name('frontend.vollunter');
+Route::get('/currentproject', [FrontendController::class,'currentproject'])->name('frontend.currentproject');
+Route::get('/storage', [FrontendController::class,'storege'])->name('frontend.storege');
 
 Route::get('/contact', [FrontendController::class,'contact'])->name('frontend.contact');
 

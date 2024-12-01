@@ -109,4 +109,39 @@ class FrontendController extends Controller
         // Return an empty response if no active notice exists
         return response()->json(null);
     }
-}
+    public function partnersDonors(){
+        $data['currentpartners'] = Partner::where('status', 'on')->where('type', 'current')->get();
+        $data['pastpartners'] = Partner::where('status', 'on')->get();
+        return view('frontend.pages.partners-donors', compact('data'));
+    }
+    
+       public function coverage(){
+        return view('frontend.pages.coverage');
+       }
+
+        public function noticeboard(){
+            return view('frontend.pages.noticeboard');
+        }
+         
+        public function vollunter(){
+            $data['teams'] = Team::where('status', 'on')->get();
+            $data['profile'] = CompanyProfile::select('mission', 'vision', 'introduction')->first();
+            return view ('frontend.pages.vollunter', compact('data'));
+
+        }
+
+        // public function currentproject(){
+        // $data['programs'] = Program::where('status', 'on')->orderby('created_at', 'DESC')->get();
+        // $data['testimonials'] = Testimonial::where('status', 'on')->orderby('created_at', 'DESC')->get();
+        // $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
+        //     return view('frontend.pages.currentproject');
+        // }
+
+        
+            public function storege(){
+                $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
+                return view('frontend.pages.storage',compact('data'));
+
+            }
+        
+} 
