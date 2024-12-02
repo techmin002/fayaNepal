@@ -144,5 +144,9 @@ class FrontendController extends Controller
                 return view('frontend.pages.storage',compact('data'));
 
             }
+
+            public function works(){
+                return view('frontend.pages.works');
+            }
         
 } 
