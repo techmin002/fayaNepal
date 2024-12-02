@@ -35,6 +35,7 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'title' => ['required'],
         ]);
@@ -45,11 +46,19 @@ class NoticeController extends Controller
 
             $request->image->move(public_path('upload/images/notice'), $imageName);
 
+            
+        }
+        if($request->status == 'on')
+        {
+            $status = 'on';
+        }
+        else{
+            $status = 'off';
         }
         $notice = new Notice();
         $notice->title = $request->input('title');
         $notice->description = $request->input('description');
-        $notice->status = $request->input('status');
+        $notice->status = $status;
         $notice->image = $imageName;
         $notice->save();
          return back()->with('success','Notice Added Successfully');

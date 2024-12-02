@@ -120,7 +120,8 @@ class FrontendController extends Controller
        }
 
         public function noticeboard(){
-            return view('frontend.pages.noticeboard');
+            $notices = Notice::orderBy('created_at','DESC')->get();
+            return view('frontend.pages.noticeboard', compact('notices'));
         }
          
         public function vollunter(){
