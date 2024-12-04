@@ -169,7 +169,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
                                   <!-- Web Development Dropdown -->
                                   @foreach($programCategory as $cat)
-                                  <li><a class="dropdown-item" href="{{ route('frontend.works') }}">{{ $cat->title }}</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('frontend.works',$cat->slug) }}">{{ $cat->title }}</a></li>
                                  @endforeach
                                   <li class="dropdown">
                                     <a class="dropdown-item dropdown-toggle" href="#">Projects</a>

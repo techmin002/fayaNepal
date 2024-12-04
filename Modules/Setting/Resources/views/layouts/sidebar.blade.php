@@ -345,6 +345,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('leaderships.index') }}" class="nav-link {{ request()->routeIs('leaderships.index') ? 'active' : '' }}">
+              <i class="fa fa-users nav-icon"></i>
+              <p>Leadership</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('partners.index') }}" class="nav-link {{ request()->routeIs('partners.index') ? 'active' : '' }}">
               <i class="fa fa-users nav-icon"></i>
               <p>Partners</p>

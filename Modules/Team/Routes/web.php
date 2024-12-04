@@ -13,8 +13,11 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Team\Http\Controllers\TeamController;
+use Modules\Team\Http\Controllers\LeadershipController;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('teams', 'TeamController');
-    Route::get('team/status/{id}',[TeamController::class,'status'])->name('team.status');
+    Route::resource('leaderships', 'LeadershipController');
+    Route::get('leadership/status/{id}',[LeadershipController::class,'status'])->name('leadership.status');
+    Route::get('leadership/status/{id}',[LeadershipController::class,'status'])->name('leadership.status');
 });

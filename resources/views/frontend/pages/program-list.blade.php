@@ -17,25 +17,37 @@
         <div class="container">
             <div class="causes-wrap row">
                 @foreach ($data['programs'] as $program)
-                    <div class="col-md-4 xs-padding mt-3">
-                        <div class="causes-content">
-                            <div class="causes-thumb">
-                                <img src="{{ asset('upload/images/services/' . $program->image) }}" alt="causes">
-                                <a href="#" class="donate-btn">Donate Now<i class="ti-plus"></i></a>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75"
-                                        aria-valuemin="0" aria-valuemax="100"><span
-                                            class="wow cssanimation fadeInLeft">75%</span></div>
-                                </div>
-                            </div>
-                            <div class="causes-details">
-                                <h3>{{ $program->title }}</h3>
-                                <p>{!! $program->shortdescription !!}</p>
-                                <a href="{{ route('program.detail',$program->slug) }}" class="read-more">Read More</a>
+                <div class="col-md-4 xs-padding mt-3">
+                    <div class="causes-content">
+                        <div class="causes-thumb">
+                          @if (is_int($program->icon) && $program->icon >= 15)
+                          @php
+                              $progress = 'style=width:' . $program->icon . '%';
+                             $per =  $program->icon;
+                          @endphp
+                      @else
+                          @php
+                              $progress = 'style=width:100%';
+                              $per =  100;
+                          @endphp
+                      @endif
+
+                            <img src="{{ asset('upload/images/services/' . $program->image) }}" alt="causes">
+                            <a href="#" class="donate-btn">Donate Now<i class="ti-plus"></i></a>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" {{ $progress }} aria-valuenow="{{ $per }}"
+                                    aria-valuemin="0" aria-valuemax="{{ $per }}"><span
+                                        class="wow cssanimation fadeInLeft">{{ $per }}%</span></div>
                             </div>
                         </div>
-                    </div><!-- /Program-1 -->
-                @endforeach
+                        <div class="causes-details">
+                            <h3>{{ $program->title }}</h3>
+                            <p>{!! $program->shortdescription !!}</p>
+                            <a href="{{ route('program.detail',$program->slug) }}" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div><!-- /Program-1 -->
+            @endforeach
             </div>
         </div>
     </section><!-- /Program Section -->

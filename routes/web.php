@@ -31,8 +31,8 @@ Route::get('/coverage', [FrontendController::class,'coverage'])->name('frontend.
 Route::get('/noticeboard', [FrontendController::class,'noticeboard'])->name('frontend.noticeboard');
 Route::get('/vollunter', [FrontendController::class,'vollunter'])->name('frontend.vollunter');
 Route::get('/currentproject', [FrontendController::class,'currentproject'])->name('frontend.currentproject');
-Route::get('/storage', [FrontendController::class,'storege'])->name('frontend.storege');
-Route::get('/our-works', [FrontendController::class,'works'])->name('frontend.works');
+Route::get('/stori', [FrontendController::class,'storege'])->name('frontend.storege');
+Route::get('/fn-sector/{slug}', [FrontendController::class,'works'])->name('frontend.works');
 
 Route::get('/contact', [FrontendController::class,'contact'])->name('frontend.contact');
 
