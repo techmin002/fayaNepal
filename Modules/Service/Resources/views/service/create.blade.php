@@ -1,8 +1,29 @@
 @extends('setting::layouts.master')
 
 @section('title', 'Create Programs')
-
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 @section('content')
+    <style>
+        h2 {
+            margin-bottom: 0;
+        }
+
+        h3 {
+            margin: 0 0 30px;
+        }
+
+        .ui-slider-range {
+            background: green;
+        }
+
+        .percent {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            border: none;
+        }
+    </style>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -52,11 +73,13 @@
                                             <div class="form-group">
                                                 <label for="icon">Program Location </label>
 
-                                                <input type="text" id="file-ip-1" placeholder="Enter Program Full Address" name="icon"  value="{{ old('icon') }}" class="form-control">
+                                                <input type="text" id="file-ip-1"
+                                                    placeholder="Enter Program Full Address" name="icon"
+                                                    value="{{ old('icon') }}" class="form-control">
                                                 @error('icon')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
-                                               
+
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -84,8 +107,8 @@
                                                 <label for="program_type">Program Type </label>
                                                 <select name="program_type" class="form-control" id="">
                                                     <option value="" selected disabled>Select Program Type</option>
-                                                    <option value="current">Current</option>
-                                                    <option value="past">Past</option>
+                                                    <option value="current">On-Going</option>
+                                                    <option value="past">Completed</option>
                                                 </select>
 
                                                 @error('program_type')
@@ -94,12 +117,34 @@
 
                                             </div>
                                         </div>
+
                                         <div class="col-md-6">
                                             <!-- Bootstrap Switch -->
-                                            <div class="card card-secondary">
+                                            <div class="form-group">
                                                 <label for="date">Program Date</label>
-                                                <input type="date" name="date" class="form-control"
-                                                    id="">
+                                                <input type="date" name="date" class="form-control" id="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <!-- Bootstrap Switch -->
+                                            <div class="form-group">
+                                                <label for="categgory_id">Program Sector</label>
+                                                <select name="category_id" id="" class="form-control">
+                                                    <option value="" selected disabled>Select Program Sector</option>
+                                                    @foreach ($sectors as $sector)
+                                                        <option value="{{ $sector->id }}">{{ $sector->title }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="project col-md-6">
+                                            <div class="form-group">
+                                                <label for="">Program Complete (%)</label>
+                                                <input type="text" class="percent" readonly />
+                                                <div class="bar"></div>
+                                                <input type="hidden" name="completion_percentage"
+                                                    id="completion_percentage" value="1">
+
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -129,7 +174,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -216,5 +261,54 @@
             e.preventDefault();
         });
     </script>
+    <script>
+        $(function() {
+            $('.project').each(function() {
+                var $projectBar = $(this).find('.bar');
+                var $projectPercent = $(this).find('.percent');
+                var $hiddenInput = $('#completion_percentage'); // Reference the hidden input field
 
+                $projectBar.slider({
+                    range: "min",
+                    animate: true,
+                    value: 1,
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                    slide: function(event, ui) {
+                        $projectPercent.val(ui.value + "%");
+                        $hiddenInput.val(ui.value); // Update the hidden input value
+                    },
+                    change: function(event, ui) {
+                        var $projectRange = $(this).find('.ui-slider-range');
+                        var percent = ui.value;
+                        $hiddenInput.val(percent); // Update the hidden input value
+
+                        if (percent < 30) {
+                            $projectPercent.css({
+                                'color': 'red'
+                            });
+                            $projectRange.css({
+                                'background': '#f20000'
+                            });
+                        } else if (percent > 31 && percent < 70) {
+                            $projectPercent.css({
+                                'color': 'gold'
+                            });
+                            $projectRange.css({
+                                'background': 'gold'
+                            });
+                        } else if (percent > 70) {
+                            $projectPercent.css({
+                                'color': 'green'
+                            });
+                            $projectRange.css({
+                                'background': 'green'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

@@ -2,20 +2,20 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
     .main-content{
-	width: 50%;
+	width: 75%;
 	border-radius: 20px;
 	box-shadow: 0 5px 5px rgba(0,0,0,.4);
 	margin: 5em auto;
 	display: flex;
 }
 .company__info{
-	background-color: #008080;
+	/* background-color: #008080;
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	color: #fff;
+	color: #fff; */
 }
 .fa-android{
 	font-size:3em;
@@ -82,11 +82,10 @@ form{
 	<!-- Main Content -->
 	<div class="container-fluid">
 		<div class="row main-content bg-success text-center">
-			<div class="col-md-4 text-center company__info">
-				<span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
-				<h4 class="company_title">Faya Nepal</h4>
+			<div class="col-md-7 text-center">
+				<span class="company__logo"><img src="https://www.fayanepal.org/upload/images/settings/fayalogo.png.png" alt="" height="100%"></span>
 			</div>
-			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+			<div class="col-md-5 col-xs-12 col-sm-12 login_form ">
 				<div class="container-fluid">
 					<div class="row">
 						<h2>Log In</h2>

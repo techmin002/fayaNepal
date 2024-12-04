@@ -10,7 +10,7 @@ class Program extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category-id',
+        'category_id',
         'title',
         'slug',
         'icon',
@@ -22,7 +22,10 @@ class Program extends Model
         'program_type',
         'date'
     ];
-    
+    public function category()
+    {
+        return $this->hasOne(ProgramCategory::class,'category_id','id');
+    } 
     protected static function newFactory()
     {
         return \Modules\Service\Database\factories\ProgramFactory::new();

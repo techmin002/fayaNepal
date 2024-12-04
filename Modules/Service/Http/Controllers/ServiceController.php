@@ -11,6 +11,7 @@ use Modules\Service\Http\Requests\StoreServiceRequest;
 use Modules\Service\Http\Requests\UpdateServiceRequest;
 use Illuminate\Support\Str;
 use Modules\Service\Entities\Program;
+use Modules\Service\Entities\ProgramCategory;
 
 class ServiceController extends Controller
 {
@@ -20,7 +21,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Program::all();
+        $services = Program::orderBy('created_at','DESC')->get();
         return view('service::service.index',compact('services'));
     }
 
@@ -30,7 +31,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('service::service.create');
+        $sectors = ProgramCategory::orderBy('created_at','DESC')->get();
+        return view('service::service.create', compact('sectors'));
     }
 
     /**
@@ -57,7 +59,8 @@ class ServiceController extends Controller
         Program::create([
             'title' => $request->title,
             'slug' => $slug,
-            'icon' => $request->icon,
+            'icon' => $request->completion_percentage,
+            'category_id' => $request->category_id,
             'image' => $image,
             'shortdescription' => $request->shortDescription,
             'description' => $request->description,
@@ -86,7 +89,8 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Program::findOrfail($id);
-        return view('service::service.edit',compact('service'));
+        $sectors = ProgramCategory::orderBy('created_at','DESC')->get();
+        return view('service::service.edit',compact('service','sectors'));
     }
 
     /**
@@ -128,7 +132,8 @@ class ServiceController extends Controller
         $service->update([
             'title' => $request->title,
             'slug' => $slug,
-            'icon' => $$request->icon,
+            'icon' => $request->completion_percentage,
+            'category_id' => $request->category_id,
             'image' => $image,
             'shortdescription' => $request->shortDescription,
             'description' => $request->description,
