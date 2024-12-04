@@ -147,5 +147,14 @@ class FrontendController extends Controller
             public function works(){
                 return view('frontend.pages.works');
             }
+            
+             public function leadership(){
+                return view('frontend.pages.leadership');
+             }
+
+             public function publication(){
+                return view('frontend.pages.publication');
+             }
+
         
 } 

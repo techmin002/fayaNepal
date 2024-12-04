@@ -33,6 +33,8 @@ Route::get('/vollunter', [FrontendController::class,'vollunter'])->name('fronten
 Route::get('/currentproject', [FrontendController::class,'currentproject'])->name('frontend.currentproject');
 Route::get('/storage', [FrontendController::class,'storege'])->name('frontend.storege');
 Route::get('/our-works', [FrontendController::class,'works'])->name('frontend.works');
+Route::get('/leadership', [FrontendController::class,'leadership'])->name('frontend.leadership');
+Route::get('/publication', [FrontendController::class,'publication'])->name('frontend.publication');
 
 Route::get('/contact', [FrontendController::class,'contact'])->name('frontend.contact');
 

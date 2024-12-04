@@ -90,7 +90,7 @@
                                     <li><a href="{{ route('frontend.about') }}">FAYA History</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Coverage</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Executive Board</a></li>
-                                    <li><a href="{{ route('frontend.gallery') }}">Leadership</a></li>
+                                    <li><a href="{{ route('frontend.leadership') }}">Leadership</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Organogram</a></li>
                                     <li><a href="{{ route('frontend.partners') }}">Donors/ Partners</a></li>
                                   
@@ -108,7 +108,7 @@
                         <li><a href="#">Resources</a>
                             <ul>
                                     <li><a href="{{ route('frontend.gallery') }}">Reports</a></li>
-                                    <li><a href="{{ route('frontend.gallery') }}">Publications</a></li>
+                                    <li><a href="{{ route('frontend.publication') }}">Publications</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Stories</a></li>
 
                                   
@@ -153,7 +153,7 @@
                                     <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('frontend.coverage') }}">Coverage</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Executive Board</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Leadership</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.leadership') }}">Leadership</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Organogram</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.partnersdonors') }}">Donors/Partners</a></li>
                                     </ul>
@@ -195,7 +195,7 @@
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Project Reports</a></li>
                                      </ul>
                                   </li>
-                                  <li><a class="dropdown-item" href="#">Publications</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('frontend.publication') }}">Publications</a></li>
                                   <li><a class="dropdown-item" href="{{ route('frontend.storege') }}">Stories</a></li>
                                 </ul>
                               </li>
