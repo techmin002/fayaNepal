@@ -151,5 +151,14 @@ class FrontendController extends Controller
                 $data['programs'] = Program::where('category_id',$data['category']->id)->get();
                 return view('frontend.pages.works',compact('data'));
             }
+            
+             public function leadership(){
+                return view('frontend.pages.leadership');
+             }
+
+             public function publication(){
+                return view('frontend.pages.publication');
+             }
+
         
 } 
