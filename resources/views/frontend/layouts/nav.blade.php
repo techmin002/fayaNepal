@@ -196,7 +196,7 @@
                                      </ul>
                                   </li>
                                   <li><a class="dropdown-item" href="{{ route('frontend.publication') }}">Publications</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('frontend.storege') }}">Stories</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('frontend.stories') }}">Stories</a></li>
                                 </ul>
                               </li>
                               <li class="nav-item dropdown">

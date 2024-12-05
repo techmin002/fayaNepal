@@ -14,10 +14,15 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Team\Http\Controllers\TeamController;
 use Modules\Team\Http\Controllers\LeadershipController;
+use Modules\Team\Http\Controllers\PublicationController;
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('teams', 'TeamController');
     Route::resource('leaderships', 'LeadershipController');
+    Route::resource('publications', 'PublicationController');
     Route::get('leadership/status/{id}',[LeadershipController::class,'status'])->name('leadership.status');
     Route::get('leadership/status/{id}',[LeadershipController::class,'status'])->name('leadership.status');
+    Route::get('publication/status/{id}',[PublicationController::class,'status'])->name('publication.status');
+
 });

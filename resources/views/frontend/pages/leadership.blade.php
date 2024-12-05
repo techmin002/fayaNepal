@@ -552,16 +552,17 @@ function clickBtn(event) {
                        
                 </div>
           <div class='row main-cahiman-css'>
+            @foreach ($leaderships->take(1) as $leader)
           <div class="col-md-4 xs-padding">
                         <div class="profile-wrap">
-                            <img class="profile" src="{{ asset('frontend/image/profile.png')}}" alt="profile">
-                            <h3>Goma Achrya <span>Chairman of Faya nepal.</span></h3>
-                            <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in Sudurpashchim Province Nepal, the abused and the helpless.</p>
+                            <img class="profile" src="{{  asset('upload/images/leaderships/'.$leader->image)}}" alt="profile">
+                            <h3>{{ $leader->name }} <span>{{ $leader->designation }} of Faya nepal.</span></h3>
+                            <p>{!! $leader->introduction !!}</p>
                             <img src="{{ asset('frontend/img/sign.png')}}" alt="sign">
                         </div>
                     </div>
           </div>
-
+          @endforeach
     <!-- about -->
 <div class="about">
    <a class="bg_links social portfolio" href="https://www.rafaelalucas.com" target="_blank">
@@ -579,15 +580,18 @@ function clickBtn(event) {
 
 
 <div class="cards">
+  @foreach ($leaderships->skip(1) as $leader)
+    
+  
   <div class="card">
     <span class="close"></span>
     <span class="arrow"></span>
     <article>
-      <h2>Goma Achrya</h2>
-      <div class="title">Chairman of Faya nepal</div>
-      <div class="pic"><img src="{{ asset('frontend/image/profile.png')}}"></div>
+      <h2>{{ $leader->name }}</h2>
+      <div class="title">{{ $leader->designation }}</div>
+      <div class="pic"><img src="{{ asset('upload/images/leaderships/'.$leader->image)}}"></div>
 
-      <div class="desc">Elijah has collected bugs since they were six years old and now has many dozen bugs but none in their pants.</div>
+      <div class="desc">{!! $leader->introduction !!}</div>
 
     </article>
     <div class="actions">
@@ -596,7 +600,8 @@ function clickBtn(event) {
 
     </div>
   </div>
-  <div class="card">
+  @endforeach
+  {{-- <div class="card">
     <span class="close"></span>
     <span class="arrow"></span>
     <article>
@@ -629,7 +634,7 @@ function clickBtn(event) {
       <button class="btn"><span>trade</span><img class="icon" src="https://rafaelavlucas.github.io/assets/icons/misc/trade.svg"></button>
 
     </div>
-  </div>
+  </div> --}}
 </div>
 
           </div>

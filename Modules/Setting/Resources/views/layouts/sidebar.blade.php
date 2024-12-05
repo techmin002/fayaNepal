@@ -351,6 +351,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('publications.index') }}" class="nav-link {{ request()->routeIs('publications.index') ? 'active' : '' }}">
+              <i class="fa fa-users nav-icon"></i>
+              <p>Publication</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('partners.index') }}" class="nav-link {{ request()->routeIs('partners.index') ? 'active' : '' }}">
               <i class="fa fa-users nav-icon"></i>
               <p>Partners</p>
