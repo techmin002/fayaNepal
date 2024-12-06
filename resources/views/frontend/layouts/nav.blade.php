@@ -191,7 +191,7 @@
                                   <li class="dropdown">
                                     <a class="dropdown-item dropdown-toggle" href="#">Reports</a>
                                     <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Annual Reports</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.annual') }}">Annual Reports</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Project Reports</a></li>
                                      </ul>
                                   </li>

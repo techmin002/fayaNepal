@@ -156,6 +156,9 @@ class FrontendController extends Controller
              public function publication(){
                 return view('frontend.pages.publication');
              }
+             public function annualReport(){
+                return view('frontend.pages.annual-report');
+             }
 
         
 } 

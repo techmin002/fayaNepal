@@ -35,6 +35,7 @@ Route::get('/storage', [FrontendController::class,'storege'])->name('frontend.st
 Route::get('/our-works', [FrontendController::class,'works'])->name('frontend.works');
 Route::get('/leadership', [FrontendController::class,'leadership'])->name('frontend.leadership');
 Route::get('/publication', [FrontendController::class,'publication'])->name('frontend.publication');
+Route::get('/annual-report', [FrontendController::class,'annualReport'])->name('frontend.annual');
 
 Route::get('/contact', [FrontendController::class,'contact'])->name('frontend.contact');
 
