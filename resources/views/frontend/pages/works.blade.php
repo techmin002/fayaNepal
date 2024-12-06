@@ -134,5 +134,4 @@
       </div>
   </section><!-- /Blog Section -->
 
-    
 @endsection

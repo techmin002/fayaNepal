@@ -1,4 +1,5 @@
 @extends('frontend.layouts.master')
+@section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 
@@ -310,9 +311,5 @@ html {
             </figcaption>
             <span class="after"></span>
         </figure>
-    </div>
-              <!-- star desig btn -->
-         <div class='main-design-btn'>
-          
-         </div>  
-        @endsection
+    </div> 
+         @endsection

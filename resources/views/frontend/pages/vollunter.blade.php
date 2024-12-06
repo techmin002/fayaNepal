@@ -55,5 +55,4 @@
                 </div>
             </div>
         </section><!-- /Team Section -->
-        
         @endsection
