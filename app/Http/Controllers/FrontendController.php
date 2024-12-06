@@ -11,8 +11,10 @@ use Modules\Gallery\Entities\GalleryCategory;
 use Modules\Notice\Entities\Notice;
 use Modules\Partner\Entities\Partner;
 use Modules\Service\Entities\Program;
+use Modules\Service\Entities\ProgramCategory;
 use Modules\Setting\Entities\CompanyProfile;
 use Modules\Slider\Entities\Slider;
+use Modules\Team\Entities\Leadership;
 use Modules\Team\Entities\Team;
 use Modules\Testimonial\Entities\Testimonial;
 
@@ -139,18 +141,21 @@ class FrontendController extends Controller
         // }
 
         
-            public function storege(){
+            public function stories(){
                 $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
                 return view('frontend.pages.storage',compact('data'));
 
             }
 
-            public function works(){
-                return view('frontend.pages.works');
+            public function works($slug){
+                $data['category'] = ProgramCategory::where('slug',$slug)->first();
+                $data['programs'] = Program::where('category_id',$data['category']->id)->get();
+                return view('frontend.pages.works',compact('data'));
             }
             
              public function leadership(){
-                return view('frontend.pages.leadership');
+                $leaderships = Leadership::where('status', 'on')->get();
+                return view('frontend.pages.leadership', compact('leaderships'));
              }
 
              public function publication(){
