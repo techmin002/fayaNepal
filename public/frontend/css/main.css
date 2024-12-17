@@ -1244,7 +1244,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
     background-position: right 150px center;
     background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 }
 .widget-content{}
 .widget-content img{
