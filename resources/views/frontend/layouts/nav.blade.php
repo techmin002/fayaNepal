@@ -152,7 +152,7 @@
                                     <a class="dropdown-item dropdown-toggle" href="{{ route('frontend.about') }}">FAYA History</a>
                                     <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('frontend.coverage') }}">Coverage</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Executive Board</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.executiveBoard') }}">Executive Board</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.leadership') }}">Leadership</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Organogram</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.partnersdonors') }}">Donors/Partners</a></li>
