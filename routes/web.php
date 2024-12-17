@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class,'index'])->name('frontend.index');
 Route::get('/about', [FrontendController::class,'about'])->name('frontend.about');
-Route::get('fn-Programs', [FrontendController::class,'programs'])->name('frontend.ourprograms');
+Route::get('current-project', [FrontendController::class,'currentPrograms'])->name('frontend.currentproject');
+Route::get('past-project', [FrontendController::class,'pastPrograms'])->name('frontend.pastproject');
+
 Route::get('past-events', [FrontendController::class,'events'])->name('frontend.events');
 Route::get('/fn-gallery', [FrontendController::class,'gallery'])->name('frontend.gallery');
 // Route::get('/volunteers', [FrontendController::class,'volunteers'])->name('frontend.volunteers');
@@ -30,7 +32,6 @@ Route::get('/partners-donors', [FrontendController::class,'partnersDonors'])->na
 Route::get('/coverage', [FrontendController::class,'coverage'])->name('frontend.coverage');
 Route::get('/noticeboard', [FrontendController::class,'noticeboard'])->name('frontend.noticeboard');
 Route::get('/vollunter', [FrontendController::class,'vollunter'])->name('frontend.vollunter');
-Route::get('/currentproject', [FrontendController::class,'currentproject'])->name('frontend.currentproject');
 Route::get('/fn-stories', [FrontendController::class,'stories'])->name('frontend.stories');
 Route::get('/fn-sector/{slug}', [FrontendController::class,'works'])->name('frontend.works');
 
@@ -38,6 +39,7 @@ Route::get('/contact', [FrontendController::class,'contact'])->name('frontend.co
 Route::get('/leadership', [FrontendController::class,'leadership'])->name('frontend.leadership');
 Route::get('/publication', [FrontendController::class,'publication'])->name('frontend.publication');
 Route::get('/annual-report', [FrontendController::class,'annualReport'])->name('frontend.annual');
+Route::get('/project-report', [FrontendController::class,'projectReport'])->name('frontend.project');
 
 
 Auth::routes();

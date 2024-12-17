@@ -174,8 +174,8 @@
                                   <li class="dropdown">
                                     <a class="dropdown-item dropdown-toggle" href="#">Projects</a>
                                     <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('frontend.ourprograms') }}">Current</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('frontend.events') }}">Phased Out</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.currentproject') }}">Current</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.pastproject') }}">Phased Out</a></li>
                                     
                                     </ul>
                                   </li>
@@ -192,7 +192,7 @@
                                     <a class="dropdown-item dropdown-toggle" href="#">Reports</a>
                                     <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('frontend.annual') }}">Annual Reports</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Project Reports</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.project') }}">Project Reports</a></li>
                                      </ul>
                                   </li>
                                   <li><a class="dropdown-item" href="{{ route('frontend.publication') }}">Publications</a></li>

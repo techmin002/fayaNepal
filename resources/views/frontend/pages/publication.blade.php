@@ -207,10 +207,10 @@ html {
         <div class="pager-header">
             <div class="container">
                 <div class="page-content">
-                    <h2>partners</h2>
+                    <h2>Publication</h2>
                     <p>Help today because tomorrow you may be the one who <br>needs more helping!</p>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                         <li class="breadcrumb-item active">Publication</li>
                     </ol>
                 </div>
@@ -218,98 +218,34 @@ html {
         </div><!-- /Page Header -->
         <!-- body -->
         <div class="box-wrapper">
+        @foreach ($publications as $publication)
+            
+        
         <figure class="shape-box shape-box_half">
-            <img src="https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="">
+            <img src="{{ asset('upload/images/publications/'.$publication->image) }}" alt="">
             <div class="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
             <figcaption>
                 <div class="show-cont">
                     <div class='row'>
                     <div class='publication-div'>
                     <ul class='publication-ul'>
-                      <li class='publication-li' data-category="publications"> <span class='card-no'>01</span>  <span class='card-category'>Publications </span> </li>
+                      <li class='publication-li' data-category="publications"> <span class='card-no'>{{ $loop->iteration }}</span>  <span class='card-category'>Publications </span> </li>
                     </ul>
                     </div>
                 </div>
-                    <h4 class="card-main-title">NGO Ever Rule the World</h4>
+                    <h4 class="card-main-title">{{ $publication->title }}</h4>
                 </div>
-                <p class="card-content">Customer interactions, study and analysis of company branding through creative briefs. Creation of mock-up designs by using UI tools that simulate actions and pre-visualize the reactions.</p>
+                <p class="card-content">{!! $publication->description !!}</p>
                   <div class="btn-class-name">
-                  <button type="button" class="btn btn-primary btn-class-name-btn" ><i class="fa-solid fa-download"></i> Download</button>
+                  <a href="{{ asset('upload/images/publications/'.$publication->file) }}" type="button" class="btn btn-primary btn-class-name-btn" download=""><i class="fa-solid fa-download"></i> Download</a>
                   </div>
             
 
             </figcaption>
             <span class="after"></span>
         </figure>
-        <figure class="shape-box shape-box_half">
-            <img src="https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="">
-            <div class="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
-            <figcaption>
-                <div class="show-cont">
-                    <div class='row'>
-                    <div class='publication-div'>
-                    <ul class='publication-ul'>
-                      <li class='publication-li' data-category="publications"> <span class='card-no'>02</span>  <span class='card-category'>Publications </span> </li>
-                    </ul>
-                    </div>
-                </div>
-                    <h4 class="card-main-title">NGO Ever Rule the World</h4>
-                </div>
-                <p class="card-content">Customer interactions, study and analysis of company branding through creative briefs. Creation of mock-up designs by using UI tools that simulate actions and pre-visualize the reactions.</p>
-                  <div class="btn-class-name">
-                  <button type="button" class="btn btn-primary btn-class-name-btn" ><i class="fa-solid fa-download"></i> Download</button>
-                  </div>
-            
-
-            </figcaption>
-            <span class="after"></span>
-        </figure>
-        <figure class="shape-box shape-box_half">
-            <img src="https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="">
-            <div class="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
-            <figcaption>
-                <div class="show-cont">
-                    <div class='row'>
-                    <div class='publication-div'>
-                    <ul class='publication-ul'>
-                      <li class='publication-li' data-category="publications"> <span class='card-no'>03</span>  <span class='card-category'>Publications </span> </li>
-                    </ul>
-                    </div>
-                </div>
-                    <h4 class="card-main-title">NGO Ever Rule the World</h4>
-                </div>
-                <p class="card-content">Customer interactions, study and analysis of company branding through creative briefs. Creation of mock-up designs by using UI tools that simulate actions and pre-visualize the reactions.</p>
-                  <div class="btn-class-name">
-                  <button type="button" class="btn btn-primary btn-class-name-btn" ><i class="fa-solid fa-download"></i> Download</button>
-                  </div>
-            
-
-            </figcaption>
-            <span class="after"></span>
-        </figure>
-        <figure class="shape-box shape-box_half">
-            <img src="https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="">
-            <div class="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
-            <figcaption>
-                <div class="show-cont">
-                    <div class='row'>
-                    <div class='publication-div'>
-                    <ul class='publication-ul'>
-                      <li class='publication-li' data-category="publications"> <span class='card-no'>04</span>  <span class='card-category'>Publications </span> </li>
-                    </ul>
-                    </div>
-                </div>
-                    <h4 class="card-main-title">NGO Ever Rule the World</h4>
-                </div>
-                <p class="card-content">Customer interactions, study and analysis of company branding through creative briefs. Creation of mock-up designs by using UI tools that simulate actions and pre-visualize the reactions.</p>
-                  <div class="btn-class-name">
-                  <button type="button" class="btn btn-primary btn-class-name-btn" ><i class="fa-solid fa-download"></i> Download</button>
-                  </div>
-            
-
-            </figcaption>
-            <span class="after"></span>
-        </figure>
+        @endforeach
+        
     </div>
               <!-- star desig btn -->
          <div class='main-design-btn'>

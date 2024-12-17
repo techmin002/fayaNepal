@@ -15,6 +15,8 @@ use Modules\Service\Entities\ProgramCategory;
 use Modules\Setting\Entities\CompanyProfile;
 use Modules\Slider\Entities\Slider;
 use Modules\Team\Entities\Leadership;
+use Modules\Team\Entities\Publication;
+use Modules\Team\Entities\Report;
 use Modules\Team\Entities\Team;
 use Modules\Testimonial\Entities\Testimonial;
 
@@ -37,9 +39,17 @@ class FrontendController extends Controller
         $data['profile'] = CompanyProfile::select('mission', 'vision', 'introduction')->first();
         return view('frontend.pages.about', compact('data'));
     }
-    public function programs()
+    public function currentPrograms()
     {
-        $data['programs'] = Program::where('status', 'on')->orderby('created_at', 'DESC')->get();
+        $data['programs'] = Program::where('status', 'on')->where('program_type','current')->orderby('created_at', 'DESC')->get();
+        $data['testimonials'] = Testimonial::where('status', 'on')->orderby('created_at', 'DESC')->get();
+        $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
+
+        return view('frontend.pages.program-list', compact('data'));
+    }
+    public function pastPrograms()
+    {
+        $data['programs'] = Program::where('status', 'on')->where('program_type','past')->orderby('created_at', 'DESC')->get();
         $data['testimonials'] = Testimonial::where('status', 'on')->orderby('created_at', 'DESC')->get();
         $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
 
@@ -100,7 +110,7 @@ class FrontendController extends Controller
     public function fetchNotice()
     {
         $notice = Notice::where('status', 'on')->orderBy('created_at', 'desc')->first();
-        $image_url= asset('upload/images/notice/'.$notice->image);
+        $image_url = asset('upload/images/notice/' . $notice->image);
         if ($notice) {
             return response()->json([
                 'title' => $notice->title,
@@ -111,59 +121,71 @@ class FrontendController extends Controller
         // Return an empty response if no active notice exists
         return response()->json(null);
     }
-    public function partnersDonors(){
+    public function partnersDonors()
+    {
         $data['currentpartners'] = Partner::where('status', 'on')->where('type', 'current')->get();
         $data['pastpartners'] = Partner::where('status', 'on')->get();
         return view('frontend.pages.partners-donors', compact('data'));
     }
-    
-       public function coverage(){
+
+    public function coverage()
+    {
         return view('frontend.pages.coverage');
-       }
+    }
 
-        public function noticeboard(){
-            $notices = Notice::orderBy('created_at','DESC')->get();
-            return view('frontend.pages.noticeboard', compact('notices'));
-        }
-         
-        public function vollunter(){
-            $data['teams'] = Team::where('status', 'on')->get();
-            $data['profile'] = CompanyProfile::select('mission', 'vision', 'introduction')->first();
-            return view ('frontend.pages.vollunter', compact('data'));
+    public function noticeboard()
+    {
+        $notices = Notice::orderBy('created_at', 'DESC')->get();
+        return view('frontend.pages.noticeboard', compact('notices'));
+    }
 
-        }
+    public function vollunter()
+    {
+        $data['teams'] = Team::where('status', 'on')->get();
+        $data['profile'] = CompanyProfile::select('mission', 'vision', 'introduction')->first();
+        return view('frontend.pages.vollunter', compact('data'));
+    }
 
-        // public function currentproject(){
-        // $data['programs'] = Program::where('status', 'on')->orderby('created_at', 'DESC')->get();
-        // $data['testimonials'] = Testimonial::where('status', 'on')->orderby('created_at', 'DESC')->get();
-        // $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
-        //     return view('frontend.pages.currentproject');
-        // }
+    // public function currentproject(){
+    // $data['programs'] = Program::where('status', 'on')->orderby('created_at', 'DESC')->get();
+    // $data['testimonials'] = Testimonial::where('status', 'on')->orderby('created_at', 'DESC')->get();
+    // $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
+    //     return view('frontend.pages.currentproject');
+    // }
 
-        
-            public function stories(){
-                $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
-                return view('frontend.pages.storage',compact('data'));
 
-            }
+    public function stories()
+    {
+        $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
+        return view('frontend.pages.storage', compact('data'));
+    }
 
-            public function works($slug){
-                $data['category'] = ProgramCategory::where('slug',$slug)->first();
-                $data['programs'] = Program::where('category_id',$data['category']->id)->get();
-                return view('frontend.pages.works',compact('data'));
-            }
-            
-             public function leadership(){
-                $leaderships = Leadership::where('status', 'on')->get();
-                return view('frontend.pages.leadership', compact('leaderships'));
-             }
+    public function works($slug)
+    {
+        $data['category'] = ProgramCategory::where('slug', $slug)->first();
+        $data['programs'] = Program::where('category_id', $data['category']->id)->get();
+        return view('frontend.pages.works', compact('data'));
+    }
 
-             public function publication(){
-                return view('frontend.pages.publication');
-             }
-             public function annualReport(){
-                return view('frontend.pages.annual-report');
-             }
+    public function leadership()
+    {
+        $leaderships = Leadership::where('status', 'on')->get();
+        return view('frontend.pages.leadership', compact('leaderships'));
+    }
 
-        
-} 
+    public function publication()
+    {
+        $publications = Publication::where('status', 'on')->get();
+        return view('frontend.pages.publication', compact('publications'));
+    }
+    public function annualReport()
+    {
+        $reports = Report::where('report_type', 'annual')->get();
+        return view('frontend.pages.annual-report', compact('reports'));
+    }
+    public function projectReport()
+    {
+        $reports = Report::where('report_type', 'project')->get();
+        return view('frontend.pages.project-report', compact('reports'));
+    }
+}
