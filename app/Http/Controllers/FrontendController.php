@@ -194,4 +194,8 @@ class FrontendController extends Controller
         return view('frontend.pages.executive-board', compact('executives'));
          
     }
+    public function donate(){
+        return view('frontend.pages.donate');
+         
+    }
 }
