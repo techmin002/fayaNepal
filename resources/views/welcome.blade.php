@@ -20,9 +20,9 @@
                                     <p class="wow cssanimation fadeInTop" data-wow-delay="1s">
                                         {!! $slider->short_description !!}
                                     </p>
-                                    <a href="#" class="default-btn wow cssanimation fadeInBottom"
+                                    <a href="{{ route('frontend.contact') }}" class="default-btn wow cssanimation fadeInBottom"
                                         data-wow-delay="0.8s">Join With Us</a>
-                                    <a href="#" class="default-btn wow cssanimation fadeInBottom"
+                                    <a href="{{ route('frontend.donate') }}" class="default-btn wow cssanimation fadeInBottom"
                                         data-wow-delay="0.8s">Donate Now</a>
                                 </div>
                             </div>

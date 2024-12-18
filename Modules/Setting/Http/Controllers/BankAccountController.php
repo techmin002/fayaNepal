@@ -3,6 +3,7 @@
 namespace Modules\Setting\Http\Controllers;
 
 use App\Models\BankAccount;
+use App\Models\Donation;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -129,6 +130,25 @@ class BankAccountController extends Controller
            'status' => $status 
         ]);
         return redirect()->route('bank-accounts.index')->with('success', 'Status Updated Successfully');
+    }
+    public function donations()
+    {
+        $donations = Donation::orderBy('created_at','DESC')->get();
+        return view('setting::banks.donation', compact('donations'));
+    }
+    public function Donationstatus($id)
+    {
+        $setting = Donation::findOrfail($id);
+        if($setting->status == 'paid')
+        {
+            $status = 'unpaid';
+        }else{
+            $status = 'paid';
+        }
+        $setting->update([
+           'status' => $status 
+        ]);
+        return redirect()->route('donations.index')->with('success', 'Status Updated Successfully');
     }
 
 }

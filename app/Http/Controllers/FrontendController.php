@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankAccount;
+use App\Models\Donation;
 use Illuminate\Http\Request;
 use Modules\Advertisement\Entities\Story;
 use Modules\Blog\Entities\Blog;
@@ -195,7 +197,32 @@ class FrontendController extends Controller
          
     }
     public function donate(){
-        return view('frontend.pages.donate');
+        $bank = BankAccount::where('status','on')->first();
+        return view('frontend.pages.donate-now', compact('bank'));
          
+    }
+    public function donateStore(Request $request)
+    {
+        
+        if ($request->receipt)
+        {
+            $imageName = time().'.'.$request->receipt->extension();
+
+            $request->receipt->move(public_path('upload/images/donations'), $imageName);
+
+        }else{
+            $imageName = 'n/a';
+        }
+        $donation = Donation::create([
+        'name' => $request['name'],
+        'email' => $request['email'],
+        'amount' => $request['amount'],
+        'message' => $request['message'],
+        'status' => 'unpaid',
+        'receipt' => $imageName
+        ]);
+        
+        return redirect()->route('frontend.index')->with('success','Thank You for the Donation. Will Verify and Back to You.');
+
     }
 }
