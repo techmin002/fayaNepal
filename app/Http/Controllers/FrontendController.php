@@ -14,6 +14,7 @@ use Modules\Service\Entities\Program;
 use Modules\Service\Entities\ProgramCategory;
 use Modules\Setting\Entities\CompanyProfile;
 use Modules\Slider\Entities\Slider;
+use Modules\Team\Entities\ExecutiveBoard;
 use Modules\Team\Entities\Leadership;
 use Modules\Team\Entities\Publication;
 use Modules\Team\Entities\Report;
@@ -189,7 +190,8 @@ class FrontendController extends Controller
         return view('frontend.pages.project-report', compact('reports'));
     }
     public function executiveBoard(){
-        return view('frontend.pages.executive-board');
+        $executives = ExecutiveBoard::where('status','on')->orderBy('position','ASC')->get();
+        return view('frontend.pages.executive-board', compact('executives'));
          
     }
 }

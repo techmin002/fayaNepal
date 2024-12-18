@@ -97,11 +97,15 @@
 
         <!-- Director -->
         <div class="text-center">
+            @foreach ($executives->take(1) as $executive)
+                
+            
             <div class="chart-card p-3 d-inline-block">
-                <img src="https://via.placeholder.com/80" alt="Director" />
-                <h5 class="name mt-2">John Hill</h5>
-                <p class="title">Director</p>
+                <img src="{{ asset('upload/images/executives/'.$executive->image) }}" alt="Director" />
+                <h5 class="name mt-2">{{ ucfirst($executive->name) }}</h5>
+                <p class="title">{{ ucfirst($executive->designation) }}</p>
             </div>
+            @endforeach
         </div>
 
         <!-- Vertical Line under Director -->
@@ -116,48 +120,17 @@
         <!-- Subordinates -->
         <div class="row text-center">
             <!-- Manager -->
+            @foreach ($executives->skip(1) as $executive)
             <div class="col-md-3">
                 <div class="child-connector"></div>
                 <div class="child-connector-point"></div>
                 <div class="chart-card p-3">
-                    <img src="https://via.placeholder.com/80" alt="Manager" />
-                    <h5 class="name mt-2">John Doe</h5>
-                    <p class="title">Manager</p>
+                    <img src="{{ asset('upload/images/executives/'.$executive->image) }}" alt="Manager" />
+                    <h5 class="name mt-2">{{ ucfirst($executive->name) }}</h5>
+                    <p class="title">{{ ucfirst($executive->designation) }}</p>
                 </div>
             </div>
-
-            <!-- Accountant -->
-            <div class="col-md-3">
-                <div class="child-connector"></div>
-                <div class="child-connector-point"></div>
-                <div class="chart-card p-3">
-                    <img src="https://via.placeholder.com/80" alt="Accountant" />
-                    <h5 class="name mt-2">Rose Albert</h5>
-                    <p class="title">Accountant</p>
-                </div>
-            </div>
-
-            <!-- Producer -->
-            <div class="col-md-3">
-                <div class="child-connector"></div>
-                <div class="child-connector-point"></div>
-                <div class="chart-card p-3">
-                    <img src="https://via.placeholder.com/80" alt="Producer" />
-                    <h5 class="name mt-2">John Finder</h5>
-                    <p class="title">Producer</p>
-                </div>
-            </div>
-
-            <!-- Supervisor -->
-            <div class="col-md-3">
-                <div class="child-connector"></div>
-                <div class="child-connector-point"></div>
-                <div class="chart-card p-3">
-                    <img src="https://via.placeholder.com/80" alt="Supervisor" />
-                    <h5 class="name mt-2">Janna Levis</h5>
-                    <p class="title">Supervisor</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

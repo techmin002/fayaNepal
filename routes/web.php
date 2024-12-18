@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\BankAccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,3 +55,4 @@ Route::post('contact/store',[InquiryController::class,'store'])->name('frontend.
 Route::get('inquiries',[InquiryController::class,'index'])->name('inquires.index');
 Route::delete('inquiries/delete/{id}',[InquiryController::class,'destroy'])->name('inquires.destroy');
 Route::get('/fetch-notice', [FrontendController::class, 'fetchNotice'])->name('fetch.notice');
+

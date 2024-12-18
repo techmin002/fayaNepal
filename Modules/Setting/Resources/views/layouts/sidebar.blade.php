@@ -393,6 +393,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="{{ route('bank-accounts.index') }}" class="nav-link {{ request()->routeIs('bank-accounts.index') ? 'active' : '' }}">
+                  {{-- <i class="far fa-circle nav-icon"></i> --}}
+                  <p>Bank Account</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{ route('company.index') }}" class="nav-link {{ request()->routeIs('company.index') ? 'active' : '' }}">
                   {{-- <i class="far fa-circle nav-icon"></i> --}}
                   <p>Company Profile</p>
