@@ -207,9 +207,9 @@
           @can('access_teams')
           <li class="nav-item {{ request()->routeIs('teams.*') ? 'menu-is-opening menu-open' : '' }}">
             <a href="#" class="nav-link" {{ request()->routeIs('teams.*') ? 'active' : '' }}>
-              <i class="nav-icon fas fa-user"></i>
+              <i class="fa fa-users nav-icon"></i>
               <p>
-                Teams
+                Teams Mgnt
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -221,9 +221,21 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('teams.create') }}" class="nav-link {{ request()->routeIs('teams.create') ? 'active' : '' }}">
-                  {{-- <i class="far fa-circle nav-icon"></i> --}}
-                  <p>Create Teams</p>
+                <a href="{{ route('leaderships.index') }}" class="nav-link {{ request()->routeIs('leaderships.index') ? 'active' : '' }}">
+                  {{-- <i class="fa fa-users nav-icon"></i> --}}
+                  <p>Leadership</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('executives.index') }}" class="nav-link {{ request()->routeIs('executives.index') ? 'active' : '' }}">
+                  {{-- <i class="fa fa-users nav-icon"></i> --}}
+                  <p>Executive Board</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('partners.index') }}" class="nav-link {{ request()->routeIs('partners.index') ? 'active' : '' }}">
+                  {{-- <i class="fa fa-users nav-icon"></i> --}}
+                  <p>Partners</p>
                 </a>
               </li>
             </ul>
@@ -344,15 +356,10 @@
               <p>Notice</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('leaderships.index') }}" class="nav-link {{ request()->routeIs('leaderships.index') ? 'active' : '' }}">
-              <i class="fa fa-users nav-icon"></i>
-              <p>Leadership</p>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a href="{{ route('publications.index') }}" class="nav-link {{ request()->routeIs('publications.index') ? 'active' : '' }}">
-              <i class="fa fa-users nav-icon"></i>
+              <i class="fa fa-address-book nav-icon"></i>
               <p>Publication</p>
             </a>
           </li>
@@ -362,18 +369,13 @@
               <p>Reports</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('partners.index') }}" class="nav-link {{ request()->routeIs('partners.index') ? 'active' : '' }}">
-              <i class="fa fa-users nav-icon"></i>
-              <p>Partners</p>
-            </a>
-          </li>
-            <li class="nav-item">
+          
+            {{-- <li class="nav-item">
               <a href="{{ route('galleries.index') }}" class="nav-link {{ request()->routeIs('galleries.index') ? 'active' : '' }}">
                 <i class="far fa-image nav-icon"></i>
                 <p>Gallery</p>
               </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
               <a href="{{ route('inquires.index') }}" class="nav-link {{ request()->routeIs('inquires.index') ? 'active' : '' }}">
                 <i class="far fa-address-book nav-icon"></i>
