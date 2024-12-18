@@ -40,6 +40,7 @@ Route::get('/leadership', [FrontendController::class,'leadership'])->name('front
 Route::get('/publication', [FrontendController::class,'publication'])->name('frontend.publication');
 Route::get('/annual-report', [FrontendController::class,'annualReport'])->name('frontend.annual');
 Route::get('/project-report', [FrontendController::class,'projectReport'])->name('frontend.project');
+Route::get('/executive-board', [FrontendController::class,'executiveBoard'])->name('frontend.executiveBoard');
 
 
 Auth::routes();

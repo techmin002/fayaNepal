@@ -188,4 +188,8 @@ class FrontendController extends Controller
         $reports = Report::where('report_type', 'project')->get();
         return view('frontend.pages.project-report', compact('reports'));
     }
+    public function executiveBoard(){
+        return view('frontend.pages.executive-board');
+         
+    }
 }
