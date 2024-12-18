@@ -224,7 +224,7 @@
                             </ul>
                           
                       </nav>
-                    <a href="#" class="default-btn">Donet Now</a>
+                    <a href="{{ route('frontend.donate') }}" class="default-btn">Donet Now</a>
                 </div>
             </div>
         </div>

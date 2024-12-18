@@ -41,6 +41,7 @@ Route::get('/publication', [FrontendController::class,'publication'])->name('fro
 Route::get('/annual-report', [FrontendController::class,'annualReport'])->name('frontend.annual');
 Route::get('/project-report', [FrontendController::class,'projectReport'])->name('frontend.project');
 Route::get('/executive-board', [FrontendController::class,'executiveBoard'])->name('frontend.executiveBoard');
+Route::get('/donate', [FrontendController::class,'donate'])->name('frontend.donate');
 
 
 Auth::routes();
