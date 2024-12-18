@@ -108,7 +108,7 @@ class ServiceCategoryController extends Controller
             $request->image->move(public_path('upload/images/category'), $image);
         }else
         {
-            $image = $category->iamge;
+            $image = $category->image;
         }
         if($request->title)
         {

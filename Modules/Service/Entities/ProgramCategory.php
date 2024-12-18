@@ -14,7 +14,7 @@ class ProgramCategory extends Model
         'slug',
         'icon',
         'image',
-        'short-description',
+        'short_description',
         'description',
         'status'
     ];

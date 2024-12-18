@@ -143,8 +143,9 @@
                         </div>
 
                         <div class="step step-2">
+                            @if($bank != null)
                             <div class="mb-3 text-center">
-                                <img src="{{ asset('upload/images/bank_accounts/'.$bank->account_qr) }}"  class="w-25" alt="QR Code">
+                                <img src="{{ asset('upload/images/bank_accounts/'.$bank->account_qr ?? 'N/A') }}"  class="w-25" alt="QR Code">
                                 <h2>OR</h2>
                                 <hr>
                             </div>
@@ -161,16 +162,19 @@
                                             <strong>PhonePay Number </strong><br>
                                         </div>
                                         <div class="col-md-8">
-                                            <span>:{{ $bank->bank_name }}</span><br>
-                                            <span>:{{ $bank->bank_branch }}</span> <br>
-                                            <span>:{{ $bank->account_name }}</span><br>
-                                            <span>:{{ $bank->account_number }}</span><br>
-                                            <span>:{{ $bank->mobile_number }}</span><br>
+                                            <span>:{{ $bank->bank_name ?? 'N/A' }}</span><br>
+                                            <span>:{{ $bank->bank_branch ?? 'N/A'}}</span> <br>
+                                            <span>:{{ $bank->account_name ?? 'N/A'}}</span><br>
+                                            <span>:{{ $bank->account_number ?? 'N/A'}}</span><br>
+                                            <span>:{{ $bank->mobile_number ?? 'N/A'}}</span><br>
                                         </div>
                                     </div>
                                 </div>
                                 <hr>
                             </div>
+                            
+
+                            @endif
                             <div class="mb-3">
                                 <label for="screenshot" class="form-label">Upload Transaction Screenshot:</label>
                                 <input type="file" id="screenshot" name="receipt" class="form-control" accept="image/*">
