@@ -28,10 +28,11 @@ class FrontendController extends Controller
     public function index()
     {
         $data['sliders'] = Slider::where('status', 'on')->orderBy('created_at', 'DESC')->get();
-        $data['currentProgram'] = Program::where('program_type', 'current')->orderBy('created_at', 'DESC')->get();
+        $data['currentProgram'] = Program::where('status', 'on')->orderBy('program_type', 'DESC')->get();
         $data['pastProgram'] = Program::where('program_type', 'past')->orderBy('created_at', 'DESC')->get();
         $data['testimonials'] = Testimonial::where('status', 'on')->orderBy('created_at', 'DESC')->get();
         $data['stories'] = Story::where('status', 'on')->orderBy('created_at', 'DESC')->get();
+        $data['pastpartners'] = Partner::where('status', 'on')->get();
         return view('welcome', compact('data'));
     }
     public function about()
@@ -172,8 +173,8 @@ class FrontendController extends Controller
 
     public function leadership()
     {
-        $leaderships = Leadership::where('status', 'on')->get();
-        return view('frontend.pages.leadership', compact('leaderships'));
+        $executives = ExecutiveBoard::where('status','on')->orderBy('position','ASC')->get();
+        return view('frontend.pages.executive-board', compact('executives'));
     }
 
     public function publication()
@@ -192,8 +193,9 @@ class FrontendController extends Controller
         return view('frontend.pages.project-report', compact('reports'));
     }
     public function executiveBoard(){
-        $executives = ExecutiveBoard::where('status','on')->orderBy('position','ASC')->get();
-        return view('frontend.pages.executive-board', compact('executives'));
+        
+        $leaderships = Leadership::where('status', 'on')->get();
+        return view('frontend.pages.leadership', compact('leaderships'));
          
     }
     public function donate(){

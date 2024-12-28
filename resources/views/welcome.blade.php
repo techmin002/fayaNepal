@@ -74,22 +74,23 @@
     <section class="causes-section bg-grey bd-bottom padding">
         <div class="container">
             <div class="section-heading text-center mb-40">
-                <h2>Current Program</h2>
+                <h2> Programs</h2>
                 <span class="heading-border"></span>
                 <p>"FAYA Nepal is driving initiatives aimed at improving maternal and child health, enhancing public
                     health measures, and empowering marginalized communities. The organization also focuses on
                     strengthening leadership and advocacy skills among women and marginalized groups, fostering
                     inclusive and sustainable development."</p>
             </div><!-- /Section Heading -->
-            <div class="causes-wrap row">
+            <div class="causes-wrap row ">
                 @foreach ($data['currentProgram'] as $program)
-                    <div class="col-md-4 xs-padding">
+                    <div class="col-md-4 xs-padding mt-3">
                         <div class="causes-content">
                             <div class="causes-thumb">
                                 <img src="{{ asset('upload/images/services/' . $program->image) }}" alt="causes">
                                 <a href="#" class="donate-btn">Donate Now<i class="ti-plus"></i></a>
                                 <div class="progress">
-                                    @if (is_int($program->icon) && $program->icon >= 15)
+                                    
+                                    @if($program->icon)
                                         @php
                                             $progress = 'style=width:' . $program->icon . '%';
                                            $per =  $program->icon;
@@ -132,11 +133,11 @@
                             accessing healthcare. The local population struggles with inadequate health facility
                             buildings, and the remoteness of the area makes it difficult for residents to receive
                             essential health services."</p>
-                        <div class="progress">
+                        {{-- <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 35%;" aria-valuenow="25"
                                 aria-valuemin="0" aria-valuemax="100"><span class="wow cssanimation fadeInLeft">35%</span>
                             </div>
-                        </div>
+                        </div> --}}
                         <a href="#" class="default-btn">Donate Now</a>
                     </div>
                 </div>
@@ -157,7 +158,7 @@
             <ul class="row counters">
                 <li class="col-md-3 col-sm-6 sm-padding">
                     <div class="counter-content">
-                        <i class="ti-money"></i>
+                        <i class="fa fa-inr"></i>
                         <h3 class="counter">85389</h3>
                         <h4 class="text-white">Portfolio</h4>
                     </div>
@@ -187,33 +188,37 @@
         </div>
     </section><!-- Counter Section -->
 
-    <section class="events-section bg-grey bd-bottom padding">
+    <section class="blog-section bg-grey bd-bottom padding">
         <div class="container">
             <div class="section-heading text-center mb-40">
-                <h2>Past Program</h2>
+                <h2>Recent Stories</h2>
                 <span class="heading-border"></span>
                 <p>Help today because tomorrow you may be the one who <br> needs more helping!</p>
             </div><!-- /Section Heading -->
-            <div id="event-carousel" class="events-wrap owl-Carousel">
-                @foreach ($data['pastProgram'] as $pprogram)
-                    <div class="events-item">
-                        <div class="event-thumb">
-                            <img src="{{ asset('upload/images/services/' . $pprogram->image) }}" alt="events">
-                        </div>
-                        <div class="event-details">
-                            <h3>{{ $pprogram->title }}</h3>
-                            <div class="event-info">
-                                <p><i class="ti-calendar"></i>{{ $pprogram->date }}</p>
-                                <p><i class="ti-location-pin"></i>{{ $pprogram->icon }}</p>
-                            </div>
-                            <p>{!! $pprogram->shortdescription !!}</p>
-                            <a href="{{ route('program.detail', $program->slug) }}" class="default-btn">Read More</a>
-                        </div>
-                    </div><!-- Event-1 -->
-                @endforeach
+            <div class="row">
+                <div class="col-lg-12 xs-padding">
+                    <div class="blog-items grid-list row">
+                        @foreach ($data['stories'] as $story)
+                            <div class="col-md-4 padding-15">
+                                <div class="blog-post">
+                                    <img src="{{ asset('upload/images/advertisements/' . $story->image) }}"
+                                        alt="blog post">
+                                    <div class="blog-content">
+                                        <span class="date"><i class="fa fa-clock-o"></i> {{ $story->date }}</span>
+                                        <h3><a href="{{ route('story.detail', $story->id) }}">{{ $story->title }}</a>
+                                        </h3>
+                                        <p>{!! $story->shortdescription !!}</p>
+                                        <a href="{{ route('story.detail', $story->id) }}" class="post-meta">Read More</a>
+                                    </div>
+                                </div>
+                            </div><!-- Post 1 -->
+                        @endforeach
+                    </div>
+                </div><!-- Blog Posts -->
             </div>
         </div>
-    </section><!-- Events Section -->
+    </section><!-- Blog Section -->
+    <!-- Events Section -->
     {{-- modal for notice --}}
     <!-- Notice Modal -->
     <div class="modal fade" id="noticeModal" tabindex="-1" aria-labelledby="noticeModalLabel" aria-hidden="true">
@@ -259,37 +264,30 @@
             </div>
         </div>
     </section><!-- Testimonial Section -->
-
-    <section class="blog-section bg-grey bd-bottom padding">
+    <div class="sponsor-section bd-bottom">
         <div class="container">
             <div class="section-heading text-center mb-40">
-                <h2>Recent Stories</h2>
+                <h2>Donor's/ Partner's</h2>
                 <span class="heading-border"></span>
-                <p>Help today because tomorrow you may be the one who <br> needs more helping!</p>
-            </div><!-- /Section Heading -->
-            <div class="row">
-                <div class="col-lg-12 xs-padding">
-                    <div class="blog-items grid-list row">
-                        @foreach ($data['stories'] as $story)
-                            <div class="col-md-4 padding-15">
-                                <div class="blog-post">
-                                    <img src="{{ asset('upload/images/advertisements/' . $story->image) }}"
-                                        alt="blog post">
-                                    <div class="blog-content">
-                                        <span class="date"><i class="fa fa-clock-o"></i> {{ $story->date }}</span>
-                                        <h3><a href="{{ route('story.detail', $story->id) }}">{{ $story->title }}</a>
-                                        </h3>
-                                        <p>{!! $story->shortdescription !!}</p>
-                                        <a href="{{ route('story.detail', $story->id) }}" class="post-meta">Read More</a>
-                                    </div>
-                                </div>
-                            </div><!-- Post 1 -->
-                        @endforeach
-                    </div>
-                </div><!-- Blog Posts -->
+                <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
+                   
             </div>
+            
         </div>
-    </section><!-- Blog Section -->
+    </div>
+    <div class="container-fluid">
+        <div class="row main-container-down align-items-center h-100">
+          <div class="container-unique rounded">
+            <div class="unique-slider">
+              <div class="unique-logos">
+                @foreach ($data['pastpartners'] as $past)
+                <img src="{{ asset('upload/images/partners/'.$past->logo)}}" alt="Brand 1" class="unique-logo">
+                @endforeach
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>

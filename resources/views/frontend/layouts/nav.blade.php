@@ -46,7 +46,7 @@
 <header id="header" class="header-section">
     <div class="top-header">
         
-        <div class="container-fluid">
+        <div class="container">
             <div class="top-content-wrap row">
                 <div class="col-sm-8">
                     
@@ -55,7 +55,6 @@
                         $companyProfile = Modules\Setting\Entities\CompanyProfile::first();
                         $programCategory = Modules\Service\Entities\ProgramCategory::select('slug','title')->where('status','on')->get();
                      @endphp 
-                     <li><strong class="text-white">Together For Prosperity</strong></li>
                         <li><a href="#"><i class="ti-email"></i>{{ $companyProfile->company_email }}</a></li>
                         <li><a href="#"><i class="ti-mobile"></i>{{ $companyProfile->company_phone }}</a></li>
                     </ul>
@@ -149,14 +148,14 @@
                                 <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
                                   <!-- Web Development Dropdown -->
                                   <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="{{ route('frontend.about') }}">FAYA History</a>
-                                    <ul class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('frontend.about') }}">FAYA History</a>
+                                    {{-- <ul class="dropdown-menu"> --}}
                                     <li><a class="dropdown-item" href="{{ route('frontend.coverage') }}">Coverage</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.executiveBoard') }}">Executive Board</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.leadership') }}">Leadership</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Organogram</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.partnersdonors') }}">Donors/Partners</a></li>
-                                    </ul>
+                                    {{-- </ul> --}}
                                   </li>
                                   
                                 </ul>
@@ -206,13 +205,14 @@
                                 <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
                                   <!-- Web Development Dropdown -->
                                   <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#">Vacancy</a>
-                                    <ul class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Vacancy</a>
+                                    {{-- <ul class="dropdown-menu"> --}}
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Procurement</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.vollunter') }}">Volluntering</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.noticeboard') }}">Notice</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Galleries</a></li>
                                     
-                                    </ul>
+                                    {{-- </ul> --}}
                                   </li>
                                   
                                 </ul>

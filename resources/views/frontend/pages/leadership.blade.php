@@ -534,10 +534,10 @@ function clickBtn(event) {
         <div class="pager-header">
             <div class="container">
                 <div class="page-content">
-                    <h2>Leader</h2>
+                    <h2>Executive Board</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">our Leader</li>
+                        <li class="breadcrumb-item active">Executive Board</li>
                     </ol>
                 </div>
             </div>
@@ -546,7 +546,7 @@ function clickBtn(event) {
 
          <div class='container mt-40 mb-40'>
          <div class="section-heading text-center mb-40">
-                    <h2>Our leader</h2>
+                    <h2>Executive Board</h2>
                     <span class="heading-border"></span>
                     <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
                        

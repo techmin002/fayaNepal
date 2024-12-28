@@ -73,10 +73,10 @@
         <div class="pager-header">
             <div class="container">
                 <div class="page-content">
-                    <h2>Executive Board</h2>
+                    <h2>Managaement</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Executive Boar</li>
+                        <li class="breadcrumb-item active">Managaement</li>
                     </ol>
                 </div>
             </div>
@@ -86,14 +86,14 @@
 
          <div class='container mt-40 mb-40'>
          <div class="section-heading text-center mb-40">
-                    <h2>Executive Board</h2>
+                    <h2>Management</h2>
                     <span class="heading-border"></span>
                     <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
                        
                 </div>
   
                 <div class="container my-5">
-        <h3 class="text-center mb-5">EXECUTIVE BOARD</h3>
+        <h3 class="text-center mb-5">MANAGEMENT</h3>
 
         <!-- Director -->
         <div class="text-center">
