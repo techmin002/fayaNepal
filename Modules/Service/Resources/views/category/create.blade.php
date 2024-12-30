@@ -54,7 +54,7 @@
 
                                                 <input type="file" id="file-ip-1" accept="image/*"
                                                     class="form-control-file border" value="{{ old('icon') }}"
-                                                    onchange="showPreview2(event);" required name="icon">
+                                                    onchange="showPreview2(event);" name="icon">
                                                 @error('icon')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror

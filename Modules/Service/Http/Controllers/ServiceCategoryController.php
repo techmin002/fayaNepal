@@ -40,12 +40,14 @@ class ServiceCategoryController extends Controller
      */
     public function store(ServiceCategoryStoreRequest $request)
     {
+        $imageName = 'N/A';
         if($request['icon'])
         {
             $imageName = time().'.'.$request->icon->extension();
 
             $request->icon->move(public_path('upload/images/category'), $imageName);
         }
+        $image = 'N/A';
         if($request->image)
         {
             $image = time().'.'.$request->image->extension();

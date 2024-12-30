@@ -15,7 +15,7 @@ class ServiceCategoryStoreRequest extends FormRequest
     {
         return [
             'title' => ['required'],
-            'icon' => ['required'],
+            // 'icon' => ['required'],
             'short_description' => ['required']
         ];
     }

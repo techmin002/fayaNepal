@@ -596,9 +596,11 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
 } 
 .nivo-directionNav a.nivo-prevNav {
     left: 25px;
+    background-color:#01923f
 }
 .nivo-directionNav a.nivo-nextNav {
     right: 25px;
+    background-color:#01923f
 }
 .slider-wrapper:hover .nivo-directionNav a.nivo-prevNav {
     left: 15px;
@@ -866,7 +868,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
   
   .unique-logos {
     display: inline-block;
-    animation: unique-slide 20s linear infinite; /* Continuous animation */
+    animation: unique-slide 35s linear infinite; /* Continuous animation */
   }
   
   .unique-logo {
