@@ -153,41 +153,42 @@
             </div>
         </div>
     </section><!-- /Featured Campaigns Section -->
+    @if(isset($data['portfolio']))
     <section id="counter" class="counter-section">
         <div class="container">
             <ul class="row counters">
                 <li class="col-md-3 col-sm-6 sm-padding">
                     <div class="counter-content">
                         <i class="fa fa-inr"></i>
-                        <h3 class="counter">85389</h3>
+                        <h3 class="counter">{{ $data['portfolio']->portfolio }}</h3>
                         <h4 class="text-white">Portfolio</h4>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 sm-padding">
                     <div class="counter-content">
                         <i class="ti-face-smile"></i>
-                        <h3 class="counter">10693</h3>
+                        <h3 class="counter">{{ $data['portfolio']->beneficiary_direct }}</h3>
                         <h4 class="text-white">Beneficiary Direct</h4>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 sm-padding">
                     <div class="counter-content">
                         <i class="ti-user"></i>
-                        <h3 class="counter">50177</h3>
+                        <h3 class="counter">{{ $data['portfolio']->beneficiary_indirect }}</h3>
                         <h4 class="text-white">Beneficiary InDirect</h4>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 sm-padding">
                     <div class="counter-content">
                         <i class="ti-comments"></i>
-                        <h3 class="counter">669</h3>
+                        <h3 class="counter">{{ $data['portfolio']->project }}</h3>
                         <h4 class="text-white">Project Portfolio</h4>
                     </div>
                 </li>
             </ul>
         </div>
     </section><!-- Counter Section -->
-
+@endif
     <section class="blog-section bg-grey bd-bottom padding">
         <div class="container">
             <div class="section-heading text-center mb-40">

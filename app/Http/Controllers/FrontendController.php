@@ -15,6 +15,7 @@ use Modules\Partner\Entities\Partner;
 use Modules\Service\Entities\Program;
 use Modules\Service\Entities\ProgramCategory;
 use Modules\Setting\Entities\CompanyProfile;
+use Modules\Slider\Entities\Portfolio;
 use Modules\Slider\Entities\Slider;
 use Modules\Team\Entities\ExecutiveBoard;
 use Modules\Team\Entities\Leadership;
@@ -33,6 +34,7 @@ class FrontendController extends Controller
         $data['testimonials'] = Testimonial::where('status', 'on')->orderBy('created_at', 'DESC')->get();
         $data['stories'] = Story::where('status', 'on')->orderBy('created_at', 'DESC')->get();
         $data['pastpartners'] = Partner::where('status', 'on')->get();
+        $data['portfolio'] = Portfolio::first();
         return view('welcome', compact('data'));
     }
     public function about()

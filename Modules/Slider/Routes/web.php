@@ -13,8 +13,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Slider\Http\Controllers\SliderController;
+use Modules\Slider\Http\Controllers\PortfolioController;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('sliders', 'SliderController');
+    Route::resource('portfolio', 'PortfolioController');
     Route::get('sliders/status/{id}',[SliderController::class,'status'])->name('slider.status');
 });

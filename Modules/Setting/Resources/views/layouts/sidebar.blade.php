@@ -388,6 +388,12 @@
                 <p>Inquiries</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('portfolio.index') }}" class="nav-link {{ request()->routeIs('portfolio.index') ? 'active' : '' }}">
+                <i class="far fa-address-book nav-icon"></i>
+                <p>Portfolio</p>
+              </a>
+            </li>
           @can('access_settings')
           <li class="nav-item {{ request()->routeIs('company.*') ? 'menu-is-opening menu-open' : '' }}">
             <a href="#" class="nav-link" {{ request()->routeIs('company.*') ? 'active' : '' }}>
