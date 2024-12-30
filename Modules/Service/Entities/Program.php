@@ -20,11 +20,18 @@ class Program extends Model
         'video',
         'status',
         'program_type',
-        'date'
+        'date',
+        'end_date',
+        'location',
+        'partner_id',
     ];
     public function category()
     {
-        return $this->hasOne(ProgramCategory::class,'category_id','id');
+        return $this->hasOne(ProgramCategory::class,'id','category_id');
+    } 
+    public function partner()
+    {
+        return $this->hasOne(ProgramCategory::class,'id','partner_id');
     } 
     protected static function newFactory()
     {

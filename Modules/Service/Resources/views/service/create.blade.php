@@ -71,12 +71,12 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="icon">Program Location </label>
+                                                <label for="location">Program Location </label>
 
                                                 <input type="text" id="file-ip-1"
-                                                    placeholder="Enter Program Full Address" name="icon"
-                                                    value="{{ old('icon') }}" class="form-control">
-                                                @error('icon')
+                                                    placeholder="Enter Program Full Address" name="location"
+                                                    value="{{ old('location') }}" class="form-control">
+                                                @error('location')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
 
@@ -102,7 +102,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="program_type">Program Type </label>
                                                 <select name="program_type" class="form-control" id="">
@@ -117,12 +117,36 @@
 
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="partner_id">Partner </label>
+                                                <select name="partner_id" class="form-control" id="">
+                                                    <option value="" selected disabled>Select Program Type</option>
+                                                    @foreach ($partners as $partner)
+                                                    <option value="{{ $partner->id }}">{{ $partner->title }}</option>
+                                                    @endforeach
+                                                    
+                                                </select>
 
-                                        <div class="col-md-6">
+                                                @error('partner_id')
+                                                    <p style="color: red">{{ $message }}</p>
+                                                @enderror
+
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-3">
                                             <!-- Bootstrap Switch -->
                                             <div class="form-group">
-                                                <label for="date">Program Date</label>
+                                                <label for="date">Start Date</label>
                                                 <input type="date" name="date" class="form-control" id="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <!-- Bootstrap Switch -->
+                                            <div class="form-group">
+                                                <label for="end_date">End Date</label>
+                                                <input type="date" name="end_date" class="form-control" id="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">

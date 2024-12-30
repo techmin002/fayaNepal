@@ -10,6 +10,7 @@ use Modules\Service\Entities\Service;
 use Modules\Service\Http\Requests\StoreServiceRequest;
 use Modules\Service\Http\Requests\UpdateServiceRequest;
 use Illuminate\Support\Str;
+use Modules\Partner\Entities\Partner;
 use Modules\Service\Entities\Program;
 use Modules\Service\Entities\ProgramCategory;
 
@@ -32,7 +33,8 @@ class ServiceController extends Controller
     public function create()
     {
         $sectors = ProgramCategory::orderBy('created_at','DESC')->get();
-        return view('service::service.create', compact('sectors'));
+        $partners = Partner::where('status','on')->get();
+        return view('service::service.create', compact('sectors','partners'));
     }
 
     /**
@@ -65,7 +67,10 @@ class ServiceController extends Controller
             'shortdescription' => $request->shortDescription,
             'description' => $request->description,
             'program_type' => $request->program_type,
+            'partner_id' => $request->partner_id,
             'date' => $request->date,
+            'end_date' => $request->end_date,
+            'location' => $request->location,
             'status' => $request->status
         ]);
         return redirect()->route('programs.index')->with('success','Program Added Successfully');
@@ -90,7 +95,8 @@ class ServiceController extends Controller
     {
         $service = Program::findOrfail($id);
         $sectors = ProgramCategory::orderBy('created_at','DESC')->get();
-        return view('service::service.edit',compact('service','sectors'));
+        $partners = Partner::where('status','on')->get();
+        return view('service::service.edit',compact('service','sectors','partners'));
     }
 
     /**
@@ -138,7 +144,10 @@ class ServiceController extends Controller
             'shortdescription' => $request->shortDescription,
             'description' => $request->description,
             'program_type' => $request->program_type,
+            'partner_id' => $request->partner_id,
             'date' => $request->date,
+            'end_date' => $request->end_date,
+            'location' => $request->location,
             'status' => $status
         ]);
         return redirect()->route('programs.index')->with('success','Program Updated Successfully');
