@@ -153,7 +153,7 @@
                                     <li><a class="dropdown-item" href="{{ route('frontend.coverage') }}">Coverage</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.executiveBoard') }}">Executive Board</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.leadership') }}">Leadership</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Organogram</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.organogram') }}">Organogram</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.partnersdonors') }}">Donors/Partners</a></li>
                                     {{-- </ul> --}}
                                   </li>
@@ -207,7 +207,7 @@
                                   <li class="dropdown">
                                     <a class="dropdown-item" href="#">Vacancy</a>
                                     {{-- <ul class="dropdown-menu"> --}}
-                                    <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Procurement</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('frontend.procurement') }}">Procurement</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.vollunter') }}">Volluntering</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.noticeboard') }}">Notice</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Galleries</a></li>

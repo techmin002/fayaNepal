@@ -11,6 +11,8 @@ use Modules\Blog\Entities\Event;
 use Modules\Gallery\Entities\Gallery;
 use Modules\Gallery\Entities\GalleryCategory;
 use Modules\Notice\Entities\Notice;
+use Modules\Notice\Entities\Organogram;
+use Modules\Notice\Entities\Procurement;
 use Modules\Partner\Entities\Partner;
 use Modules\Service\Entities\Program;
 use Modules\Service\Entities\ProgramCategory;
@@ -22,6 +24,7 @@ use Modules\Team\Entities\Leadership;
 use Modules\Team\Entities\Publication;
 use Modules\Team\Entities\Report;
 use Modules\Team\Entities\Team;
+use Modules\Team\Entities\VolunteerForm;
 use Modules\Testimonial\Entities\Testimonial;
 
 class FrontendController extends Controller
@@ -47,7 +50,7 @@ class FrontendController extends Controller
     }
     public function currentPrograms()
     {
-        $data['programs'] = Program::where('status', 'on')->where('program_type','current')->orderby('created_at', 'DESC')->get();
+        $data['programs'] = Program::where('status', 'on')->where('program_type', 'current')->orderby('created_at', 'DESC')->get();
         $data['testimonials'] = Testimonial::where('status', 'on')->orderby('created_at', 'DESC')->get();
         $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
 
@@ -55,7 +58,7 @@ class FrontendController extends Controller
     }
     public function pastPrograms()
     {
-        $data['programs'] = Program::where('status', 'on')->where('program_type','past')->with('category')->orderby('created_at', 'DESC')->get();
+        $data['programs'] = Program::where('status', 'on')->where('program_type', 'past')->with('category')->orderby('created_at', 'DESC')->get();
         $data['testimonials'] = Testimonial::where('status', 'on')->orderby('created_at', 'DESC')->get();
         $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
 
@@ -144,7 +147,16 @@ class FrontendController extends Controller
         $notices = Notice::orderBy('created_at', 'DESC')->get();
         return view('frontend.pages.noticeboard', compact('notices'));
     }
-
+    public function procurement()
+    {
+        $procurements = Procurement::orderBy('created_at', 'DESC')->get();
+        return view('frontend.pages.procurement', compact('procurements'));
+    }
+    public function organogram()
+    {
+        $organograms = Organogram::orderBy('created_at', 'DESC')->get();
+        return view('frontend.pages.organogram', compact('organograms'));
+    }
     public function vollunter()
     {
         $data['teams'] = Team::where('status', 'on')->get();
@@ -152,13 +164,30 @@ class FrontendController extends Controller
         return view('frontend.pages.vollunter', compact('data'));
     }
 
-    // public function currentproject(){
-    // $data['programs'] = Program::where('status', 'on')->orderby('created_at', 'DESC')->get();
-    // $data['testimonials'] = Testimonial::where('status', 'on')->orderby('created_at', 'DESC')->get();
-    // $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
-    //     return view('frontend.pages.currentproject');
-    // }
+    public function becomeVolunteer()
+    {
 
+        return view('frontend.pages.become-volunteer');
+    }
+    public function storeVolunteer(Request $request)
+    {
+        // dd($request->all());
+        $imageName = '';
+        if ($request->file)
+        {
+            $imageName = time().'.'.$request->file->extension();
+
+            $request->file->move(public_path('upload/images/volunteer-form'), $imageName);
+
+            
+        }
+        $volunteer = VolunteerForm::create([
+            'name' => $request->name,
+            'form' => $imageName,
+            'status' => 'pending',
+        ]);
+        return back()->with('success', 'Volunteer from submitted successfully');
+    }
 
     public function stories()
     {
@@ -175,7 +204,7 @@ class FrontendController extends Controller
 
     public function leadership()
     {
-        $executives = ExecutiveBoard::where('status','on')->orderBy('position','ASC')->get();
+        $executives = ExecutiveBoard::where('status', 'on')->orderBy('position', 'ASC')->get();
         return view('frontend.pages.executive-board', compact('executives'));
     }
 
@@ -194,39 +223,36 @@ class FrontendController extends Controller
         $reports = Report::where('report_type', 'project')->get();
         return view('frontend.pages.project-report', compact('reports'));
     }
-    public function executiveBoard(){
-        
+    public function executiveBoard()
+    {
+
         $leaderships = Leadership::where('status', 'on')->get();
         return view('frontend.pages.leadership', compact('leaderships'));
-         
     }
-    public function donate(){
-        $bank = BankAccount::where('status','on')->first();
+    public function donate()
+    {
+        $bank = BankAccount::where('status', 'on')->first();
         return view('frontend.pages.donate-now', compact('bank'));
-         
     }
     public function donateStore(Request $request)
     {
-        
-        if ($request->receipt)
-        {
-            $imageName = time().'.'.$request->receipt->extension();
+
+        if ($request->receipt) {
+            $imageName = time() . '.' . $request->receipt->extension();
 
             $request->receipt->move(public_path('upload/images/donations'), $imageName);
-
-        }else{
+        } else {
             $imageName = 'n/a';
         }
         $donation = Donation::create([
-        'name' => $request['name'],
-        'email' => $request['email'],
-        'amount' => $request['amount'],
-        'message' => $request['message'],
-        'status' => 'unpaid',
-        'receipt' => $imageName
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'amount' => $request['amount'],
+            'message' => $request['message'],
+            'status' => 'unpaid',
+            'receipt' => $imageName
         ]);
-        
-        return redirect()->route('frontend.index')->with('success','Thank You for the Donation. Will Verify and Back to You.');
 
+        return redirect()->route('frontend.index')->with('success', 'Thank You for the Donation. Will Verify and Back to You.');
     }
 }

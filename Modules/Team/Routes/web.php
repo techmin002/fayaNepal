@@ -30,6 +30,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('leadership/status/{id}',[LeadershipController::class,'status'])->name('leadership.status');
     Route::get('publication/status/{id}',[PublicationController::class,'status'])->name('publication.status');
     Route::get('report/status/{id}',[ReportController::class,'status'])->name('report.status');
+    Route::get('team/status/{id}',[TeamController::class,'status'])->name('team.status');
+    Route::get('volunteers/request',[TeamController::class,'volunteersView'])->name('volunteers.view');
+    Route::get('volunteers/request/status',[TeamController::class,'volunteersStatus'])->name('volunteer.status');
+
 
 
 });

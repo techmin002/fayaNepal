@@ -49,7 +49,7 @@
                                 <li><i class="fa fa-check"></i>No goal requirements.</li>
                                 <li><i class="fa fa-check"></i>Joining is tottaly free. We dont need any money from you.</li>
                             </ul>
-                            <a href="#" class="default-btn">Join With Us</a>
+                            <a href="{{ route('become.volunteer') }}" class="default-btn">Become a Volunteer</a>
                         </div>
                     </div>
                 </div>

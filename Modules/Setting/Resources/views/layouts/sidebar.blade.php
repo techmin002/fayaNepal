@@ -217,7 +217,7 @@
               <li class="nav-item">
                 <a href="{{ route('teams.index') }}" class="nav-link {{ request()->routeIs('teams.index') ? 'active' : '' }}">
                   {{-- <i class="far fa-circle nav-icon"></i> --}}
-                  <p>Teams</p>
+                  <p>Volunteers</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -356,7 +356,18 @@
               <p>Notice</p>
             </a>
           </li>
-          
+          <li class="nav-item">
+            <a href="{{ route('procurements.index') }}" class="nav-link {{ request()->routeIs('procurements.index') ? 'active' : '' }}">
+              <i class="fa fa-receipt nav-icon"></i>
+              <p>Procurements</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('organograms.index') }}" class="nav-link {{ request()->routeIs('organograms.index') ? 'active' : '' }}">
+              <i class="fa fa-receipt nav-icon"></i>
+              <p>Organograms</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="{{ route('publications.index') }}" class="nav-link {{ request()->routeIs('publications.index') ? 'active' : '' }}">
               <i class="fa fa-address-book nav-icon"></i>

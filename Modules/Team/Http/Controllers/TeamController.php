@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Gate;
 use Modules\Team\DataTables\TeamDataTable;
 use Modules\Team\Entities\Team;
+use Modules\Team\Entities\VolunteerForm;
 use Modules\Team\Http\Requests\StoreTeamRequest;
 use Modules\Team\Http\Requests\UpdateTeamRequest;
 
@@ -147,5 +148,19 @@ class TeamController extends Controller
            'status' => $status 
         ]);
         return redirect()->route('teams.index')->with('success', 'Status Updated Successfully');
+    }
+    public function volunteersView()
+    {
+        $vollenters = VolunteerForm::orderBy('created_at','DESC')->get();
+        return view('team::teams.vollentter-from',compact("vollenters"));
+    }
+    public function volunteersStatus(Request $request)
+    {
+        $status = $request['status'];
+        $categorys = VolunteerForm::findOrfail($request['id']);
+        $categorys->update([
+            'status' => $status
+        ]);
+        return redirect()->back()->with('success', 'Volenteer Status Updated!');
     }
 }

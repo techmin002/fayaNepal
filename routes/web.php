@@ -41,6 +41,11 @@ Route::get('/leadership', [FrontendController::class,'leadership'])->name('front
 Route::get('/publication', [FrontendController::class,'publication'])->name('frontend.publication');
 Route::get('/annual-report', [FrontendController::class,'annualReport'])->name('frontend.annual');
 Route::get('/project-report', [FrontendController::class,'projectReport'])->name('frontend.project');
+Route::get('/fn-procurement', [FrontendController::class,'procurement'])->name('frontend.procurement');
+Route::get('/fn-organogram', [FrontendController::class,'organogram'])->name('frontend.organogram');
+Route::get('/become-volunteer', [FrontendController::class,'becomeVolunteer'])->name('become.volunteer');
+Route::post('store/become-volunteer', [FrontendController::class,'storeVolunteer'])->name('volunteer.store');
+
 Route::get('/executive-board', [FrontendController::class,'executiveBoard'])->name('frontend.executiveBoard');
 Route::get('/donate', [FrontendController::class,'donate'])->name('frontend.donate');
 Route::post('/donate', [FrontendController::class,'donateStore'])->name('donate.store');
