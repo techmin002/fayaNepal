@@ -45,13 +45,13 @@ class ServiceController extends Controller
     public function store(StoreServiceRequest $request)
     {
         // dd($request->all());
-        
-        // if($request['icon'])
-        // {
-        //     $imageName = time().'.'.$request->icon->extension();
-
-        //     $request->icon->move(public_path('upload/images/services'), $imageName);
-        // }
+        if($request['partner_id'])
+        {
+            $partner_id = json_encode($request['partner_id']);
+        }else{
+            $partner_id = "[]";
+        }
+       
         if($request->image)
         {
             $image = time().'.'.$request->image->extension();
@@ -67,7 +67,7 @@ class ServiceController extends Controller
             'shortdescription' => $request->shortDescription,
             'description' => $request->description,
             'program_type' => $request->program_type,
-            'partner_id' => $request->partner_id,
+            'partner_id' => $partner_id ?? "",
             'date' => $request->date,
             'end_date' => $request->end_date,
             'location' => $request->location,
@@ -108,14 +108,7 @@ class ServiceController extends Controller
     public function update(UpdateServiceRequest $request, $id)
     {
         $service= Program::findOrfail($id);
-        // if($request['icon'])
-        // {
-        //     $imageName = time().'.'.$request->icon->extension();
-
-        //     $request->icon->move(public_path('upload/images/services'), $imageName);
-        // }else{
-        //     $imageName = $service->icon;
-        // }
+        
         if($request->image)
         {
             $image = time().'.'.$request->image->extension();
@@ -135,6 +128,12 @@ class ServiceController extends Controller
         }else{
             $slug = Str::slug($service->title);
         }
+        if($request['partner_id'])
+        {
+            $partner_id = json_encode($request['partner_id']);
+        }else{
+            $partner_id = "[]";
+        }
         $service->update([
             'title' => $request->title,
             'slug' => $slug,
@@ -144,7 +143,7 @@ class ServiceController extends Controller
             'shortdescription' => $request->shortDescription,
             'description' => $request->description,
             'program_type' => $request->program_type,
-            'partner_id' => $request->partner_id,
+            'partner_id' => $partner_id,
             'date' => $request->date,
             'end_date' => $request->end_date,
             'location' => $request->location,

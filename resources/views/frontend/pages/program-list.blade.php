@@ -16,13 +16,13 @@
     <section class="causes-section bg-grey bd-bottom padding">
         <div class="container">
             <div class="causes-wrap row">
-               <div class="col-md-12">
-                <div class="section-heading text-center mb-40">
-                    <h2>Phased Out Programs</h2>
-                    <span class="heading-border"></span>
-                </div><!-- /Section Heading -->
-               </div>
-               <hr>
+                <div class="col-md-12">
+                    <div class="section-heading text-center mb-40">
+                        <h2>Phased Out Programs</h2>
+                        <span class="heading-border"></span>
+                    </div><!-- /Section Heading -->
+                </div>
+                <hr>
                 <table class="table table-bordered">
                     <thead>
                         <th>S.N</th>
@@ -36,16 +36,26 @@
                     </thead>
                     <tbody>
                         @foreach ($data['programs'] as $program)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $program->title }}</td>
-                            <td>{{ $program->date }}</td>
-                            <td>{{ $program->end_date ?? 'N/A' }}</td>
-                            <td>{{ $program->category['title'] ?? 'N/A'}}</td>
-                            <td>{{ $program->location ?? 'N/A'}}</td>
-                            <td>{{ $program->partner['title'] ?? 'N/A'}}</td>
-                            <td><a href="{{ route('program.detail', $program->slug) }}">View Detail's</a></td>
-                        </tr>
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $program->title }}</td>
+                                <td>{{ $program->date }}</td>
+                                <td>{{ $program->end_date ?? 'N/A' }}</td>
+                                <td>{{ $program->category['title'] ?? 'N/A' }}</td>
+                                <td>{{ $program->location ?? 'N/A' }}</td>
+                                <td>
+                                    @php
+                                        $ids = json_decode($program->partner_id); // Decode the partner_id JSON
+                                        // Fetch the partner names using the IDs
+                                        $partners = Modules\Partner\Entities\Partner::whereIn('id', $ids)
+                                            ->pluck('title')
+                                            ->toArray();
+                                    @endphp
+                                    {{ implode(', ', $partners) }}
+
+                                </td>
+                                <td><a href="{{ route('program.detail', $program->slug) }}">View Detail's</a></td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -122,7 +132,8 @@
                         @foreach ($data['stories'] as $story)
                             <div class="col-md-4 padding-15">
                                 <div class="blog-post">
-                                    <img src="{{ asset('upload/images/advertisements/' . $story->image) }}" alt="blog post">
+                                    <img src="{{ asset('upload/images/advertisements/' . $story->image) }}"
+                                        alt="blog post">
                                     <div class="blog-content">
                                         <span class="date"><i class="fa fa-clock-o"></i>
                                             {{ \Carbon\Carbon::parse($story->date)->format('d-M-Y') }}</span>

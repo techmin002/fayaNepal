@@ -24,6 +24,9 @@
         width: 100%;
         border: none;
     }
+    .select2-selection__choice{
+            background-color: #4CAF50 !important;
+        }
 </style>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -118,13 +121,17 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="partner_id">Partner </label>
-                                                <select name="partner_id" class="form-control" id="">
-                                                    <option value="" selected disabled>Select Program Type</option>
+                                                <select name="partner_id[]" class="select2 form-control" id="" multiple>
                                                     @foreach ($partners as $partner)
-                                                    <option value="{{ $partner->id }}" {{ old('category_id', $service->partner_id ?? '') == $partner->id ? 'selected' : '' }}>{{ $partner->title }}</option>
+                                                        <option 
+                                                            value="{{ $partner->id }}" 
+                                                            {{ in_array($partner->id, json_decode($service->partner_id ?? '[]', true)) ? 'selected' : '' }}
+                                                        >
+                                                            {{ $partner->title }}
+                                                        </option>
                                                     @endforeach
-                                                    
                                                 </select>
+                                                
 
                                                 @error('partner_id')
                                                     <p style="color: red">{{ $message }}</p>

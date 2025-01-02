@@ -23,6 +23,9 @@
             width: 100%;
             border: none;
         }
+        .select2-selection__choice{
+            background-color: #4CAF50 !important;
+        }
     </style>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -118,21 +121,18 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
+                                           
                                             <div class="form-group">
-                                                <label for="partner_id">Partner </label>
-                                                <select name="partner_id" class="form-control" id="">
-                                                    <option value="" selected disabled>Select Program Type</option>
+                                                <label>Multiple</label>
+                                                <select class="select2" multiple="multiple" name="partner_id[]" data-placeholder="Select a State" style="width: 100%;">
                                                     @foreach ($partners as $partner)
                                                     <option value="{{ $partner->id }}">{{ $partner->title }}</option>
                                                     @endforeach
-                                                    
                                                 </select>
-
                                                 @error('partner_id')
-                                                    <p style="color: red">{{ $message }}</p>
-                                                @enderror
-
-                                            </div>
+                                                <p style="color: red">{{ $message }}</p>
+                                            @enderror
+                                              </div>
                                         </div>
                                         
                                         <div class="col-md-3">
