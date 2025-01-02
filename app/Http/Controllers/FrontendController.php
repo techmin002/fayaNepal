@@ -54,7 +54,7 @@ class FrontendController extends Controller
         $data['testimonials'] = Testimonial::where('status', 'on')->orderby('created_at', 'DESC')->get();
         $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
 
-        return view('frontend.pages.program-list', compact('data'));
+        return view('frontend.pages.current-program', compact('data'));
     }
     public function pastPrograms()
     {
