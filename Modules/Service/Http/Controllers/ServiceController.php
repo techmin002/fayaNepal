@@ -33,7 +33,7 @@ class ServiceController extends Controller
     public function create()
     {
         $sectors = ProgramCategory::orderBy('created_at','DESC')->get();
-        $partners = Partner::where('status','on')->get();
+        $partners = Partner::orderBy('created_at','DESC')->get();
         return view('service::service.create', compact('sectors','partners'));
     }
 
@@ -52,8 +52,7 @@ class ServiceController extends Controller
             $partner_id = "[]";
         }
        
-        if($request->image)
-        {
+        if ($request->file('image')) {
             $image = time().'.'.$request->image->extension();
             $request->image->move(public_path('upload/images/services'), $image);
         }
@@ -63,7 +62,7 @@ class ServiceController extends Controller
             'slug' => $slug,
             'icon' => $request->completion_percentage,
             'category_id' => $request->category_id,
-            'image' => $image,
+            'image' => $image ?? 'N/A',
             'shortdescription' => $request->shortDescription,
             'description' => $request->description,
             'program_type' => $request->program_type,
@@ -95,7 +94,7 @@ class ServiceController extends Controller
     {
         $service = Program::findOrfail($id);
         $sectors = ProgramCategory::orderBy('created_at','DESC')->get();
-        $partners = Partner::where('status','on')->get();
+        $partners = Partner::orderBy('created_at','DESC')->get();
         return view('service::service.edit',compact('service','sectors','partners'));
     }
 
@@ -109,8 +108,7 @@ class ServiceController extends Controller
     {
         $service= Program::findOrfail($id);
         
-        if($request->image)
-        {
+        if ($request->file('image')) {
             $image = time().'.'.$request->image->extension();
             $request->image->move(public_path('upload/images/services'), $image);
         }else{

@@ -142,4 +142,18 @@ class ServiceCategoryController extends Controller
         $category->delete();
         return back()->with('success','Service Catgory Deleted successfully');
     }
+    public function Status($id)
+    {
+        $service= ProgramCategory::findOrfail($id);
+        if($service->status == 'on')
+        {
+            $status ='off';
+        }else{
+            $status ='on';
+        }
+        $service->update([
+            'status' => $status
+        ]);
+        return redirect()->back()->with('success','Program Updated!');
+    }
 }

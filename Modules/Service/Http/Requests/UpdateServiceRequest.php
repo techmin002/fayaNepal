@@ -15,6 +15,7 @@ class UpdateServiceRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'image' => 'image|mimes:jpeg,jpg,png,gif,bmp,webp,svg,ico|max:2048',
             'shortDescription' => 'required',
         ];
     }

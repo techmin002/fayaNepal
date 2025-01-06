@@ -123,7 +123,7 @@
                                         <div class="col-md-3">
                                            
                                             <div class="form-group">
-                                                <label>Multiple</label>
+                                                <label>Donor's/ Partner's</label>
                                                 <select class="select2" multiple="multiple" name="partner_id[]" data-placeholder="Select a State" style="width: 100%;">
                                                     @foreach ($partners as $partner)
                                                     <option value="{{ $partner->id }}">{{ $partner->title }}</option>

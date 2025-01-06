@@ -120,7 +120,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="partner_id">Partner </label>
+                                                <label>Donor's/ Partner's</label>
                                                 <select name="partner_id[]" class="select2 form-control" id="" multiple>
                                                     @foreach ($partners as $partner)
                                                         <option 

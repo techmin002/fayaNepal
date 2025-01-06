@@ -15,6 +15,7 @@ class StoreServiceRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif,bmp,webp,svg,ico|max:2048',
             'shortDescription' => 'required',
         ];
     }
