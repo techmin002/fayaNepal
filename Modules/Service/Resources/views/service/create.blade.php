@@ -108,7 +108,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="program_type">Program Type </label>
-                                                <select name="program_type" class="form-control" id="">
+                                                <select name="program_type" class="form-control" required id="">
                                                     <option value="" selected disabled>Select Program Type</option>
                                                     <option value="current">On-Going</option>
                                                     <option value="past">Completed</option>
@@ -153,7 +153,7 @@
                                             <!-- Bootstrap Switch -->
                                             <div class="form-group">
                                                 <label for="categgory_id">Program Sector</label>
-                                                <select name="category_id" id="" class="form-control">
+                                                <select name="category_id" id="" class="form-control" required>
                                                     <option value="" selected disabled>Select Program Sector</option>
                                                     @foreach ($sectors as $sector)
                                                         <option value="{{ $sector->id }}">{{ $sector->title }}</option>
