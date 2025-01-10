@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::table('programs', function (Blueprint $table) {
             $table->date('end_date')->nullable()->after('date'); // Replace 'some_column' with the appropriate column name
-            $table->string('partner_id')->nullable()->after('end_date');
-            $table->string('location')->nullable()->after('partner_id');  // Optional: Adjust 'nullable()' as needed
+            $table->integer('partner_id')->nullable()->after('end_date');
+            $table->text('location')->nullable()->after('partner_id');  // Optional: Adjust 'nullable()' as needed
         });
     }
 

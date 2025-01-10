@@ -44,7 +44,6 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
-        // dd($request->all());
         if($request['partner_id'])
         {
             $partner_id = json_encode($request['partner_id']);
@@ -70,7 +69,7 @@ class ServiceController extends Controller
             'date' => $request->date,
             'end_date' => $request->end_date,
             'location' => $request->location,
-            'status' => $request->status
+            'status' => $request->status ?? 'on'
         ]);
         return redirect()->route('programs.index')->with('success','Program Added Successfully');
     }
