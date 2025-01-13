@@ -26,6 +26,7 @@ use Modules\Team\Entities\Report;
 use Modules\Team\Entities\Team;
 use Modules\Team\Entities\VolunteerForm;
 use Modules\Testimonial\Entities\Testimonial;
+use Modules\Vacancy\Entities\Vacancy;
 
 class FrontendController extends Controller
 {
@@ -179,7 +180,7 @@ class FrontendController extends Controller
 
             $request->file->move(public_path('upload/images/volunteer-form'), $imageName);
 
-            
+
         }
         $volunteer = VolunteerForm::create([
             'name' => $request->name,
@@ -254,5 +255,10 @@ class FrontendController extends Controller
         ]);
 
         return redirect()->route('frontend.index')->with('success', 'Thank You for the Donation. Will Verify and Back to You.');
+    }
+    public function vacancy()
+    {
+        $vacancies = Vacancy::where('status','on')->get();
+        return view('frontend.pages.vacancy', compact('vacancies'));
     }
 }

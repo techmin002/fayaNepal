@@ -43,6 +43,7 @@ Route::get('/annual-report', [FrontendController::class,'annualReport'])->name('
 Route::get('/project-report', [FrontendController::class,'projectReport'])->name('frontend.project');
 Route::get('/fn-procurement', [FrontendController::class,'procurement'])->name('frontend.procurement');
 Route::get('/fn-organogram', [FrontendController::class,'organogram'])->name('frontend.organogram');
+Route::get('/fn-vacancies', [FrontendController::class,'vacancy'])->name('frontend.vacancies');
 Route::get('/become-volunteer', [FrontendController::class,'becomeVolunteer'])->name('become.volunteer');
 Route::post('store/become-volunteer', [FrontendController::class,'storeVolunteer'])->name('volunteer.store');
 

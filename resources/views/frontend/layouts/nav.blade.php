@@ -1,5 +1,5 @@
 <style>
-  
+
     .navbar-brand {
       font-size: 1.5rem;
       font-weight: bold;
@@ -9,7 +9,7 @@
       color: #fff;
       font-weight: 500;
     }
-  
+
     .dropdown-menu {
       display: none;
       background-color: #fff;
@@ -45,16 +45,16 @@
 
 <header id="header" class="header-section">
     <div class="top-header">
-        
+
         <div class="container">
             <div class="top-content-wrap row">
                 <div class="col-sm-8">
-                    
+
                     <ul class="left-info">
                         @php
                         $companyProfile = Modules\Setting\Entities\CompanyProfile::first();
                         $programCategory = Modules\Service\Entities\ProgramCategory::select('slug','title')->where('status','on')->get();
-                     @endphp 
+                     @endphp
                         <li><a href="#"><i class="ti-email"></i>{{ $companyProfile->company_email }}</a></li>
                         <li><a href="#"><i class="ti-mobile"></i>{{ $companyProfile->company_phone }}</a></li>
                     </ul>
@@ -92,7 +92,7 @@
                                     <li><a href="{{ route('frontend.leadership') }}">Leadership</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Organogram</a></li>
                                     <li><a href="{{ route('frontend.partners') }}">Donors/ Partners</a></li>
-                                  
+
                             </ul>
                         </li>
                         <li><a href="#">Our Work</a>
@@ -101,7 +101,7 @@
                                     <li><a href="{{ route('frontend.gallery') }}">{{ $cat->title }}</a></li>
                                    @endforeach
                                     <li><a href="{{ route('frontend.gallery') }}">Projects</a></li>
-                                  
+
                             </ul>
                         </li>
                         <li><a href="#">Resources</a>
@@ -110,7 +110,7 @@
                                     <li><a href="{{ route('frontend.publication') }}">Publications</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Stories</a></li>
 
-                                  
+
                             </ul>
                         </li>
                         <li><a href="#">Get Involved</a>
@@ -119,7 +119,7 @@
                                     <li><a href="{{ route('frontend.gallery') }}">Procurement</a></li>
                                     <li><a href="{{ route('frontend.vollunter') }}">Volluntering</a></li>
                                     <li><a href="{{ route('frontend.gallery') }}">Notice</a></li>
-   
+
                             </ul>
                         </li>
                         <li><a href="{{ route('frontend.about') }}">About</a></li>
@@ -135,7 +135,7 @@
                         </li>
                         <li> <a href="{{ route('frontend.contact') }}">Contact</a></li>
                     </ul> --}}
-                  
+
                             <ul class="nav navbar-nav ms-auto" id="mainmenu">
                               <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
@@ -157,7 +157,7 @@
                                     <li><a class="dropdown-item" href="{{ route('frontend.partnersdonors') }}">Donors/Partners</a></li>
                                     {{-- </ul> --}}
                                   </li>
-                                  
+
                                 </ul>
                               </li>
                               <!-- About Dropdown -->
@@ -175,10 +175,10 @@
                                     <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('frontend.currentproject') }}">Current</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.pastproject') }}">Phased Out</a></li>
-                                    
+
                                     </ul>
                                   </li>
-                                  
+
                                 </ul>
                               </li>
                               <li class="nav-item dropdown">
@@ -205,16 +205,16 @@
                                 <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
                                   <!-- Web Development Dropdown -->
                                   <li class="dropdown">
-                                    <a class="dropdown-item" href="#">Vacancy</a>
+                                    <a class="dropdown-item" href="{{ route('frontend.vacancies') }}">Vacancy</a>
                                     {{-- <ul class="dropdown-menu"> --}}
                                     <li><a class="dropdown-item" href="{{ route('frontend.procurement') }}">Procurement</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.vollunter') }}">Volluntering</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.noticeboard') }}">Notice</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.gallery') }}">Galleries</a></li>
-                                    
+
                                     {{-- </ul> --}}
                                   </li>
-                                  
+
                                 </ul>
                               </li>
                               <!-- Contact -->
@@ -222,7 +222,7 @@
                                 <a class="nav-link" href="{{ route('frontend.contact') }}">Contact Us</a>
                               </li>
                             </ul>
-                          
+
                       </nav>
                     <a href="{{ route('frontend.donate') }}" class="default-btn">Donet Now</a>
                 </div>
