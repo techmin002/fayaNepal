@@ -67,7 +67,7 @@
                             
                               {{ $category['title'] ?? 'N/A'}}
                             </td>
-                            <td class="text-center"><img src="{{ asset('upload/images/services/'.$value->image) }}" width="120px" alt="{{ $value->name }}"> </td>
+                            <td class="text-center"><img src="{{ asset('upload/images/services/'.$value->image ?? 'N/A') }}" width="120px" alt="{{ $value->name }}"> </td>
                             <td class="text-center">
                                 @if($value->status == 'on')
                                 <a href="{{ route('programs.status',$value->id) }}" class="btn btn-success">On</a>
