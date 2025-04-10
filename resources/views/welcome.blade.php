@@ -82,14 +82,14 @@
                     inclusive and sustainable development."</p>
             </div><!-- /Section Heading -->
             <div class="causes-wrap row ">
-                @foreach ($data['currentProgram'] as $program)
+                @foreach ($data['currentProgram']->take(6) as $program)
                     <div class="col-md-4 xs-padding mt-3">
                         <div class="causes-content">
                             <div class="causes-thumb">
                                 <img src="{{ asset('upload/images/services/' . $program->image) }}" alt="causes">
                                 <a href="#" class="donate-btn">Donate Now<i class="ti-plus"></i></a>
                                 <div class="progress">
-                                    
+
                                     @if($program->icon)
                                         @php
                                             $progress = 'style=width:' . $program->icon . '%';
@@ -117,7 +117,13 @@
                         </div>
                     </div><!-- /Program-1 -->
                 @endforeach
-
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <a href="{{ route('frontend.pastproject') }}">View All</a>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </section><!-- /Program Section -->
@@ -271,9 +277,9 @@
                 <h2>Donor's/ Partner's</h2>
                 <span class="heading-border"></span>
                 <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
-                   
+
             </div>
-            
+
         </div>
     </div>
     <div class="container-fluid">
