@@ -3,7 +3,7 @@
 /*  ==========================================================================
     Table of Contets
     ==========================================================================
-    
+
     1.0 Common Styles
     2.0 Header Section
     3.0 Slider Section
@@ -26,13 +26,13 @@
 	20.0 Contact Section
 	21.0 Footer Section
 	22.0 Scroll To Top
-    
+
     ==========================================================================
     BG infotechs
     ========================================================================== */
 
     @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&amp;display=swap');
-    
+
 /*  ==========================================================================
     1.0 Common Styles
     ========================================================================== */
@@ -119,17 +119,17 @@ textarea::-webkit-input-placeholder{
 
 input:-moz-placeholder,
 textarea:-moz-placeholder{ /* Firefox 18- */
-   color: #888 !important;  
+   color: #888 !important;
 }
 
 input::-moz-placeholder,
 textarea::-moz-placeholder{  /* Firefox 19+ */
-   color: #888 !important;  
+   color: #888 !important;
 }
 
 input:-ms-input-placeholder,
-textarea:-ms-input-placeholder{  
-   color: #888 !important;  
+textarea:-ms-input-placeholder{
+   color: #888 !important;
 }
 button{
     border: none;
@@ -244,7 +244,7 @@ button{
   width: 40px;
   height: 40px;
 
-  border-radius: 100%;  
+  border-radius: 100%;
   -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
   animation: sk-scaleout 1.0s infinite ease-in-out;
 }
@@ -258,7 +258,7 @@ button{
 }
 
 @keyframes sk-scaleout {
-  0% { 
+  0% {
     -webkit-transform: scale(0);
     transform: scale(0);
   } 100% {
@@ -299,8 +299,8 @@ button{
     width: 50px;
     display: inline-block;
     margin-top: 0;
-    
-} 
+
+}
 .section-heading h2{
     font-size: 38px;
     margin-bottom: 0;
@@ -511,7 +511,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
     margin: 13px 5px 14px;
 }
 .slicknav_nav .slicknav_row:hover,
-.slicknav_nav .slicknav_row, 
+.slicknav_nav .slicknav_row,
 .slicknav_nav a,
 .slicknav_nav a:hover{
     -moz-border-radius: 0;
@@ -519,7 +519,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
     -o-border-radius: 0;
     border-radius: 0;
 }
-.slicknav_nav .slicknav_row, 
+.slicknav_nav .slicknav_row,
 .slicknav_nav a {
     padding: 10px 15px;
     margin: 0;
@@ -593,7 +593,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
     -moz-transition: all 0.4s ease-in-out;
     -ms-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
-} 
+}
 .nivo-directionNav a.nivo-prevNav {
     left: 25px;
     background-color:#01923f
@@ -850,7 +850,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
 }
 
 
-  
+
   .container-unique {
     /* overflow: hidden;  */
   }
@@ -859,24 +859,24 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
     justify-content: space-around;
     padding-bottom: 20px;
   }
-  
+
   .unique-slider {
     width: 100%;
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden;
   }
-  
+
   .unique-logos {
     display: inline-block;
     animation: unique-slide 35s linear infinite; /* Continuous animation */
   }
-  
+
   .unique-logo {
     display: inline-block;
     width: 150px; /* Adjust width as needed */
     margin: 0 20px; /* Adjust margin between logos */
   }
-  
+
   @keyframes unique-slide {
     from {
       transform: translateX(100%); /* Start from the right */
@@ -885,8 +885,8 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
       transform: translateX(-100%); /* Move to the left */
     }
   }
-  
-  
+
+
 /* ==========================================================================
    7.0 Campaigns Section
    ========================================================================== */
@@ -1128,7 +1128,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
 .event-details{
     background-color: #cce9d9;
     padding: 30px 15px;
-    
+
     border: 1px dashed #ddd;
 }
 .event-details h3{
@@ -1379,7 +1379,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
 	-webkit-background-size: cover;
 	background-size: cover;
     min-height: 300px;
-    
+
 }
 .cta-section .cta-content h2{
     color: #fff;
@@ -1610,7 +1610,7 @@ span.date{
 	margin-top: 30px;
 	position: relative;
     margin-bottom: 50px;
-    
+
 }
 
 /*Lines Details*/
@@ -1884,13 +1884,13 @@ span.date{
     color: #888 !important;
 }
 .search-form input:-moz-placeholder{ /* Firefox 18- */
-    color: #888 !important;  
+    color: #888 !important;
 }
 .search-form input::-moz-placeholder{  /* Firefox 19+ */
-    color: #888 !important;  
+    color: #888 !important;
 }
-.search-form input:-ms-input-placeholder{  
-    color: #888 !important;  
+.search-form input:-ms-input-placeholder{
+    color: #888 !important;
 }
 
 /*Category List*/
@@ -1967,7 +1967,7 @@ span.date{
     box-shadow: 0px 16px 28px 0px rgba(0, 0, 0, 0.20);
 }
 
-/* Pagination 
+/* Pagination
 =============== */
 .pagination_wrap{}
 .pagination_wrap li{
@@ -2070,7 +2070,7 @@ span.date{
 .footer-section .copyright{
     font-size: 15px;
     color: #ddd;
-}  
+}
 .footer-social{
     display: block;
     text-align: right;
@@ -2155,7 +2155,7 @@ span.date{
   .slick-slide img {
       width: 100%;
   }
-  
+
   .slick-slider
   {
       position: relative;
@@ -2166,7 +2166,7 @@ span.date{
       touch-action: pan-y;
       -webkit-tap-highlight-color: transparent;
   }
-  
+
   .slick-list
   {
       position: relative;
@@ -2184,14 +2184,14 @@ span.date{
       cursor: pointer;
       cursor: hand;
   }
-  
+
   .slick-slider .slick-track,
   .slick-slider .slick-list
   {
-      
+
    transform: translate3d(0, 0, 0);
   }
-  
+
   .slick-track
   {
       position: relative;
@@ -2213,7 +2213,7 @@ span.date{
   {
       visibility: hidden;
   }
-  
+
   .slick-slide
   {
       display: none;

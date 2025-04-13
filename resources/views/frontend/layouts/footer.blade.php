@@ -10,13 +10,13 @@ $companyProfile = Modules\Setting\Entities\CompanyProfile::first();
                         class="img-fluid faya-logo-main-footer">
                     <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in
                         Sudurpashchim Province Nepal</p>
-                    <ul class="social-icon">
-                        <li><a href="{{ $companyProfile->facebook }}"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="{{ $companyProfile->twitter }}"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="{{ $companyProfile->instagram }}"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="{{ $companyProfile->youtube }}"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="{{ $companyProfile->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
+                        <ul class="social-icon">
+                            <li><a href="{{ $companyProfile->facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="{{ $companyProfile->twitter }}"><i class="fab fa-x-twitter"></i></a></li>
+                            <li><a href="{{ $companyProfile->youtube }}"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="{{ $companyProfile->linkedin }}"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+
                 </div>
             </div>
             <div class="col-md-4 xs-padding">
@@ -54,9 +54,7 @@ $companyProfile = Modules\Setting\Entities\CompanyProfile::first();
             </div>
             <div class="col-md-6 sm-padding">
                 <ul class="footer-social">
-                    <li><a href="#">Orders</a></li>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Report Problem</a></li>
+                    <li><a href="{{ route('frontend.contact') }}">Report Problem</a></li>
                 </ul>
             </div>
         </div>

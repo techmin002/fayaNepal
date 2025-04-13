@@ -1,11 +1,19 @@
 @extends('frontend.layouts.master')
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+{{-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> --}}
     <section class="slider-section">
         <div class="slider-wrapper">
             <div id="main-slider" class="nivoSlider">
                 @foreach ($data['sliders'] as $key => $slider)
-                    <img src="{{ asset('upload/images/sliders/' . $slider->image) }}" alt=""
-                        title="#slider-caption-{{ $key }}" />
+                    <img
+                        src="{{ asset('upload/images/sliders/' . $slider->image) }}"
+                        alt="{{ $slider->alt_text ?? 'Slider Image' }}"
+                        title="#slider-caption-{{ $key }}"
+                        style="width: 1900px; height: 798.417px; object-fit: cover;"
+                    />
                 @endforeach
             </div>
 
@@ -34,99 +42,10 @@
 
     </section>
 
-    <section class="promo-section bd-bottom">
-        <div class="promo-wrap">
-            <div class="container">
-                <div class="row index-top-three">
-                    <div class="col-md-4 col-sm-6 xs-padding">
-                        <div class="promo-content">
-                            <img src="{{ asset('frontend/img/icon-1.png') }}" alt="prmo icon">
-                            <h3>About Us</h3>
-                            <p>FAYA Nepal is a non-governmental, apolitical, and not-for-profit organization based in
-                                Sudurpashchim Province, Nepal. It is dedicated to empowering marginalized communities
-                                through inclusive, rights-based initiatives</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 xs-padding">
-                        <div class="promo-content">
-                            <img src="{{ asset('frontend/img/icon-2.png') }}" alt="prmo icon">
-                            <h3>How We work</h3>
-                            <p>We collaborate closely with governmental, non-governmental, private sectors, academic
-                                institutions, and partner/donor agencies, all while centralizing a participatory,
-                                inclusive, and human rights-based approach.</p>
 
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 xs-padding">
-                        <div class="promo-content">
-                            <img src="{{ asset('frontend/img/icon-3.png') }}" alt="prmo icon">
-                            <h3>Mission Statement</h3>
-                            <p>FAYA Nepal is dedicated to fostering sustainable development, aiming to create lasting
-                                positive change in communities. Our mission is to drive prosperity through inclusive and
-                                impactful initiatives.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- /Promo Section -->
-
-    <section class="causes-section bg-grey bd-bottom padding">
-        <div class="container">
-            <div class="section-heading text-center mb-40">
-                <h2> Programs</h2>
-                <span class="heading-border"></span>
-                <p>"FAYA Nepal is driving initiatives aimed at improving maternal and child health, enhancing public
-                    health measures, and empowering marginalized communities. The organization also focuses on
-                    strengthening leadership and advocacy skills among women and marginalized groups, fostering
-                    inclusive and sustainable development."</p>
-            </div><!-- /Section Heading -->
-            <div class="causes-wrap row ">
-                @foreach ($data['currentProgram']->take(6) as $program)
-                    <div class="col-md-4 xs-padding mt-3">
-                        <div class="causes-content">
-                            <div class="causes-thumb">
-                                <img src="{{ asset('upload/images/services/' . $program->image) }}" alt="causes">
-                                <a href="#" class="donate-btn">Donate Now<i class="ti-plus"></i></a>
-                                <div class="progress">
-
-                                    @if($program->icon)
-                                        @php
-                                            $progress = 'style=width:' . $program->icon . '%';
-                                           $per =  $program->icon;
-                                        @endphp
-                                    @else
-                                        @php
-                                            $progress = 'style=width:100%';
-                                            $per =  100;
-                                        @endphp
-                                    @endif
-
-                                    <div class="progress-bar" role="progressbar" {{ $progress }}
-                                        aria-valuenow="{{ $per }}" aria-valuemin="0"
-                                        aria-valuemax="{{ $per }}">
-                                        <span class="wow cssanimation fadeInLeft">{{ $per }}%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="causes-details">
-                                <h3>{{ $program->title }}</h3>
-                                <p>{!! $program->shortdescription !!}</p>
-                                <a href="{{ route('program.detail', $program->slug) }}" class="read-more">Read More</a>
-                            </div>
-                        </div>
-                    </div><!-- /Program-1 -->
-                @endforeach
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header text-center">
-                                <a href="{{ route('frontend.pastproject') }}">View All</a>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </section><!-- /Program Section -->
+   @include('frontend.pages.aboutus_section')
+  @include('frontend.pages.comman_past_program')
+  @include('frontend.pages.comman_publication')
 
     <section class="campaigns-section bd-bottom">
         <div class="container">
@@ -195,36 +114,10 @@
         </div>
     </section><!-- Counter Section -->
 @endif
-    <section class="blog-section bg-grey bd-bottom padding">
-        <div class="container">
-            <div class="section-heading text-center mb-40">
-                <h2>Recent Stories</h2>
-                <span class="heading-border"></span>
-                <p>Help today because tomorrow you may be the one who <br> needs more helping!</p>
-            </div><!-- /Section Heading -->
-            <div class="row">
-                <div class="col-lg-12 xs-padding">
-                    <div class="blog-items grid-list row">
-                        @foreach ($data['stories'] as $story)
-                            <div class="col-md-4 padding-15">
-                                <div class="blog-post">
-                                    <img src="{{ asset('upload/images/advertisements/' . $story->image) }}"
-                                        alt="blog post">
-                                    <div class="blog-content">
-                                        <span class="date"><i class="fa fa-clock-o"></i> {{ $story->date }}</span>
-                                        <h3><a href="{{ route('story.detail', $story->id) }}">{{ $story->title }}</a>
-                                        </h3>
-                                        <p>{!! $story->shortdescription !!}</p>
-                                        <a href="{{ route('story.detail', $story->id) }}" class="post-meta">Read More</a>
-                                    </div>
-                                </div>
-                            </div><!-- Post 1 -->
-                        @endforeach
-                    </div>
-                </div><!-- Blog Posts -->
-            </div>
-        </div>
-    </section><!-- Blog Section -->
+
+{{-- recent story include --}}
+@include('frontend.pages.comman_story')
+
     <!-- Events Section -->
     {{-- modal for notice --}}
     <!-- Notice Modal -->
@@ -239,11 +132,11 @@
                 </div>
                 <div class="modal-body">
                     <!-- Title -->
-                    <p id="noticeModalContent"></p> <!-- Content -->
+                    {{-- <p id="noticeModalContent"></p> <!-- Content -->
                     <a id="noticeImageLink" href="" target="_blank"> <!-- Image Link -->
                         <img id="noticeImage" src="" title="View Attachment" alt="Notice Image"
                             style="width: 80px; height:80px; display: none;"> View Attachments<!-- Image -->
-                    </a>
+                    </a> --}}
 
                 </div>
 
@@ -251,52 +144,10 @@
         </div>
     </div>
 
-    <section class="testimonial-section bd-bottom padding">
-        <div class="container">
-            <div class="section-heading text-center mb-40">
-                <h2>What People Say</h2>
-                <span class="heading-border"></span>
-                <p>Help today because tomorrow you may be the one who <br> needs more helping!</p>
-            </div><!-- /Section Heading -->
-            <div id="testimonial-carousel" class="testimonial-carousel owl-carousel">
-                @foreach ($data['testimonials'] as $testimonial)
-                    <div class="testimonial-item">
-                        <p>{!! $testimonial->message !!}</p>
-                        <div class="testi-footer">
-                            <img src="{{ asset('upload/images/testimonials/' . $testimonial->image) }}" alt="profile">
-                            <h4>{{ $testimonial->name }} <span>{{ $testimonial->designation }}</span></h4>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section><!-- Testimonial Section -->
-    <div class="sponsor-section bd-bottom">
-        <div class="container">
-            <div class="section-heading text-center mb-40">
-                <h2>Donor's/ Partner's</h2>
-                <span class="heading-border"></span>
-                <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
-
-            </div>
-
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row main-container-down align-items-center h-100">
-          <div class="container-unique rounded">
-            <div class="unique-slider">
-              <div class="unique-logos">
-                @foreach ($data['pastpartners'] as $past)
-                <img src="{{ asset('upload/images/partners/'.$past->logo)}}" alt="Brand 1" class="unique-logo">
-                @endforeach
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+   <!-- Testimonial Section -->
+   @include('frontend.pages.commann_feedback')
+   @include('frontend.pages.comman_vollunter')
+   @include('frontend.pages.donorlogo')
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             fetchNotice();

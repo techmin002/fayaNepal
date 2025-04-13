@@ -1,3 +1,4 @@
+
 @extends('setting::layouts.master')
 
 @section('title', 'Gallery Category')
@@ -119,7 +120,7 @@
                                                                                     @enderror
                                                                                 </div>
                                                                             </div>
-                                                                           
+
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label for="logo">Image</label>
@@ -205,7 +206,7 @@
                             <form action="{{ route('galleries-category.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                             <div class="card-body">
-                               
+
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Title</label>
@@ -213,7 +214,7 @@
                                                 placeholder="Enter Category Title">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="image">Image </label>
@@ -221,6 +222,8 @@
                                             <input type="file" id="file-ip-1" accept="image/*"
                                                 class="form-control-file border" value="{{ old('image') }}"
                                                 onchange="showPreview1(event);" name="image">
+                                                <strong>Format:<span style="color:red;" >image must be 80*80 pixels</span>
+                                                </strong>
                                             @error('image')
                                                 <p style="color: red">{{ $message }}</p>
                                             @enderror
@@ -242,7 +245,7 @@
                                         </div>
                                     </div>
 
-                               
+
                             </div>
                             <div class="card-footer">
                                 <button class="btn btn-success" type="submit">Save Changes</button>

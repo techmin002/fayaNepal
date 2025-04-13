@@ -12,65 +12,169 @@
                 </div>
             </div>
         </div><!-- /Page Header -->
-        
+
         <section class="about-section bg-grey bd-bottom padding">
-            {{-- <div class="container">
-                <h2  style="text-align: center; color: #01923f;">"It is a non-governmental, apolitical, and not-for-profit organization based in Sudurpashchim Province Nepal"</h2>
-            </div>
-            <br>
-            <div class="container">
-                <div class="row about-wrap">
-                    <div class="col-md-6 xs-padding">
-                        <div class="about-image">
-                            <img src="{{ asset('frontend/image/fayanpl.jpg')}}" alt="about image">
-                        </div>
-                    </div>
-                    <div class="col-md-6 xs-padding">
-                        <div class="about-content">
-                            <p> Founded in 1995, The Forum for Awareness and Youth Activity (FAYA) Nepal stands as a transformative force dedicated to driving positive change in society. This organization, officially recognized as a non-governmental organization (NGO) by the District Administration Office Kailali and affiliated with the Social Welfare Council, initially focused on empowering young people and their interconnected communities to effectively address the pressing challenges facing society. </p>
-                            <P>FAYA operating under the guiding principles of a Human Rights-Based Approach (HRBA) since 2004, FAYA has played a pivotal role in various human rights networks and alliances at the district and regional levels. Its activities have extended into critical areas such as advocating for wage parity, ensuring secure rehabilitation for freed Kamiya (formerly bonded laborers), and amplifying the Women's Rights Forum. These initiatives underscore FAYA's commitment to promoting equality, social justice, and gender empowerment.</P>
-                        </div>
-                    </div>
-                    <div class="about-content"> 
-                        <P>One of FAYA's notable strengths lies in its ability to form strategic partnerships with grassroots organizations and development allies. These collaborations reflect the organization's forward-thinking vision and its understanding of the importance of synergy in fostering sustainable change. By working hand in hand with local partners and allies, FAYA has been able to amplify its impact and reach, making significant strides in its mission to create a more equitable and just society. Through its proactive approach and unwavering commitment, FAYA continues to be a driving force in the realm of social change in Nepal.</P>
-                        <P>By addressing issues at their roots and championing the rights of marginalized communities, FAYA exemplifies the power of grassroots initiatives in instigating constructive transformation and paving the way for a brighter future.</P>
-                    </div>
-                </div>
-            </div> --}}
             {!! $data['profile']->introduction !!}
         </section><!-- /About Section -->
 
-        <section class="about-section bd-bottom shape circle padding">
-            <div class="container">
-                <div class="row">
-                   <div class="col-md-4 xs-padding">
-                        <div class="profile-wrap">
-                            <img class="profile" src="{{ asset('frontend/image/profile.png')}}" alt="profile">
-                            <h3>Goma Achrya <span>Chairman of Faya nepal.</span></h3>
-                            <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in Sudurpashchim Province Nepal, the abused and the helpless.</p>
-                            <img src="{{ asset('frontend/img/sign.png')}}" alt="sign">
-                        </div>
+<section class="about-section bd-bottom shape circle padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 xs-padding">
+                <div class="profile-wrap fixed-box">
+                    <img class="profile" src="{{ asset('frontend/image/chairperson.png')}}" alt="profile">
+                    <h3>Goma Achrya <span>Chairperson of Faya Nepal</span></h3>
+                    <div class="content-preview">
+                        <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in Sudurpashchim Province Nepal, the abused and the helpless.</p>
+                        <img src="{{ asset('frontend/img/signature.png')}}" width="50%" alt="sign">
                     </div>
-                    <div class="col-md-8 xs-padding">
-                        <div class="about-wrap row">
-                            <div class="col-md-6 xs-padding histry-mission-div">
-                                <img src="{{ asset('frontend/image/history.png')}}" alt="about-thumb">
-                                <h3>Our History</h3>
-                                <p>{!! $data['profile']->vision !!}</p>
-                                <a href="#" class="default-btn">Read More</a>
-                            </div>
-                            <div class="col-md-6 xs-padding histry-mission-div">
-                                <img src="{{ asset('frontend/image/mission.png')}}" alt="about-thumb">
-                                <h3>Our Mission</h3>
-                                <p>{!! $data['profile']->mission !!}</p>
-                                <a href="#" class="default-btn">Read More</a>
-                            </div>
+                    <a href="#" class="default-btn read-more" data-target="profile-modal">Full Read</a>
+                </div>
+            </div>
+            <div class="col-md-8 xs-padding">
+                <div class="about-wrap row">
+                    <div class="col-md-6 xs-padding histry-mission-div fixed-box">
+                        <img src="{{ asset('frontend/image/history.png')}}" alt="about-thumb">
+                        <h3>Our History</h3>
+                        <div class="content-preview">
+                            <p>{!! Str::limit($data['profile']->vision, 200) !!}</p>
                         </div>
+                        <a href="#" class="default-btn read-more" data-target="history-modal">Full Read</a>
+                    </div>
+                    <div class="col-md-6 xs-padding histry-mission-div fixed-box">
+                        <img src="{{ asset('frontend/image/mission.png')}}" alt="about-thumb">
+                        <h3>Our Mission</h3>
+                        <div class="content-preview">
+                            <p>{!! Str::limit($data['profile']->mission, 200) !!}</p>
+                        </div>
+                        <a href="#" class="default-btn read-more" data-target="mission-modal">Full Read</a>
                     </div>
                 </div>
             </div>
-        </section><!-- /Program Section -->
-        
+        </div>
+    </div>
+</section>
+
+<!-- Modal Popups -->
+<div id="profile-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Goma Achrya - Chairperson</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img class="profile mb-3" src="{{ asset('frontend/image/chairperson.png')}}" alt="profile" style="max-width: 200px;">
+                <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in Sudurpashchim Province Nepal, the abused and the helpless.</p>
+                <img src="{{ asset('frontend/img/signature.png')}}" width="30%" alt="sign">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="history-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Our History</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('frontend/image/history.png')}}" alt="about-thumb" class="mb-3" style="max-width: 200px;">
+                <div class="full-content">
+                    {!! $data['profile']->vision !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="mission-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Our Mission</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('frontend/image/mission.png')}}" alt="about-thumb" class="mb-3" style="max-width: 200px;">
+                <div class="full-content">
+                    {!! $data['profile']->mission !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Fixed Box Styles */
+    .fixed-box {
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        background: #fff;
+    }
+
+    .fixed-box img {
+        max-height: 120px;
+        object-fit: contain;
+        margin-bottom: 15px;
+    }
+
+    .fixed-box h3 {
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .content-preview {
+        flex-grow: 1;
+        overflow: hidden;
+    }
+
+    .fixed-box .default-btn {
+        align-self: flex-start;
+        margin-top: 15px;
+    }
+
+    /* Modal Styles */
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-body img {
+        display: block;
+        margin: 0 auto 20px;
+    }
+
+    @media (max-width: 768px) {
+        .fixed-box {
+            height: auto;
+            min-height: 350px;
+        }
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        // Handle read more clicks
+        $('.read-more').click(function(e) {
+            e.preventDefault();
+            var target = $(this).data('target');
+            $('#' + target).modal('show');
+        });
+    });
+</script>
         <section class="team-section bg-grey bd-bottom circle shape padding">
             <div class="container">
                 <div class="section-heading text-center mb-40">
@@ -82,8 +186,8 @@
                     <div class="col-lg-6 sm-padding">
                         <div class="team-wrap row">
                             @foreach ($data['teams'] as $team)
-                                
-                            
+
+
                             <div class="col-md-6">
                                 <div class="team-details">
                                    <img src="{{ asset('upload/images/teams/'.$team->image)}}" alt="team">
@@ -113,7 +217,7 @@
                 </div>
             </div>
         </section><!-- /Team Section -->
-        
+
         <section id="counter" class="counter-section">
 		    <div class="container">
                 <ul class="row counters">
@@ -148,50 +252,8 @@
                 </ul>
 		    </div>
 		</section><!-- Counter Section -->
-              
-        {{-- <div class="sponsor-section bd-bottom">
-            <div class="container">
-                <div class="section-heading text-center mb-40">
-                    <h2>Our Partners</h2>
-                    <span class="heading-border"></span>
-                    <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
-                </div><!-- /Section Heading -->
-                <ul id="sponsor-carousel" class="sponsor-items owl-carousel owl-carousel-partneer">
-                    @foreach ($data['currentpartners'] as $current)
-                    <li class="sponsor-item">
-                        <img src="{{ asset('upload/images/partners/'.$current->logo)}}" alt="sponsor-image">
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div> --}}
-        <!-- ./Sponsor Section -->
-             
+
         <!--past Sponsor Section -->
-        <div class="sponsor-section bd-bottom">
-            <div class="container">
-                <div class="section-heading text-center mb-40">
-                    <h2>Our Partners</h2>
-                    <span class="heading-border"></span>
-                    <p>"We extend our heartfelt thanks to all our past partners for their invaluable support and collaboration. Their contributions have been instrumental in advancing FAYA Nepal's mission, leaving a lasting impact on social justice, human rights, and community empowerment across Nepal."</p> 
-                       
-                </div>
-                
-            </div>
-        </div>
-        
-        <div class="container-fluid">
-            <div class="row main-container-down align-items-center h-100">
-              <div class="container-unique rounded">
-                <div class="unique-slider">
-                  <div class="unique-logos">
-                    @foreach ($data['pastpartners'] as $past)
-                    <img src="{{ asset('upload/images/partners/'.$past->logo)}}" alt="Brand 1" class="unique-logo">
-                    @endforeach
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
+      @include('frontend.pages.donorlogo')
+
 @endsection

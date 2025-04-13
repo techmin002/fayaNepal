@@ -17,26 +17,26 @@
         <div class="row">
             <div class="col-lg-9 sm-padding">
                 <div class="blog-items single-post row">
-                    <img src="{{ asset('upload/images/services/'.$data['blog']->image)}}" alt="blog post">
+                    <img src="{{ asset('upload/images/services/'.$data['blog']->image)}}" alt="blog post" style="width: 834px; height: 556px; object-fit: cover;">
                     <h2>{{ $data['blog']->title }}</h2>
                    <!-- Meta Info -->
                     <p>
                         {!! $data['blog']->description !!}
-                 
+
                     <div class="share-wrap">
                         <h4>Share This Program</h4>
                         <ul class="share-icon">
                             <div class="sharethis-inline-share-buttons"></div>
                         </ul>
-                        
+
                     </div><!-- Share Wrap -->
-                    
-                  
+
+
                 </div>
             </div><!-- Blog Posts -->
             <div class="col-lg-3 sm-padding">
                 <div class="sidebar-wrap">
-                    
+
                     <div class="sidebar-widget mb-50">
                         <h4>Recent Program</h4>
                         <ul class="recent-posts">
@@ -45,13 +45,13 @@
                                 <img src="{{ asset('upload/images/services/'.$item->image)}}" alt="blog post">
                                 <div>
                                     <h4><a href="{{ route('program.detail',$item->slug) }}">{{ $item->title }}</a></h4>
-                                    <span class="date"><i class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($item->created_at)->format('d-M-Y') }}</span>   
-                                </div>                 
+                                    <span class="date"><i class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($item->created_at)->format('d-M-Y') }}</span>
+                                </div>
                             </li>
                             @endforeach
                         </ul>
                     </div><!-- Recent Posts -->
-                   
+
                 </div><!-- /Sidebar Wrapper -->
             </div>
         </div>

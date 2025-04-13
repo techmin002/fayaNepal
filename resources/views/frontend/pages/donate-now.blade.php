@@ -104,7 +104,7 @@
                     <form id="multi-step-form" action="{{ route('donate.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="step step-1">
-                            
+
                             <div class="mb-3">
                                 <label for="name" class="form-label">Full Name</label>
                                 <div class="input-group mb-3">
@@ -150,7 +150,7 @@
                                 <hr>
                             </div>
                             <div class="divider my-4">
-                                
+
                                 <div class="bank-detail">
                                     <h2>Bank Detail's</h2>
                                     <div class="row">
@@ -172,7 +172,7 @@
                                 </div>
                                 <hr>
                             </div>
-                            
+
 
                             @endif
                             <div class="mb-3">

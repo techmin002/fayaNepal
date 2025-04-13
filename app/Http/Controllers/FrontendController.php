@@ -33,10 +33,12 @@ class FrontendController extends Controller
     public function index()
     {
         $data['sliders'] = Slider::where('status', 'on')->orderBy('created_at', 'DESC')->get();
-        $data['currentProgram'] = Program::where('status', 'on')->orderBy('program_type', 'DESC')->get();
-        $data['pastProgram'] = Program::where('program_type', 'past')->orderBy('created_at', 'DESC')->get();
+        $data['currentProgram'] = Program::where('status', 'on')->where('program_type', 'current')->with('category')->orderBy('created_at', 'DESC')->get();
+        $data['pastProgram'] = Program::where('status', 'on')->where('program_type', 'past')->with('category')->orderBy('created_at', 'DESC')->get();
         $data['testimonials'] = Testimonial::where('status', 'on')->orderBy('created_at', 'DESC')->get();
         $data['stories'] = Story::where('status', 'on')->orderBy('created_at', 'DESC')->get();
+        $data['publications'] = Publication::where('status', 'on')->orderBy('created_at', 'DESC')->get();
+        $data['teams'] = Team::where('status', 'on')->get();
         $data['pastpartners'] = Partner::where('status', 'on')->get();
         $data['portfolio'] = Portfolio::first();
         return view('welcome', compact('data'));
@@ -58,13 +60,14 @@ class FrontendController extends Controller
         return view('frontend.pages.current-program', compact('data'));
     }
     public function pastPrograms()
-    {
-        $data['programs'] = Program::where('status', 'on')->where('program_type', 'past')->with('category')->orderby('created_at', 'DESC')->get();
-        $data['testimonials'] = Testimonial::where('status', 'on')->orderby('created_at', 'DESC')->get();
-        $data['stories'] = Story::where('status', 'on')->orderby('created_at', 'DESC')->get();
+{
+    // Get past programs (most recent first)
+    $data['programs'] = Program::where('status', 'on')->where('program_type', 'past')->with('category')->orderBy('created_at', 'DESC')->get();
+    $data['testimonials'] = Testimonial::where('status', 'on')->orderBy('created_at', 'DESC')->get();
+    $data['stories'] = Story::where('status', 'on')->orderBy('created_at', 'DESC')->get();
 
-        return view('frontend.pages.program-list', compact('data'));
-    }
+    return view('frontend.pages.program-list', compact('data'));
+}
     public function events()
     {
         $data['events'] = Event::where('status', 'on')->get();
@@ -211,17 +214,17 @@ class FrontendController extends Controller
 
     public function publication()
     {
-        $publications = Publication::where('status', 'on')->get();
-        return view('frontend.pages.publication', compact('publications'));
+        $data['publications'] = Publication::where('status', 'on')->orderBy('created_at', 'DESC')->get();
+        return view('frontend.pages.publication', compact('data'));
     }
     public function annualReport()
     {
-        $reports = Report::where('report_type', 'annual')->get();
+        $reports = Report::where('report_type', 'annual')->orderBy('created_at', 'DESC')->get();
         return view('frontend.pages.annual-report', compact('reports'));
     }
     public function projectReport()
     {
-        $reports = Report::where('report_type', 'project')->get();
+        $reports = Report::where('report_type', 'project')->orderBy('created_at', 'DESC')->get();
         return view('frontend.pages.project-report', compact('reports'));
     }
     public function executiveBoard()

@@ -64,6 +64,7 @@
                                                 <input type="file" id="file-ip-1" accept="image/*"
                                                     class="form-control-file border" value="{{ old('image') }}"
                                                     onchange="showPreview1(event);" name="image">
+                                                 <p style="color:red ">image size must be 834*526 pixels</p>
                                                 @error('image')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
@@ -160,5 +161,5 @@
             e.preventDefault();
         });
     </script>
-   
+
 @endsection

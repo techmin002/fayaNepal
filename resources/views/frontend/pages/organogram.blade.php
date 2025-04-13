@@ -75,6 +75,33 @@
             box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.25) inset,
                 -8px -8px 12px rgba(255, 255, 255, 0.3) inset;
         }
+
+        /* New CSS for image container */
+        .card-body {
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-body img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* If you want to set specific maximum dimensions */
+        .card {
+            max-width: 1300px; /* or whatever maximum width you prefer */
+            margin: 0 auto;
+        }
+
+        /* Optional: Add some padding around the image */
+        .card-body {
+            padding: 20px;
+        }
     </style>
     <div class="pager-header">
         <div class="container">
@@ -97,24 +124,23 @@
                     <div class="container">
                         <div class="row">
                             @foreach ($organograms as $notice)
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5 class="card-title">{{ $notice->title }}</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <img src="{{ asset('upload/images/organograms/'.$notice->image) }}" alt="">
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            @endforeach
+    @if($notice->status == 'on')
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{ $notice->title }}</h5>
+                </div>
+                <div class="card-body">
+                    <img src="{{ asset('upload/images/organograms/'.$notice->image) }}" alt="{{ $notice->title }}">
+                </div>
+            </div>
+        </div>
+    @endif
+@endforeach
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

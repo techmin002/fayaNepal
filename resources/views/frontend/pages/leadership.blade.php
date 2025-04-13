@@ -190,7 +190,7 @@ body {
       transition: all 0.4s ease-out;
       top: 0;
     }
-    
+
     .close {
       width: 18px;
       height: 18px;
@@ -232,7 +232,7 @@ body {
         font-size: 24px;
         letter-spacing: 0.5px;
       }
-      
+
       .title {
         color: white;
         padding: 10px 20px;
@@ -346,9 +346,9 @@ body {
             height: 100%;
           }
         }
-        
+
         &.clicked {
-          
+
           span {
             display: none;
           }
@@ -356,7 +356,7 @@ body {
             width: 22px;
             opacity: 1;
             animation: icon 0.5s ease forwards;
-            
+
             @keyframes icon {
               0%{
                 width: 22px;
@@ -389,7 +389,7 @@ body {
       .desc {
         color: white;
       }
-      
+
       .pic {
         box-shadow: 0px 0px 0px 8px rgba(255, 255, 255, 0.3);
         img {
@@ -488,7 +488,7 @@ body {
     justify-content: center;
     margin-bottom:40px;
 }
-  
+
  </style>
   <script>
     var closeBtn = document.querySelectorAll(".close"),
@@ -516,7 +516,7 @@ function closeCard(event) {
 function openCard(event) {
   if (event.currentTarget.classList.contains("closed")) {
     event.currentTarget.classList.remove("closed");
-  } 
+  }
 }
 
 function clickBtn(event) {
@@ -549,16 +549,22 @@ function clickBtn(event) {
                     <h2>Executive Board</h2>
                     <span class="heading-border"></span>
                     <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
-                       
+
                 </div>
           <div class='row main-cahiman-css'>
             @foreach ($leaderships->take(1) as $leader)
           <div class="col-md-4 xs-padding">
                         <div class="profile-wrap">
-                            <img class="profile" src="{{  asset('upload/images/leaderships/'.$leader->image)}}" alt="profile">
+                            <img
+                            src="{{ asset('upload/images/leaderships/'.$leader->image) }}"
+                            alt="{{ $leader->name }}"
+                            style="width: 262.2px; height: 262.2px; object-fit: cover;"
+                        >
+                            {{-- <img class="profile" src="{{  asset('upload/images/leaderships/'.$leader->image)}}" alt="profile"> --}}
                             <h3>{{ $leader->name }} <span>{{ $leader->designation }} of Faya nepal.</span></h3>
+                            <p>9812345678</p>
                             <p>{!! $leader->introduction !!}</p>
-                            <img src="{{ asset('frontend/img/sign.png')}}" alt="sign">
+                            <img src="{{ asset('frontend/img/signature.png')}}" width="50%" alt="sign">
                         </div>
                     </div>
           </div>
@@ -581,8 +587,8 @@ function clickBtn(event) {
 
 <div class="cards">
   @foreach ($leaderships->skip(1) as $leader)
-    
-  
+
+
   <div class="card">
     <span class="close"></span>
     <span class="arrow"></span>
@@ -594,11 +600,6 @@ function clickBtn(event) {
       <div class="desc">{!! $leader->introduction !!}</div>
 
     </article>
-    <div class="actions">
-      <button class="btn"><span>like</span><img class="icon" src="https://rafaelavlucas.github.io/assets/icons/misc/heart.svg"></button>
-      <button class="btn"><span>trade</span><img class="icon" src="https://rafaelavlucas.github.io/assets/icons/misc/trade.svg"></button>
-
-    </div>
   </div>
   @endforeach
   {{-- <div class="card">
@@ -638,9 +639,9 @@ function clickBtn(event) {
 </div>
 
           </div>
-      
-        
 
 
-          
+
+
+
         @endsection

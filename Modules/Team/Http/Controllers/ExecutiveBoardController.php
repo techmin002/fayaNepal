@@ -43,10 +43,12 @@ class ExecutiveBoardController extends Controller
         'name' => $request['name'],
         'position' => $request['position'],
         'designation' => $request['designation'],
+        'phone' => $request['phone'],
+        'email' => $request['email'],
         'status' => $request['status'],
         'image' => $imageName
     ]);
-       
+
        return redirect()->route('executives.index')->with('success','Created Successfully');
     }
 
@@ -93,10 +95,12 @@ class ExecutiveBoardController extends Controller
             'name' => $request['name'],
             'position' => $request['position'],
             'designation' => $request['designation'],
+            'phone' => $request['phone'],
+            'email' => $request['email'],
             'status' => $request['status'],
             'image' => $imageName
         ]);
-        
+
         return redirect()->route('executives.index')->with('success','Created Successfully');
     }
 
@@ -109,7 +113,7 @@ class ExecutiveBoardController extends Controller
     {
         $team = ExecutiveBoard::findOrfail($id);
         $team->delete();
-        
+
         return redirect()->route('executives.index')->with('success','Removed Successfully');
     }
     public function status($id)
@@ -122,7 +126,7 @@ class ExecutiveBoardController extends Controller
             $status = 'on';
         }
         $team->update([
-           'status' => $status 
+           'status' => $status
         ]);
         return redirect()->route('executives.index')->with('success', 'Status Updated Successfully');
     }

@@ -55,24 +55,27 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="logo"> Image <small>(Optional)</small></label>
+                                                                <label for="logo">Image <small>(Optional)</small></label>
                                                                 <input type="file" id="file-ip-1" accept="image/*"
-                                                                    class="form-control-file border"
-                                                                    value="{{ old('image') }}"
-                                                                    onchange="showPreview1(event);" name="image">
+                                                                       class="form-control-file border"
+                                                                       value="{{ old('image') }}"
+                                                                       onchange="showPreview1(event);" name="image">
+                                                                <small class="form-text text-muted">
+                                                                    Recommended size: 1300px (width) × 1554px (height)<br>
+                                                                    Image will be automatically cropped to fit this ratio
+                                                                </small>
                                                                 @error('image')
-                                                                    <p style="color: red">{{ $message }}</p>
+                                                                    <p class="text-danger">{{ $message }}</p>
                                                                 @enderror
                                                                 <div class="preview mt-2">
-                                                                    <img src="" id="file-ip-1-preview"
-                                                                        width="200px">
+                                                                    <img src="" id="file-ip-1-preview" width="200px">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="col-md-12">
                                                             <!-- Bootstrap Switch -->
                                                             <div class="card card-secondary">
@@ -176,7 +179,7 @@
                                                                                     @enderror
                                                                                 </div>
                                                                             </div>
-                                                                            
+
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label for="logo">Image</label>
@@ -200,7 +203,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            
+
                                                                             <div class="col-md-12">
                                                                                 <!-- Bootstrap Switch -->
                                                                                 <div class="card card-secondary">

@@ -97,6 +97,8 @@
                                                     onchange="showPreview1(event);" name="logo">
                                                 <img src="{{ asset('upload/images/settings/' . $profile->logo) }}"
                                                     alt="Logo" width="200px">
+                                                    <strong> Format:<span style="color: red" >LOGO size must be 163.633*85</span>
+                                                    </strong>
                                                 @error('logo')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
@@ -115,29 +117,13 @@
                                                     onchange="showPreview2(event);" name="footer_logo">
                                                 <img src="{{ asset('upload/images/settings/' . $profile->footer_logo) }}"
                                                     alt="Footer Logo" width="200px">
+                                                    {{-- <strong> Format:<span style="color: red" >LOGO size must be 163.633*85</span> --}}
+
                                                 @error('footer_logo')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
                                                 <div class="preview mt-2">
                                                     <img src="" id="file-ip-2-preview" width="200px">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="favicon">Favicon </label>
-
-                                                <input type="file" id="file-ip-3" accept="image/*"
-                                                    class="form-control-file border" value="{{ old('favicon') }}"
-                                                    onchange="showPreview3(event);" name="favicon">
-                                                <img src="{{ asset('upload/images/settings/' . $profile->favicon) }}"
-                                                    alt="favicon" width="200px">
-                                                @error('favicon')
-                                                    <p style="color: red">{{ $message }}</p>
-                                                @enderror
-                                                <div class="preview mt-2">
-                                                    <img src="" id="file-ip-3-preview" width="200px">
                                                 </div>
 
                                             </div>
@@ -151,6 +137,8 @@
                                                     onchange="showPreview4(event);" name="image">
                                                 <img src="{{ asset('upload/images/settings/' . $profile->image) }}"
                                                     alt="image" width="200px">
+                                                    {{-- <strong> Format:<span style="color: red" >LOGO size must be 163.633*85</span> --}}
+
                                                 @error('image')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
@@ -160,6 +148,27 @@
 
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="favicon">Favicon </label>
+
+                                                <input type="file" id="file-ip-3" accept="image/*"
+                                                    class="form-control-file border" value="{{ old('favicon') }}"
+                                                    onchange="showPreview3(event);" name="favicon">
+                                                <img src="{{ asset('upload/images/settings/' . $profile->favicon) }}"
+                                                    alt="favicon" width="200px">
+                                                    <strong> Format:<span style="color: red" >Favicon size must be 200*200</span>
+
+                                                @error('favicon')
+                                                    <p style="color: red">{{ $message }}</p>
+                                                @enderror
+                                                <div class="preview mt-2">
+                                                    <img src="" id="file-ip-3-preview" width="200px">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="introduction">Introduction</label>

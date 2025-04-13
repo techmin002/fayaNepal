@@ -13,30 +13,7 @@
             </div>
         </div><!-- /Page Header -->
         <!-- body -->
-        <div class="sponsor-section bd-bottom">
-            <div class="container">
-                <div class="section-heading text-center mb-40">
-                    <h2>Donor's/ Partner's</h2>
-                    <span class="heading-border"></span>
-                    <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
-                       
-                </div>
-                
-            </div>
-        </div>
-        
-        <div class="container-fluid">
-            <div class="row main-container-down align-items-center h-100">
-              <div class="container-unique rounded">
-                <div class="unique-slider">
-                  <div class="unique-logos">
-                    @foreach ($data['pastpartners'] as $past)
-                    <img src="{{ asset('upload/images/partners/'.$past->logo)}}" alt="Brand 1" class="unique-logo">
-                    @endforeach
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
+
+@include('frontend.pages.donorlogo')
+
  @endsection

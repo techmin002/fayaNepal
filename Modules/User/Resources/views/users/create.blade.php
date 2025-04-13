@@ -82,20 +82,90 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="image">Profile Image <span class="text-danger">*</span></label>
+                                        <p class="text-muted small mb-2">Recommended size: 300x300 pixels (1:1 aspect ratio)<br>
+                                        Max file size: 2MB<br>
+                                        Formats: JPG, PNG, GIF</p>
 
                                         <input type="file" id="file-ip-1" accept="image/*"
-                                            class="form-control-file border" value="{{ old('image') }}"
-                                            onchange="showPreview1(event);" name="image">
+                                               class="form-control-file border" value="{{ old('image') }}"
+                                               onchange="showPreview1(event); validateImage(this);" name="image">
+
                                         @error('image')
-                                            <p style="color: red">{{ $message }}</p>
+                                            <p class="text-danger small">{{ $message }}</p>
                                         @enderror
-                                        <div class="preview mt-2">
-                                            <img src="" id="file-ip-1-preview" width="200px">
+
+                                        <div class="preview mt-3 text-center">
+                                            <img src="" id="file-ip-1-preview" class="img-thumbnail"
+                                                 style="max-width: 200px; max-height: 200px; display: none;">
+                                            <div id="size-error" class="text-danger small mt-2" style="display: none;"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <script>
+                            function showPreview1(event) {
+                                const file = event.target.files[0];
+                                if (file) {
+                                    const reader = new FileReader();
+                                    reader.onload = function(e) {
+                                        const preview = document.getElementById('file-ip-1-preview');
+                                        preview.src = e.target.result;
+                                        preview.style.display = 'block';
+                                    }
+                                    reader.readAsDataURL(file);
+                                }
+                            }
+
+                            function validateImage(input) {
+                                const sizeError = document.getElementById('size-error');
+                                sizeError.style.display = 'none';
+
+                                if (input.files && input.files[0]) {
+                                    const file = input.files[0];
+                                    const img = new Image();
+                                    const reader = new FileReader();
+
+                                    reader.onload = function(e) {
+                                        img.src = e.target.result;
+                                        img.onload = function() {
+                                            // Check dimensions
+                                            if (this.width !== 300 || this.height !== 300) {
+                                                sizeError.textContent = `Warning: Image is ${this.width}x${this.height} pixels. Recommended size is 300x300 pixels.`;
+                                                sizeError.style.display = 'block';
+                                            }
+
+                                            // Check file size (2MB max)
+                                            if (file.size > 2 * 1024 * 1024) {
+                                                sizeError.textContent = 'Error: File size exceeds 2MB limit.';
+                                                sizeError.style.display = 'block';
+                                                input.value = ''; // Clear the file input
+                                                document.getElementById('file-ip-1-preview').style.display = 'none';
+                                            }
+                                        };
+                                    };
+                                    reader.readAsDataURL(file);
+                                }
+                            }
+                        </script>
+
+                        <style>
+                            .preview img {
+                                border: 1px solid #ddd;
+                                border-radius: 4px;
+                                padding: 5px;
+                                background-color: #f8f9fa;
+                            }
+
+                            .img-thumbnail {
+                                object-fit: cover;
+                            }
+
+                            .text-muted.small {
+                                font-size: 0.8rem;
+                            }
+                        </style>
                     </div>
                 </form>
             </div>

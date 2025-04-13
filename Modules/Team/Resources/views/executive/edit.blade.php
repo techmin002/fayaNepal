@@ -41,6 +41,16 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label for="phone">Phone</label>
+                                                <input type="text" name="phone" class="form-control"
+                                                    placeholder="Enter phone" value="{{ $executive->phone }}">
+                                                @error('phone')
+                                                    <p style="color: red">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label for="position">Position</label>
                                                 <input type="number" min="1" name="position" class="form-control"
                                                     placeholder="Enter position" value="{{ $executive->position }}">
@@ -49,7 +59,17 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="email" min="1" name="email" class="form-control"
+                                                    placeholder="Enter email" value="{{ $executive->email }}">
+                                                @error('email')
+                                                    <p style="color: red">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="designation">Designation</label>
@@ -61,20 +81,20 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                       
+
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="image">Image </label>
-                                                
+
                                                 <input type="file" id="file-ip-1" accept="image/*" class="form-control-file border" value="{{ old('image') }}" onchange="showPreview1(event);" name="image">
-                                                <img src="{{ asset('upload/images/executives/'.$executive->image) }}" alt="{{ $executive->title }}" width="200px">
+                                                <img src="{{ asset('upload/images/executives/'.$executive->image) }}" alt="{{ $executive->title }}" width="20%">
                                                 @error('image')
                                                         <p style="color: red">{{ $message }}</p>
                                                     @enderror
                                                 <div class="preview mt-2">
                                                     <img src="" id="file-ip-1-preview" width="200px">
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-md-6">

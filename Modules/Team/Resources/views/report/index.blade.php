@@ -32,8 +32,9 @@
                                   <th>S.N</th>
                                   <th>Title</th>
                                   <th class="text-center">Image</th>
-                                  <th>Report Type</th>   
+                                  <th>Report Type</th>
                                   <th>File</th>
+                                  <th>Date</th>
                                   <th class="text-center">Status</th>
                                   <th class="text-center">Action</th>
                                 </tr>
@@ -46,12 +47,12 @@
                                         <td class="text-center"><img src="{{ asset('upload/images/reports/'.$value->image) }}" width="120px" alt="{{ $value->name }}"> </td>
                                         <td>{{ ucfirst($value->report_type) }}</td>
                                         <td><a href="{{ asset('upload/images/reports/'.$value->file ) }}" tilte="Download File">File</a></td>
-                                        
+                                        <td>{{ $value->created_at }}</td>
                                         <td class="text-center">
                                             @if($value->status == 'on')
                                             <a href="{{ route('report.status',$value->id) }}" class="btn btn-success">On</a>
                                             @else
-                                            <a href="{{ route('report.status',$value->id) }}" class="btn btn-danger">Off</a> 
+                                            <a href="{{ route('report.status',$value->id) }}" class="btn btn-danger">Off</a>
                                             @endif
                                         </td>
                                         <td class="text-center">

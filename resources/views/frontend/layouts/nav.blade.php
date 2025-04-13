@@ -39,6 +39,9 @@
       display: block;
     }
   </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/yourkitcode.js" crossorigin="anonymous"></script>
+
 <div class="site-preloader-wrap">
     <div class="spinner"></div>
 </div><!-- Preloader -->
@@ -60,13 +63,13 @@
                     </ul>
                 </div>
                 <div class="col-sm-4 d-none d-md-block">
-                    <ul class="right-info">
-                        <li><a href="{{ $companyProfile->facebook }}"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="{{ $companyProfile->twitter }}"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="{{ $companyProfile->instagram }}"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="{{ $companyProfile->youtube }}"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="{{ $companyProfile->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
+                    <ul class="social-icon">
+                        <li><a href="{{ $companyProfile->facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="{{ $companyProfile->twitter }}"><i class="fab fa-x-twitter"></i></a></li>
+                        <li><a href="{{ $companyProfile->youtube }}"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="{{ $companyProfile->linkedin }}"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
+
                 </div>
             </div>
         </div>
@@ -148,7 +151,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
                                   <!-- Web Development Dropdown -->
                                   <li class="dropdown">
-                                    <a class="dropdown-item" href="{{ route('frontend.about') }}">FAYA History</a>
+                                    <a class="dropdown-item" href="{{ route('frontend.about') }}">About Us</a>
                                     {{-- <ul class="dropdown-menu"> --}}
                                     <li><a class="dropdown-item" href="{{ route('frontend.coverage') }}">Coverage</a></li>
                                     <li><a class="dropdown-item" href="{{ route('frontend.executiveBoard') }}">Executive Board</a></li>

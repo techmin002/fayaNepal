@@ -35,7 +35,7 @@ class OrganogramController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'title' => ['required'],
         ]);
@@ -46,7 +46,7 @@ class OrganogramController extends Controller
 
             $request->image->move(public_path('upload/images/organograms'), $imageName);
 
-            
+
         }
         if($request->status == 'on')
         {
@@ -103,7 +103,7 @@ class OrganogramController extends Controller
             $request->image->move(public_path('upload/images/organograms'), $imageName);
 
         }
-        
+
         $procurement->title = $request->input('title');
         $procurement->status = $request->input('status') ?? $procurement->status;
         $procurement->image = $imageName;
@@ -121,7 +121,7 @@ class OrganogramController extends Controller
         $procurement = Organogram::findOrfail($id);
         $procurement->delete();
         return back()->with('success', 'Organograms deleted Successfully');
-    
+
     }
     public function status($id)
     {
@@ -133,7 +133,7 @@ class OrganogramController extends Controller
             $status = 'on';
         }
         $procurement->update([
-           'status' => $status 
+           'status' => $status
         ]);
         return back()->with('success', 'Status Updated Successfully');
     }

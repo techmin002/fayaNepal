@@ -63,7 +63,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="shortdescription">Short Description</label>
-                                                <textarea name="shortdescription" class="summernote" id="" cols="30" rows="3">{{ $advertisement->description }}</textarea>
+                                                <textarea name="shortdescription" class="summernote" id="" cols="30" rows="3">{{ $advertisement->shortdescription }}</textarea>
                                                 @error('shortdescription')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror

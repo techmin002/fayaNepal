@@ -121,7 +121,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                           
+
                                             <div class="form-group">
                                                 <label>Donor's/ Partner's</label>
                                                 <select class="select2" multiple="multiple" name="partner_id[]" data-placeholder="Select a State" style="width: 100%;">
@@ -134,7 +134,7 @@
                                             @enderror
                                               </div>
                                         </div>
-                                        
+
                                         <div class="col-md-3">
                                             <!-- Bootstrap Switch -->
                                             <div class="form-group">
@@ -172,20 +172,125 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="image">Image </label>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label for="image">Image</label>
+                                                        <p class="text-muted small mb-2">
+                                                            <strong>Required size:</strong> Exactly 318×220 pixels (1.45:1 aspect ratio)<br>
+                                                            <strong>Max file size:</strong> 1MB<br>
+                                                            <strong>Formats:</strong> JPG, PNG<br>
+                                                            <strong>Note:</strong> Images will be cropped to fit if not exact size
+                                                        </p>
 
-                                                <input type="file" id="file-ip-1" accept="image/*"
-                                                    class="form-control-file border" value="{{ old('image') }}"
-                                                    onchange="showPreview1(event);" name="image">
-                                                @error('image')
-                                                    <p style="color: red">{{ $message }}</p>
-                                                @enderror
-                                                <div class="preview mt-2">
-                                                    <img src="" id="file-ip-1-preview" width="200px">
+                                                        <input type="file" id="file-ip-1" accept="image/*"
+                                                               class="form-control-file border" value="{{ old('image') }}"
+                                                               onchange="showPreview1(event); validateStandardImage(this);" name="image">
+
+                                                        @error('image')
+                                                            <p class="text-danger small">{{ $message }}</p>
+                                                        @enderror
+
+                                                        <div class="preview mt-3 text-center">
+                                                            <img src="" id="file-ip-1-preview" class="img-thumbnail"
+                                                                 style="width: 318px; height: 220px; display: none; object-fit: cover;">
+                                                            <div id="standard-size-error" class="text-danger small mt-2" style="display: none;"></div>
+                                                            <div id="standard-dimension-display" class="text-muted small mt-1" style="display: none;"></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <script>
+                                            function showPreview1(event) {
+                                                const file = event.target.files[0];
+                                                if (file) {
+                                                    const reader = new FileReader();
+                                                    reader.onload = function(e) {
+                                                        const preview = document.getElementById('file-ip-1-preview');
+                                                        preview.src = e.target.result;
+                                                        preview.style.display = 'block';
+                                                    }
+                                                    reader.readAsDataURL(file);
+                                                }
+                                            }
+
+                                            function validateStandardImage(input) {
+                                                const sizeError = document.getElementById('standard-size-error');
+                                                const dimensionDisplay = document.getElementById('standard-dimension-display');
+                                                sizeError.style.display = 'none';
+                                                dimensionDisplay.style.display = 'none';
+
+                                                if (input.files && input.files[0]) {
+                                                    const file = input.files[0];
+                                                    const img = new Image();
+                                                    const reader = new FileReader();
+
+                                                    reader.onload = function(e) {
+                                                        img.src = e.target.result;
+                                                        img.onload = function() {
+                                                            // Display actual dimensions
+                                                            dimensionDisplay.textContent = `Current dimensions: ${this.width}×${this.height}px`;
+                                                            dimensionDisplay.style.display = 'block';
+
+                                                            // Check exact dimensions (318×220)
+                                                            const targetWidth = 318;
+                                                            const targetHeight = 220;
+                                                            const tolerance = 2; // 2 pixel tolerance
+
+                                                            if (Math.abs(this.width - targetWidth) > tolerance ||
+                                                                Math.abs(this.height - targetHeight) > tolerance) {
+                                                                sizeError.innerHTML = `⚠️ Image must be exactly <strong>318×220</strong> pixels.<br>
+                                                                                    Your image is <strong>${this.width}×${this.height}</strong>px.`;
+                                                                sizeError.style.display = 'block';
+                                                            }
+
+                                                            // Check file size (1MB max)
+                                                            if (file.size > 1 * 1024 * 1024) {
+                                                                sizeError.textContent = 'Error: File size exceeds 1MB limit.';
+                                                                sizeError.style.display = 'block';
+                                                                input.value = '';
+                                                                document.getElementById('file-ip-1-preview').style.display = 'none';
+                                                                dimensionDisplay.style.display = 'none';
+                                                            }
+                                                        };
+                                                    };
+                                                    reader.readAsDataURL(file);
+                                                }
+                                            }
+                                        </script>
+
+                                        <style>
+                                            .preview .img-thumbnail {
+                                                border: 1px solid #dee2e6;
+                                                border-radius: 4px;
+                                                padding: 3px;
+                                                background-color: #f8f9fa;
+                                            }
+
+                                            .text-muted.small {
+                                                font-size: 0.8rem;
+                                                line-height: 1.4;
+                                            }
+
+                                            #standard-size-error {
+                                                background-color: #fff3f3;
+                                                padding: 8px;
+                                                border-left: 3px solid #dc3545;
+                                                border-radius: 0 4px 4px 0;
+                                            }
+
+                                            .card {
+                                                margin-bottom: 20px;
+                                                border-radius: 5px;
+                                                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                                            }
+
+                                            .form-control-file {
+                                                padding: 6px 0;
+                                            }
+                                        </style>
                                         <div class="col-md-6">
                                             <!-- Bootstrap Switch -->
                                             <div class="card card-secondary">

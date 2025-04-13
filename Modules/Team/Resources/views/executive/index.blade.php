@@ -33,6 +33,8 @@
                                     <th>Name</th>
                                     <th class="text-center">Image</th>
                                     <th>Designation</th>
+                                    <th>Phone</th>
+                                    <th>email</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -44,11 +46,14 @@
                                         <td>{{ $value->name }}</td>
                                         <td class="text-center"><img src="{{ asset('upload/images/executives/'.$value->image) }}" width="120px" alt="{{ $value->name }}"> </td>
                                         <td>{{ $value->designation }}</td>
+                                        <td>{{ $value->phone }}</td>
+                                        <td>{{ $value->email }}</td>
+
                                         <td class="text-center">
                                             @if($value->status == 'on')
                                             <a href="{{ route('executive.status',$value->id) }}" class="btn btn-success">On</a>
                                             @else
-                                            <a href="{{ route('executive.status',$value->id) }}" class="btn btn-danger">Off</a> 
+                                            <a href="{{ route('executive.status',$value->id) }}" class="btn btn-danger">Off</a>
                                             @endif
                                         </td>
                                         <td class="text-center">

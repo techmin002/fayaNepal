@@ -13,10 +13,12 @@ class ExecutiveBoard extends Model
         'name',
         'image',
         'designation',
+        'phone',
+        'email',
         'status',
         'position'
     ];
-    
+
     protected static function newFactory()
     {
         return \Modules\Team\Database\factories\ExecutiveBoardFactory::new();

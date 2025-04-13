@@ -4,28 +4,43 @@
       rel="stylesheet"
     />
     <style>
-        /* Card Styling */
+        /* Card Styling - Same for all cards */
         .chart-card {
             background-color: #f8f9fa !important;
             border-radius: 10px !important;
             text-align: center !important;
             box-shadow: 3px 1px 5px  #da251c !important;
-
+            height: 300px; /* Fixed height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px !important;
+            margin: 0 auto; /* Center the card */
+            max-width: 250px; /* Optional: Limits card width */
+        }
+        .chart-card .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .chart-card img {
             width: 80px;
             height: 80px;
             border-radius: 50%;
             object-fit: cover;
-            margin: auto;
+            margin: 0 auto 15px;
         }
         .name {
             font-weight: 600;
             color: #01923f;
+            margin-bottom: 5px;
         }
         .title {
             font-size: 0.9rem;
             color: #6c757d;
+            margin-bottom: 5px;
+            line-height: 1.3;
         }
         .connector {
             position: relative;
@@ -56,17 +71,17 @@
         }
         .child-connector-point{
           position: relative;
-    width: 12px;
-    height: 12px;
-    background-color: #01923f;
-    margin: 0 auto;
+          width: 12px;
+          height: 12px;
+          background-color: #01923f;
+          margin: 0 auto;
         }
     </style>
-    
+
   <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     ></script>
-  
+
 
 @section('content')
 
@@ -89,21 +104,24 @@
                     <h2>Management</h2>
                     <span class="heading-border"></span>
                     <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
-                       
                 </div>
-  
+
                 <div class="container my-5">
         <h3 class="text-center mb-5">MANAGEMENT</h3>
 
         <!-- Director -->
-        <div class="text-center">
+        <div class="row text-center justify-content-center"> <!-- Added row and justify-content-center -->
             @foreach ($executives->take(1) as $executive)
-                
-            
-            <div class="chart-card p-3 d-inline-block">
-                <img src="{{ asset('upload/images/executives/'.$executive->image) }}" alt="Director" />
-                <h5 class="name mt-2">{{ ucfirst($executive->name) }}</h5>
-                <p class="title">{{ ucfirst($executive->designation) }}</p>
+            <div class="col-md-3"> <!-- Wrapped in col-md-3 like subordinates -->
+                <div class="chart-card p-3"> <!-- Removed d-inline-block -->
+                    <div class="card-content">
+                        <img src="{{ asset('upload/images/executives/'.$executive->image) }}" alt="Director" />
+                        <h5 class="name mt-2">{{ ucfirst($executive->name) }}</h5>
+                        <p class="title">{{ ucfirst($executive->designation) }}</p>
+                        <p class="title">{{ ucfirst($executive->phone) }}</p>
+                        <p class="title">{{ ucfirst($executive->email) }}</p>
+                    </div>
+                </div>
             </div>
             @endforeach
         </div>
@@ -119,27 +137,22 @@
 
         <!-- Subordinates -->
         <div class="row text-center">
-            <!-- Manager -->
             @foreach ($executives->skip(1) as $executive)
             <div class="col-md-3">
                 <div class="child-connector"></div>
                 <div class="child-connector-point"></div>
                 <div class="chart-card p-3">
-                    <img src="{{ asset('upload/images/executives/'.$executive->image) }}" alt="Manager" />
-                    <h5 class="name mt-2">{{ ucfirst($executive->name) }}</h5>
-                    <p class="title">{{ ucfirst($executive->designation) }}</p>
+                    <div class="card-content">
+                        <img src="{{ asset('upload/images/executives/'.$executive->image) }}" alt="Manager" />
+                        <h5 class="name mt-2">{{ ucfirst($executive->name) }}</h5>
+                        <p class="title">{{ ucfirst($executive->designation) }}</p>
+                        <p class="title">{{ ucfirst($executive->phone) }}</p>
+                        <p class="title">{{ ucfirst($executive->email) }}</p>
+                    </div>
                 </div>
             </div>
             @endforeach
         </div>
     </div>
-
-
-
           </div>
-      
-        
-
-
-          
         @endsection
