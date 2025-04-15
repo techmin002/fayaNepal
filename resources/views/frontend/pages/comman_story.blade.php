@@ -32,7 +32,7 @@
                                 </span>
                             </div>
                             <div class="stories-card-body stories-fixed-body">
-                                <h3 class="stories-card-title">
+                                <h3 class="stories-card-title stories-fixed-title">
                                     <a href="{{ route('story.detail', $story->id) }}">{{ $story->title }}</a>
                                 </h3>
                                 <div class="stories-card-text stories-fixed-description">
@@ -166,21 +166,29 @@
     }
 
     .stories-card-title {
-        margin-bottom: 15px;
-        font-size: 1.25rem;
-        line-height: 1.4;
-    }
+    font-size: 1.25rem;
+    line-height: 1.6; /* This should match the line-height in .stories-fixed-title */
+    margin-bottom: 0; /* Remove the bottom margin since we have it in .stories-fixed-title */
+}
 
-    .stories-card-title a {
-        color: #333;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
+.stories-card-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
     .stories-card-title a:hover {
         color: #ff6b6b;
     }
-
+    .stories-fixed-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 3.2em; /* Adjust this based on your line-height */
+    line-height: 1.6; /* Should match your actual line-height */
+    margin-bottom: 15px;
+}
     .stories-fixed-description {
         color: #666;
         line-height: 1.6;
@@ -312,6 +320,15 @@
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         transition: all 0.3s ease;
     }
+    .stories-full-view-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 3.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
 
     .stories-full-view-story:hover {
         transform: translateY(-5px);
@@ -381,6 +398,18 @@
             height: 35px;
         }
     }
+    @media (max-width: 768px) {
+    .stories-fixed-title {
+        min-height: 3em; /* Slightly smaller height on mobile */
+        -webkit-line-clamp: 2; /* Ensure it stays at 2 lines */
+    }
+
+    /* Keep your existing description adjustments */
+    .stories-fixed-description {
+        height: 3.6em;
+        -webkit-line-clamp: 2;
+    }
+}
 </style>
 
 <!-- Required Libraries -->

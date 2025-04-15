@@ -236,8 +236,7 @@
                             <div class='publication-div'>
                                 <ul class='publication-ul'>
                                     <li class='publication-li' data-category="publications">
-                                        <span class='card-category'>{{ ucfirst($report->report_type) }} Reports -
-                                            {{ $report->created_at->format('Y') }}</span>
+                                        <span class='card-category'>{{ ucfirst($report->report_type) }} Reports</span>
                                     </li>
                                 </ul>
                             </div>

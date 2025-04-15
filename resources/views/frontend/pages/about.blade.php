@@ -34,7 +34,7 @@
             <div class="col-md-8 xs-padding">
                 <div class="about-wrap row">
                     <div class="col-md-6 xs-padding histry-mission-div fixed-box">
-                        <img src="{{ asset('frontend/image/history.png')}}" alt="about-thumb">
+                        <img src="{{ asset('frontend/image/history1.jpeg')}}" alt="about-thumb">
                         <h3>Our History</h3>
                         <div class="content-preview">
                             <p>{!! Str::limit($data['profile']->vision, 200) !!}</p>
@@ -42,7 +42,7 @@
                         <a href="#" class="default-btn read-more" data-target="history-modal">Full Read</a>
                     </div>
                     <div class="col-md-6 xs-padding histry-mission-div fixed-box">
-                        <img src="{{ asset('frontend/image/mission.png')}}" alt="about-thumb">
+                        <img src="{{ asset('frontend/image/mission1.jpeg')}}" alt="about-thumb">
                         <h3>Our Mission</h3>
                         <div class="content-preview">
                             <p>{!! Str::limit($data['profile']->mission, 200) !!}</p>
@@ -84,7 +84,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="{{ asset('frontend/image/history.png')}}" alt="about-thumb" class="mb-3" style="max-width: 200px;">
+                <img src="{{ asset('frontend/image/history1.jpeg')}}" alt="about-thumb" class="mb-3" style="max-width: 200px;">
                 <div class="full-content">
                     {!! $data['profile']->vision !!}
                 </div>
@@ -103,7 +103,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="{{ asset('frontend/image/mission.png')}}" alt="about-thumb" class="mb-3" style="max-width: 200px;">
+                <img src="{{ asset('frontend/image/mission1.jpeg')}}" alt="about-thumb" class="mb-3" style="max-width: 200px;">
                 <div class="full-content">
                     {!! $data['profile']->mission !!}
                 </div>

@@ -103,7 +103,7 @@
          <div class="section-heading text-center mb-40">
                     <h2>Management</h2>
                     <span class="heading-border"></span>
-                    <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
+                    <p>"FAYA Nepal’s dynamic and dedicated management team is the driving force behind our mission to create lasting social impact. Bringing together diverse expertise, the team provides strategic leadership, ensures operational excellence, and fosters sustainable growth. United by a shared commitment to accountability and innovation, they combine passion and professionalism to empower communities and propel transformative changes across all our initiatives."</p>
                 </div>
 
                 <div class="container my-5">

@@ -1207,21 +1207,6 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
     display: block;
     text-align: center;
 }
-.testimonial-carousel .owl-dots .owl-dot{
-    background-color: #ddd;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 3px;
-    transition: all 0.5s ease-in-out;
-}
-.testimonial-carousel .owl-dots .owl-dot.active{
-    background-color: #01923f;
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-    transition: all 0.5s ease-in-out;
-}
 
 /* ==========================================================================
    12.0 Sponsor Section
@@ -1235,7 +1220,7 @@ a,a:hover, .overlay, img, .form-control,  .form-control:hover, button{
     opacity: 0.8;
 }
 .sponsor-section .sponsor-items li img:hover{
-    opacity: 1;
+    /* opacity: 1; */
 }
 
 /* ==========================================================================

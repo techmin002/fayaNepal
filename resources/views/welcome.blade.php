@@ -76,41 +76,61 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section><!-- /Featured Campaigns Section -->
     @if(isset($data['portfolio']))
     <section id="counter" class="counter-section">
         <div class="container">
-            <ul class="row counters">
-                <li class="col-md-3 col-sm-6 sm-padding">
-                    <div class="counter-content">
-                        <i class="fa fa-inr"></i>
-                        <h3 class="counter">{{ $data['portfolio']->portfolio }}</h3>
-                        <h4 class="text-white">Portfolio</h4>
+            <div class="row">
+                <!-- Right side - Facebook iframe -->
+                <div class="col-md-6 xs-padding">
+                    <div class="fb-page-wrap">
+                        <iframe
+                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffaya.nepal%2F&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=true&show_facepile=true&appId"
+                            width="100%" height="500" style="border:none;overflow:hidden"
+                            scrolling="no" frameborder="0" allowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                        </iframe>
                     </div>
-                </li>
-                <li class="col-md-3 col-sm-6 sm-padding">
-                    <div class="counter-content">
-                        <i class="ti-face-smile"></i>
-                        <h3 class="counter">{{ $data['portfolio']->beneficiary_direct }}</h3>
-                        <h4 class="text-white">Beneficiary Direct</h4>
-                    </div>
-                </li>
-                <li class="col-md-3 col-sm-6 sm-padding">
-                    <div class="counter-content">
-                        <i class="ti-user"></i>
-                        <h3 class="counter">{{ $data['portfolio']->beneficiary_indirect }}</h3>
-                        <h4 class="text-white">Beneficiary InDirect</h4>
-                    </div>
-                </li>
-                <li class="col-md-3 col-sm-6 sm-padding">
-                    <div class="counter-content">
-                        <i class="ti-comments"></i>
-                        <h3 class="counter">{{ $data['portfolio']->project }}</h3>
-                        <h4 class="text-white">Project Portfolio</h4>
-                    </div>
-                </li>
-            </ul>
+                </div>
+                <div id="fb-root"></div>
+                <!-- Left side - Counter boxes -->
+                <div class="col-md-6">
+                    <ul class="row counters">
+                        <li class="col-md-6 col-sm-6 sm-padding">
+                            <div class="counter-content">
+                                <i class="fa fa-inr"></i>
+                                <h3 class="counter">{{ $data['portfolio']->portfolio }}</h3>
+                                <h4 class="text-white">Portfolio</h4>
+                            </div>
+                        </li>
+                        <li class="col-md-6 col-sm-6 sm-padding">
+                            <div class="counter-content">
+                                <i class="ti-face-smile"></i>
+                                <h3 class="counter">{{ $data['portfolio']->beneficiary_direct }}</h3>
+                                <h4 class="text-white">Beneficiary Direct</h4>
+                            </div>
+                        </li>
+                        <li class="col-md-6 col-sm-6 sm-padding">
+                            <div class="counter-content">
+                                <i class="ti-user"></i>
+                                <h3 class="counter">{{ $data['portfolio']->beneficiary_indirect }}</h3>
+                                <h4 class="text-white">Beneficiary InDirect</h4>
+                            </div>
+                        </li>
+                        <li class="col-md-6 col-sm-6 sm-padding">
+                            <div class="counter-content">
+                                <i class="ti-comments"></i>
+                                <h3 class="counter">{{ $data['portfolio']->project }}</h3>
+                                <h4 class="text-white">Project Portfolio</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
         </div>
     </section><!-- Counter Section -->
 @endif

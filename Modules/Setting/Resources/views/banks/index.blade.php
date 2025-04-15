@@ -54,7 +54,7 @@
                                             @if($value->status == 'on')
                                             <a href="{{ route('bank-account.status',$value->id) }}" class="btn btn-success">On</a>
                                             @else
-                                            <a href="{{ route('bank-account.status',$value->id) }}" class="btn btn-danger">Off</a> 
+                                            <a href="{{ route('bank-account.status',$value->id) }}" class="btn btn-danger">Off</a>
                                             @endif
                                         </td>
                                         <td class="text-center">
