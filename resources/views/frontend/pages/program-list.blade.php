@@ -1,5 +1,26 @@
 @extends('frontend.layouts.master')
 @section('content')
+<style>
+  @media only screen and (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 600px; /* Adjust as needed */
+    }
+
+    table td, table th {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px; /* Adjust as needed */
+    }
+}
+    </style>
+
+
     <div class="pager-header">
         <div class="container">
             <div class="page-content">
@@ -23,42 +44,45 @@
                     </div><!-- /Section Heading -->
                 </div>
                 <hr>
-                <table class="table table-bordered">
-                    <thead>
-                        <th>S.N</th>
-                        <th>Project/ Program Name</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Sector</th>
-                        <th>Project Location</th>
-                        <th>Parnters/ Donor</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                        @foreach ($data['programs'] as $program)
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $program->title }}</td>
-                                <td>{{ $program->date }}</td>
-                                <td>{{ $program->end_date ?? 'N/A' }}</td>
-                                <td>{{ $program->category['title'] ?? 'N/A' }}</td>
-                                <td>{{ $program->location ?? 'N/A' }}</td>
-                                <td>
-                                    @php
-                                        $ids = json_decode($program->partner_id); // Decode the partner_id JSON
-                                        // Fetch the partner names using the IDs
-                                        $partners = Modules\Partner\Entities\Partner::whereIn('id', $ids)
-                                            ->pluck('title')
-                                            ->toArray();
-                                    @endphp
-                                    {{ implode(', ', $partners) }}
-
-                                </td>
-                                <td><a href="{{ route('program.detail', $program->slug) }}">View Detail's</a></td>
+                                <th>S.N</th>
+                                <th>Project/ Program Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Sector</th>
+                                <th>Project Location</th>
+                                <th>Partners/ Donor</th>
+                                <th>Action</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($data['programs'] as $program)
+                                <tr>
+                                    <td data-label="S.N">{{ $loop->iteration }}</td>
+                                    <td data-label="Project/ Program Name">{{ $program->title }}</td>
+                                    <td data-label="Start Date">{{ $program->date }}</td>
+                                    <td data-label="End Date">{{ $program->end_date ?? 'N/A' }}</td>
+                                    <td data-label="Sector">{{ $program->category['title'] ?? 'N/A' }}</td>
+                                    <td data-label="Project Location">{{ $program->location ?? 'N/A' }}</td>
+                                    <td data-label="Partners/ Donor">
+                                        @php
+                                            $ids = json_decode($program->partner_id);
+                                            $partners = Modules\Partner\Entities\Partner::whereIn('id', $ids)->pluck('title')->toArray();
+                                        @endphp
+                                        {{ implode(', ', $partners) }}
+                                    </td>
+                                    <td data-label="Action">
+                                        <a href="{{ route('program.detail', $program->slug) }}">View Detail's</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
         </div>
     </section><!-- /Program Section -->

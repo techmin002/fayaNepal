@@ -1,32 +1,30 @@
-
 <div class="sponsor-section bd-bottom">
     <div class="container">
-        <div class="section-heading text-center mb-40">
+        <div class="section-heading text-center mb-4">
             <h2>Donor's/Partner's</h2>
             <span class="heading-border"></span>
-            <p>"FAYA Nepal collaborates with various grassroots organizations and development allies to enhance its impact and drive sustainable social change. These strategic partnerships empower FAYA to amplify its efforts in promoting equality, human rights, and community development."</p>
+            <p class="sponsor-text">
+                We sincerely appreciate our partners/donors for unwavering collaboration, technical expertise, and financial support since our inception. Your partnership has been instrumental in advancing our mission to create sustainable, transformative change in the lives of marginalized communities across Nepal.
+                <br><br>
+                We take immense pride in featuring your logos on our website, symbolizing the solidarity and shared commitment that drives our work. Each logo represents not just an organization but a promise of hope and progress for the communities we serve.
+                <br><br>
+                As we continue this journey, your dedication to global development and humanitarian values remains an inspiration. We eagerly anticipate strengthening our partnership and exploring new opportunities to amplify our collective impact.
+            </p>
         </div>
     </div>
 </div>
 
 <div class="container-fluid">
-    <div class="row main-container-down align-items-center h-100">
-        <div class="container-unique rounded">
-            <!-- Logo Slider Section -->
+    <div class="row justify-content-center">
+        <div class="col-12">
             <div class="logo-slider-container">
                 <div class="logo-slider-track">
                     @foreach ($data['pastpartners'] as $past)
                     <div class="logo-slide">
-
-                        {{-- <img
-                        src="{{ asset('upload/images/partners/'.$past->image) }}"
-                        alt="{{ $past->name }}"
-                        style="width: 150px; height: 84px; object-fit: cover;"> --}}
-
-                        <img src="{{ asset('upload/images/partners/'.$past->logo)}}" alt="{{ $past->name }}" class="logo-img" >
+                        <img src="{{ asset('upload/images/partners/'.$past->logo)}}" alt="{{ $past->name }}" class="logo-img">
                     </div>
                     @endforeach
-                    <!-- Duplicate slides for seamless looping -->
+
                     @foreach ($data['pastpartners'] as $past)
                     <div class="logo-slide">
                         <img src="{{ asset('upload/images/partners/'.$past->logo)}}" alt="{{ $past->name }}" class="logo-img">
@@ -39,6 +37,14 @@
 </div>
 
 <style>
+    /* Container Styling */
+    .sponsor-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: justify;
+        padding: 0 1rem;
+    }
+
     /* Logo Slider Styles */
     .logo-slider-container {
         width: 100%;
@@ -82,28 +88,56 @@
         }
     }
 
-    /* Responsive Adjustments */
+    /* ✅ Responsive Adjustments */
     @media (max-width: 768px) {
         .logo-slide {
             padding: 0 15px;
         }
+
         .logo-img {
             height: 60px;
             max-width: 120px;
+        }
+
+        .sponsor-text {
+            font-size: 0.95rem;
+            padding: 0 10px;
+        }
+
+        .section-heading h2 {
+            font-size: 1.5rem;
+        }
+
+        .logo-slider-container {
+            margin: 20px 0;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo-img {
+            height: 50px;
+            max-width: 100px;
+        }
+
+        .sponsor-text {
+            font-size: 0.9rem;
+        }
+
+        .section-heading h2 {
+            font-size: 1.3rem;
         }
     }
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Adjust animation speed based on content length
+    document.addEventListener('DOMContentLoaded', function () {
         const track = document.querySelector('.logo-slider-track');
         const slides = document.querySelectorAll('.logo-slide');
 
         if (slides.length > 0) {
             const slideWidth = slides[0].offsetWidth;
             const totalWidth = slideWidth * slides.length;
-            const duration = totalWidth / 75; // Adjust for speed (higher = slower)
+            const duration = totalWidth / 75; // Adjust scroll speed
 
             track.style.animationDuration = `${duration}s`;
         }

@@ -202,6 +202,14 @@
         background: #01923f !important;
 
     }
+    @media (max-width: 768px) {
+    .shape-box {
+        width: 90% !important;
+        margin: 20px auto; /* center the box */
+        display: block;
+    }
+}
+
 </style>
 <script>
     < link rel = "stylesheet"

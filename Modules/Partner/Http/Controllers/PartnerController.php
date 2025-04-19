@@ -97,7 +97,7 @@ class PartnerController extends Controller
             $request->image->move(public_path('upload/images/partners'), $imageName);
 
         }
-        
+
         $partner->title = $request->input('title');
         $partner->type = $request->input('type');
         $partner->logo = $imageName;
@@ -115,7 +115,7 @@ class PartnerController extends Controller
         $testimonial = Partner::findOrfail($id);
         $testimonial->delete();
         return back()->with('success', 'Partner deleted Successfully');
-    
+
     }
     public function status($id)
     {
@@ -127,8 +127,18 @@ class PartnerController extends Controller
             $status = 'on';
         }
         $testimonial->update([
-           'status' => $status 
+           'status' => $status
         ]);
         return back()->with('success', 'Status Updated Successfully');
     }
+
+    public function partnersWithDonors()
+{
+    $partners = Partner::with('donors')->get();
+    // return view('partners.donorpartner', compact('partners'));
+    return view('partner::partners.partneranddonor', compact('partners'));
+
 }
+
+}
+

@@ -52,7 +52,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="message">Message</label>
-                                                <textarea type="text" name="message" class="summernote" placeholder="Enter Message">{{ old('message') }}</textarea>
+                                                <textarea name="message" class="form-control" rows="5" cols="8" placeholder="Enter your message here...">{{ old('message') }}</textarea>
                                                 @error('message')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
@@ -221,26 +221,6 @@
         }
     </script>
 
-    <script>
-        $('textarea.summernote').summernote({
-            placeholder: 'Enter Message',
-            tabsize: 2,
-            height: 100,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
-                ['fontname', ['fontname']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'hr']],
-                ['view', ['fullscreen', 'codeview']],
-                ['help', ['help']]
-            ],
-        });
-    </script>
     <script>
         $('.extra-fields-customer').click(function() {
             $('.customer_records').clone().appendTo('.customer_records_dynamic');

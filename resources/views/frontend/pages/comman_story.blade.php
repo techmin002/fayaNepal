@@ -3,7 +3,7 @@
         <div class="section-heading text-center mb-5">
             <h2 class="display-4 font-weight-bold text-primary">Recent Stories</h2>
             <div class="heading-border mx-auto bg-gradient-primary"></div>
-            <p class="lead text-muted">Help today because tomorrow you may be the one who needs more helping!</p>
+            <p class="lead text-muted">Let these stories inspire action, click through to read full story or find ways to make a difference!</p>
         </div>
 
         <!-- Stories Carousel Container -->
@@ -362,54 +362,55 @@
         }
     }
 
-    @media (max-width: 768px) {
-        .stories-fixed-description {
-            height: 3.6em;
-            -webkit-line-clamp: 2;
-        }
-
-        .stories-fixed-body {
-            padding: 20px;
-        }
-
-        .stories-carousel-prev,
-        .stories-carousel-next {
-            width: 40px;
-            height: 40px;
-        }
-
-        .stories-carousel-prev {
-            margin-left: -15px;
-        }
-
-        .stories-carousel-next {
-            margin-right: -15px;
-        }
-
-        .stories-full-view-carousel {
-            grid-template-columns: 1fr;
-        }
+    @media (max-width: 767px) {
+    .stories-carousel-container {
+        padding: 20px 15px;
     }
 
-    @media (max-width: 576px) {
-        .stories-carousel-prev,
-        .stories-carousel-next {
-            width: 35px;
-            height: 35px;
-        }
+    .stories-card {
+        margin: 0 5px;
     }
-    @media (max-width: 768px) {
+
+    .stories-fixed-image {
+        height: 180px;
+    }
+
+    .stories-fixed-body {
+        padding: 15px;
+    }
+
     .stories-fixed-title {
-        min-height: 3em; /* Slightly smaller height on mobile */
-        -webkit-line-clamp: 2; /* Ensure it stays at 2 lines */
+        font-size: 1.1rem;
+        min-height: 2.8em;
     }
+
+    .stories-fixed-description {
+        -webkit-line-clamp: 2;
+        height: 3.6em;
+        margin-bottom: 15px;
+    }
+
+    .stories-carousel-prev,
+    .stories-carousel-next {
+        width: 35px;
+        height: 35px;
+    }
+
+    .stories-carousel-prev {
+        margin-left: -30px;
+    }
+
+    .stories-carousel-next {
+        margin-right: -30px;
+    }
+}
 
     /* Keep your existing description adjustments */
     .stories-fixed-description {
         height: 3.6em;
         -webkit-line-clamp: 2;
     }
-}
+
 </style>
 
 <!-- Required Libraries -->
@@ -423,31 +424,28 @@
     $(document).ready(function(){
         // Initialize Owl Carousel
         var owl = $('.stories-carousel').owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: false, // Disable default navigation
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                576: {
-                    items: 1
-                },
-                768: {
-                    items: 2
-                },
-                992: {
-                    items: 3
-                },
-                1200: {
-                    items: 3
-                }
+        loop: true,
+        margin: 20,
+        nav: false, // Disable default navigation
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1 // Only 1 item on mobile (0-575px)
+            },
+            576: {
+                items: 1 // Still 1 item on small devices (576-767px)
+            },
+            768: {
+                items: 2 // 2 items on tablets (768-991px)
+            },
+            992: {
+                items: 3 // 3 items on desktop (992px+)
             }
-        });
+        }
+    });
 
         // Custom navigation
         $('.stories-carousel-prev').click(function() {

@@ -15,4 +15,5 @@
     </div>
 </div>
 @include('frontend.pages.comman_publication')
+{{-- @include('frontend.pages.commann_feedback') --}}
 @endsection

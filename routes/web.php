@@ -63,4 +63,8 @@ Route::post('contact/store',[InquiryController::class,'store'])->name('frontend.
 Route::get('inquiries',[InquiryController::class,'index'])->name('inquires.index');
 Route::delete('inquiries/delete/{id}',[InquiryController::class,'destroy'])->name('inquires.destroy');
 Route::get('/fetch-notice', [FrontendController::class, 'fetchNotice'])->name('fetch.notice');
+// routes/web.php
+
+// Route::get('/feed', [\App\Http\Controllers\FacebookFeedController::class, 'showFeed']);
+// Route::view('/feed', 'feed');
 

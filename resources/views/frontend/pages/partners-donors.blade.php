@@ -14,6 +14,7 @@
         </div><!-- /Page Header -->
         <!-- body -->
 
-@include('frontend.pages.donorlogo')
-
- @endsection
+ @include('partner::partners.donorpartner', [
+    'partners' => \Modules\Partner\Entities\Partner::with('donors')->get()
+])
+@endsection

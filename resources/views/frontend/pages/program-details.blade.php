@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-9 sm-padding">
                 <div class="blog-items single-post row">
-                    <img src="{{ asset('upload/images/services/'.$data['blog']->image)}}" alt="blog post" style="width: 834px; height: 556px; object-fit: cover;">
+                    <img src="{{ asset('upload/images/services/'.$data['blog']->image)}}" alt="blog post" style="width: 100%; height: 100%; object-fit: cover;">
                     <h2>{{ $data['blog']->title }}</h2>
                    <!-- Meta Info -->
                     <p>

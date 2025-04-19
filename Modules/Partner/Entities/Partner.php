@@ -16,9 +16,15 @@ class Partner extends Model
         'status',
         'description'
     ];
-    
+
     protected static function newFactory()
     {
         return \Modules\Partner\Database\factories\PartnerFactory::new();
     }
+    // app/Models/Partner.php
+public function donors()
+{
+    return $this->hasMany(Donor::class);
+}
+
 }

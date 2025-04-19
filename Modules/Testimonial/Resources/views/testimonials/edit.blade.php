@@ -42,7 +42,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="image">Image </label>
-                                                
+
                                                 <input type="file" id="file-ip-1" accept="image/*" class="form-control-file border" value="{{ old('image') }}" onchange="showPreview1(event);" name="image">
                                                 <img src="{{ asset('upload/images/testimonials/'.$testimonial->image) }}" alt="{{ $testimonial->title }}" width="200px">
                                                 @error('image')
@@ -51,18 +51,22 @@
                                                 <div class="preview mt-2">
                                                     <img src="" id="file-ip-1-preview" width="200px">
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="message">Message</label>
-                                                <textarea type="text" name="message" class="summernote" placeholder="Enter Message">{{ $testimonial->message }}</textarea>
+                                                <textarea name="message" class="form-control" rows="5" cols="8" placeholder="Enter your message here...">{{ $testimonial->message }}</textarea>
+
+                                                {{-- <textarea type="text" name="message" class="summernote" placeholder="Enter Message">{{ $testimonial->message }}</textarea> --}}
                                                 @error('message')
                                                     <p style="color: red">{{ $message }}</p>
                                                 @enderror
                                             </div>
                                         </div>
+
+
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="designation">Designation</label>

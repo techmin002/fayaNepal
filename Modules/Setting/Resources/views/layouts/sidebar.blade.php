@@ -42,7 +42,7 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                
+
               </p>
             </a>
           </li>
@@ -78,7 +78,7 @@
             </ul>
           </li>
           @endcan
-          
+
           @can('access_sliders')
           <li class="nav-item {{ request()->routeIs('sliders.*') ? 'menu-is-opening menu-open' : '' }}">
             <a href="#" class="nav-link" {{ request()->routeIs('sliders.*') ? 'active' : '' }}>
@@ -238,6 +238,12 @@
                   <p>Partners</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('donors.index') }}" class="nav-link {{ request()->routeIs('donors.index') ? 'active' : '' }}">
+                  {{-- <i class="fa fa-users nav-icon"></i> --}}
+                  <p>Donors</p>
+                </a>
+              </li>
             </ul>
           </li>
           @endcan
@@ -266,10 +272,10 @@
             </ul>
           </li>
           @endcan
-         
-              
-             
-            
+
+
+
+
           @can('access_testimonials')
           <li class="nav-item {{ request()->routeIs('testimonials.*') ? 'menu-is-opening menu-open' : '' }}">
             <a href="#" class="nav-link" {{ request()->routeIs('testimonials.*') ? 'active' : '' }}>
@@ -349,7 +355,7 @@
               <p>Events</p>
             </a>
           </li>
-        
+
           <li class="nav-item">
             <a href="{{ route('notices.index') }}" class="nav-link {{ request()->routeIs('notices.index') ? 'active' : '' }}">
               <i class="fa fa-receipt nav-icon"></i>
@@ -386,7 +392,7 @@
               <p>Reports</p>
             </a>
           </li>
-          
+
             {{-- <li class="nav-item">
               <a href="{{ route('galleries.index') }}" class="nav-link {{ request()->routeIs('galleries.index') ? 'active' : '' }}">
                 <i class="far fa-image nav-icon"></i>
@@ -428,11 +434,11 @@
                 </a>
               </li>
             </ul>
-              
+
             </ul>
           </li>
           @endcan
-          
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

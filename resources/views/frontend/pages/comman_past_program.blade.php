@@ -3,7 +3,9 @@
         <div class="section-heading text-center mb-5">
             <h2 class="display-4 font-weight-bold text-primary">Our Impactful Programs</h2>
             <div class="heading-border mx-auto bg-gradient-primary"></div>
-            <p class="lead text-muted max-w-3xl mx-auto">"FAYA Nepal is driving initiatives aimed at improving maternal and child health, enhancing public health measures, and empowering marginalized communities through sustainable development programs."</p>
+            <p class="lead text-muted max-w-3xl mx-auto">"FAYA NEPAL'S initiatives address systemic challeges through advocacy, inclusivily. innovation and community engagement.
+                Each program empowers Children, youth, adolescents, women, ethic minorities, older people, people with disability, marginalized and underserved
+                population by equipping them with the tolls, network and confidence needed to create lasting change in their lives and communities"</p>
         </div>
 
         <!-- Premium Carousel Slider with Custom Navigation -->
@@ -283,11 +285,11 @@
         }
 
         .programs-carousel-prev {
-            margin-left: -15px;
+            margin-left: -25px;
         }
 
         .programs-carousel-next {
-            margin-right: -15px;
+            margin-right: -25px;
         }
     }
 

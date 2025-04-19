@@ -32,11 +32,13 @@
                 <div class="team-content histry-mission-div">
                     <h2>Become a Volunteer?</h2>
                     <h3>Join your hand with us for a better life and beautiful future.</h3>
-                    <p>Faya Nepal is a non-governmental, apolitical, and not-for-profit organization based in Sudurpashchim Province Nepal, the abused and the helpless.</p>
+                    <p>Together, We can build a Nation where every life is valued, and
+                        every voice heard. Stand with FAYA NEPAL-because change begins with you.
+                    </p>
                     <ul class="check-list">
                         <li><i class="fa fa-check"></i>We are friendly to each other.</li>
                         <li><i class="fa fa-check"></i>If you join with us,We will give you free training.</li>
-                        <li><i class="fa fa-check"></i>Its an opportunity to help poor children.</li>
+                        <li><i class="fa fa-check"></i>It's an opportunity to explore yourself.</li>
                         <li><i class="fa fa-check"></i>No goal requirements.</li>
                         <li><i class="fa fa-check"></i>Joining is tottaly free. We dont need any money from you.</li>
                     </ul>

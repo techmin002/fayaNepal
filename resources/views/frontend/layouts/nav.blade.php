@@ -16,9 +16,11 @@
       border: none;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
+
     }
     .dropdown:hover > .dropdown-menu {
       display: block;
+
     }
     .dropdown-menu .dropdown-item {
       padding: 10px 20px;
@@ -37,6 +39,8 @@
     }
     .dropdown-menu > .dropdown:hover > .dropdown-menu {
       display: block;
+
+
     }
   </style>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -173,14 +177,16 @@
                                   @foreach($programCategory as $cat)
                                   <li><a class="dropdown-item" href="{{ route('frontend.works',$cat->slug) }}">{{ $cat->title }}</a></li>
                                  @endforeach
-                                  <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#">Projects</a>
-                                    <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('frontend.currentproject') }}">Current</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('frontend.pastproject') }}">Phased Out</a></li>
-
+                                 <li class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button">
+                                      Projects
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+                                      <li><a class="dropdown-item" href="{{ route('frontend.currentproject') }}">Current</a></li>
+                                      <li><a class="dropdown-item" href="{{ route('frontend.pastproject') }}">Phased Out</a></li>
                                     </ul>
                                   </li>
+
 
                                 </ul>
                               </li>
